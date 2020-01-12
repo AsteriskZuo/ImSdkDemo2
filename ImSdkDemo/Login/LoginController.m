@@ -7,9 +7,9 @@
 //
 
 #import "LoginController.h"
-#import "../GroupContact/ContactController.h"
-#import "../GroupConversation/ConversationController.h"
-#import "../GroupSetting/SettingController.h"
+#import "../Contact/ContactController.h"
+#import "../Conversation/ConversationController.h"
+#import "../Setting/SettingController.h"
 #import "../AppDelegate.h"
 
 @interface LoginController ()
@@ -47,7 +47,11 @@
 
 - (IBAction)loginAction:(id)sender {
     
-    [self presentViewController:[((AppDelegate *)[UIApplication sharedApplication].delegate) getMainController] animated:YES completion:nil];
+//    UITabBarController* controller = [((AppDelegate *)[UIApplication sharedApplication].delegate) getMainController];
+//    controller.modalPresentationStyle = UIModalPresentationFullScreen;
+//    [self presentViewController:controller animated:YES completion:nil];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
     
 }
 

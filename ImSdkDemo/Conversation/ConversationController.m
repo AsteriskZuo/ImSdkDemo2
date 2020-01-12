@@ -7,6 +7,7 @@
 //
 
 #import "ConversationController.h"
+#import "AppDelegate.h"
 
 @interface ConversationController ()
 
@@ -18,6 +19,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor yellowColor];
+    
+    UIViewController* controller = [((AppDelegate *)[UIApplication sharedApplication].delegate) getLoginController];
+    controller.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 
 /*

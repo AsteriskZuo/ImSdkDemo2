@@ -7,11 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "GroupCommon/Common.h"
-#import "GroupLogin/LoginController.h"
-#import "GroupContact/ContactController.h"
-#import "GroupConversation/ConversationController.h"
-#import "GroupSetting/SettingController.h"
+#import "Common/Common.h"
+#import "Login/LoginController.h"
+#import "Contact/ContactController.h"
+#import "Conversation/ConversationController.h"
+#import "Setting/SettingController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +23,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    self.window.rootViewController = [self getLoginController];
+    self.window.rootViewController = [self getMainController];
+//    UIViewController* controller = [self getLoginController];
+//    controller.modalPresentationStyle = UIModalPresentationFullScreen;
+//    [self.window.rootViewController presentViewController:controller animated:YES completion:nil];
     
     return YES;
 }
