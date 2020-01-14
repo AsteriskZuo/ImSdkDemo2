@@ -9,6 +9,7 @@
 #import "SettingController.h"
 #import "DHeader.h"
 #import "DUIButtonCell.h"
+#import "DUITestTextCell.h"
 #import "AppDelegate.h"
 
 @interface SettingController ()
@@ -48,6 +49,7 @@
     self.tableView.backgroundColor = TSettingController_Background_Color;
     
     [self.tableView registerClass:[DUIButtonCell class] forCellReuseIdentifier:@"buttonCell"];
+    [self.tableView registerClass:[DUITestTextCell class] forCellReuseIdentifier:@"testTextCell"];
     
     
 }
@@ -67,6 +69,10 @@
     buttonData.cButtonSelector = @selector(logout:);
     [self.data addObject:@[buttonData]];
     
+//    DUITestTextCellData* testTextData = [[DUITestTextCellData alloc] init];
+//    testTextData.test = @"test";
+//    [self.data addObject:@[testTextData]];
+    
     [self.tableView reloadData];
 }
 
@@ -80,12 +86,17 @@
 
 #pragma mark - Table view data source
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return self.data.count;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 20;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    NSLog(@"section:%ld", (long)section);
     NSMutableArray *array = self.data[section];
     return array.count;
 }
@@ -102,14 +113,27 @@
     NSMutableArray *array = self.data[indexPath.section];
     NSObject *data = array[indexPath.row];
     if([data isKindOfClass:[DUIButtonCellData class]]){
-//        DUIButtonCell* cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId forIndexPath:indexPath];
         
-        DUIButtonCell *cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId];
-        if(!cell){
-            cell = [[DUIButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TButtonCell_ReuseId];
+        DUIButtonCell* cell = nil;
+        if (true) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell" forIndexPath:indexPath];
         }
+        
+        if (false) {
+            cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId];
+            if(!cell){
+                cell = [[DUIButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TButtonCell_ReuseId];
+            }
+        }
+        
         [cell fillWithData:(DUIButtonCellData *)data];
         return cell;
+    } else if ([data isKindOfClass:[DUITestTextCellData class]]) {
+        DUITestTextCell* cell = [tableView dequeueReusableCellWithIdentifier:@"testTextCell" forIndexPath:indexPath];
+        [cell fillWithData:(DUITestTextCellData*)data];
+        return cell;
+    } else {
+        NSLog(@"test");
     }
     return nil;
 }

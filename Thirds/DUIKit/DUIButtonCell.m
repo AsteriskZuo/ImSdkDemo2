@@ -105,7 +105,7 @@
 
             break;
         }
-        case ButtonBule:{
+        case ButtonBlue:{
             [self.button.titleLabel setTextColor:[UIColor whiteColor]];
             [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             self.button.backgroundColor = RGB(30, 144, 255);
@@ -123,10 +123,10 @@
     [super layoutSubviews];
     self.button.mm_width(Screen_Width - 2 * TButtonCell_Margin)
     .mm_height(self.mm_h - TButtonCell_Margin)
-    .mm_top(0)
+    .mm_top(10)
     .mm_left(TButtonCell_Margin);
     
-    NSLog(@"button:%f, %f, %f, %f", self.button.frame.size.height, self.button.frame.size.width, self.button.frame.origin.x, self.button.frame.origin.y);
+//    NSLog(@"button:%f, %f, %f, %f", self.button.frame.size.height, self.button.frame.size.width, self.button.frame.origin.x, self.button.frame.origin.y);
 }
 
 - (void)didAddSubview:(UIView *)subview

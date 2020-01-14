@@ -22,6 +22,7 @@
 		3728CEA323C3193F00737362 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CEA223C3193F00737362 /* LoginController.m */; };
 		3728CEA623C3194D00737362 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CEA523C3194D00737362 /* SettingController.m */; };
 		3728CEAD23C320F800737362 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CEAC23C320F800737362 /* Common.m */; };
+		37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C814D623CBFD19009564AA /* DUITestTextCell.m */; };
 		7AF9B54A23CB55C900EDB8F2 /* DCommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54923CB55C900EDB8F2 /* DCommonTableViewCell.m */; };
 		7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,8 @@
 		3728CEA523C3194D00737362 /* SettingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingController.m; sourceTree = "<group>"; };
 		3728CEAB23C320F800737362 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		3728CEAC23C320F800737362 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
+		37C814D523CBFD19009564AA /* DUITestTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITestTextCell.h; sourceTree = "<group>"; };
+		37C814D623CBFD19009564AA /* DUITestTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITestTextCell.m; sourceTree = "<group>"; };
 		7AF9B54823CB55C900EDB8F2 /* DCommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonTableViewCell.h; sourceTree = "<group>"; };
 		7AF9B54923CB55C900EDB8F2 /* DCommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonTableViewCell.m; sourceTree = "<group>"; };
 		7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHeader.h; sourceTree = "<group>"; };
@@ -206,6 +209,8 @@
 				7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */,
 				7AF9B54C23CB66DA00EDB8F2 /* DUIButtonCell.h */,
 				7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */,
+				37C814D523CBFD19009564AA /* DUITestTextCell.h */,
+				37C814D623CBFD19009564AA /* DUITestTextCell.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				3728CE9D23C3192200737362 /* ContactController.m in Sources */,
 				3728CE7923C3159600737362 /* ViewController.m in Sources */,
 				3728CE8423C3159B00737362 /* main.m in Sources */,
+				37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */,
 				3728CEAD23C320F800737362 /* Common.m in Sources */,
 				7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */,
 				3728CEA023C3193100737362 /* ConversationController.m in Sources */,

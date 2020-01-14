@@ -47,9 +47,14 @@
 
 - (IBAction)loginAction:(id)sender {
     
-//    UITabBarController* controller = [((AppDelegate *)[UIApplication sharedApplication].delegate) getMainController];
-//    controller.modalPresentationStyle = UIModalPresentationFullScreen;
-//    [self presentViewController:controller animated:YES completion:nil];
+    UITabBarController* mainController = [((AppDelegate *)[UIApplication sharedApplication].delegate) getMainController];
+    
+    //method:1
+//    NSArray<UIViewController *> *controllers = [[NSArray alloc] initWithArray: [mainController viewControllers]];
+//    mainController.selectedViewController = controllers[0];
+    
+    //method:2
+    mainController.selectedIndex = 0;
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

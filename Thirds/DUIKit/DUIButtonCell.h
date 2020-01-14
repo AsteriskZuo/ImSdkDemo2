@@ -11,10 +11,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 typedef enum : NSUInteger {
+    ButtonDefault,
     ButtonGreen,
     ButtonWhite,
     ButtonRedText,
-    ButtonBule,
+    ButtonBlue,
 } DUIButtonStyle;
 
 @interface DUIButtonCellData : DCommonCellData

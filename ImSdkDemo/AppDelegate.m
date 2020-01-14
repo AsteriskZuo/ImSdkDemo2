@@ -15,6 +15,9 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, strong) UIViewController* loginController;
+@property (nonatomic, strong) UITabBarController* mainController;
+
 @end
 
 @implementation AppDelegate
@@ -33,14 +36,21 @@
 
 - (UIViewController *)getLoginController
 {
+    if (self.loginController) {
+        return self.loginController;
+    }
     UIStoryboard *board = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-    LoginController *login = [board instantiateViewControllerWithIdentifier:@"LoginController"];
-    return login;
+    self.loginController = [board instantiateViewControllerWithIdentifier:@"LoginController"];
+    return self.loginController;
 }
 
 - (UITabBarController *)getMainController
 {
-    UITabBarController* mainController = [[UITabBarController alloc] init];
+    if (self.mainController) {
+        return self.mainController;
+    }
+    
+    self.mainController = [[UITabBarController alloc] init];
     
     NSString* conversationItemTitle = @"消息";
     UIImage* conversationItemNormalImage = [UIImage imageNamed:TUIKitResource(@"message_normal")];
@@ -63,11 +73,8 @@
     UINavigationController* settingItemController = [[UINavigationController alloc] initWithRootViewController:[[SettingController alloc] init]];
     settingItemController.tabBarItem = settingItem;
     
-//    NSArray* items = [NSArray arrayWithObjects:conversationItem, contactItem, settingItem, nil];
-    
-    mainController.viewControllers = [NSArray arrayWithObjects:conversationItemController, contactItemController, settingItemController, nil];
-    
-    return mainController;
+    self.mainController.viewControllers = [NSArray arrayWithObjects:conversationItemController, contactItemController, settingItemController, nil];    
+    return self.mainController;
     
     
 }
