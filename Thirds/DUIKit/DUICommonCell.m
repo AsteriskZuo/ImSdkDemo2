@@ -1,31 +1,26 @@
 //
-//  DCommonTableViewCell.m
+//  DUICommonCell.m
 //  ImSdkDemo
 //
 //  Created by AsteriskZuo on 2020/1/12.
 //  Copyright © 2020 yu.zuo. All rights reserved.
 //
 
-#import "DCommonTableViewCell.h"
+#import "DUICommonCell.h"
 #import "MMLayout/UIView+MMLayout.h"
 
-@implementation DCommonCellData
-
-- (CGFloat)heightOfWidth:(CGFloat)width
-{
-    return 44;
-}
+@implementation DUICommonCellData
 
 @end
 
-@interface DCommonTableViewCell() <UIGestureRecognizerDelegate>
+@interface DUICommonCell() <UIGestureRecognizerDelegate>
 
-@property DCommonCellData* data;
+@property DUICommonCellData* data;
 @property UITapGestureRecognizer *tapRecognizer;
 
 @end
 
-@implementation DCommonTableViewCell
+@implementation DUICommonCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -81,7 +76,7 @@
     }
 }
 
-- (void)fillWithData:(DCommonCellData *)data
+- (void)fillWithData:(DUICommonCellData *)data
 {
     self.data = data;
     if (data.cselector) {
@@ -89,6 +84,11 @@
     } else {
         [self removeGestureRecognizer:self.tapRecognizer];
     }
+}
+
++ (CGFloat)getHeight
+{
+    return 44;
 }
 
 @end

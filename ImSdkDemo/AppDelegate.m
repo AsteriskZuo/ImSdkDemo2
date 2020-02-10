@@ -13,6 +13,10 @@
 #import "Conversation/ConversationController.h"
 #import "Setting/SettingController.h"
 
+#import "DServiceManager.h"
+#import "DFriendProfileControllerServiceProtocol.h"
+#import "FriendProfileController.h"
+
 @interface AppDelegate ()
 
 @property (nonatomic, strong) UIViewController* loginController;
@@ -22,9 +26,15 @@
 
 @implementation AppDelegate
 
+- (void)initAppDelegate
+{
+    [[DServiceManager shareInstance] registerService:@protocol(DFriendProfileControllerServiceProtocol) withImplementationClass:[FriendProfileController class]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [self initAppDelegate];
     
     self.window.rootViewController = [self getMainController];
 //    UIViewController* controller = [self getLoginController];
@@ -51,6 +61,7 @@
     }
     
     self.mainController = [[UITabBarController alloc] init];
+    NSLog(@"%s, %@", __FUNCTION__, self.mainController);
     
     NSString* conversationItemTitle = @"消息";
     UIImage* conversationItemNormalImage = [UIImage imageNamed:TUIKitResource(@"message_normal")];

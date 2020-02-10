@@ -6,19 +6,21 @@
 //  Copyright © 2020 yu.zuo. All rights reserved.
 //
 
-#import "DCommonTableViewCell.h"
+#import "DUICommonCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DUITestTextCellData : DCommonCellData
+@interface DUITestTextCellData : DUICommonCellData
 
 @property (nonatomic, strong) NSString* test;
+@property (nonatomic, strong) UIImage* ava;
 
 @end
 
-@interface DUITestTextCell : DCommonTableViewCell
+@interface DUITestTextCell : DUICommonCell
 
 @property (nonatomic, strong) UILabel* testLabel;
+@property (nonatomic, strong) UIImageView* avaView;
 @property (nonatomic, strong) DUITestTextCellData* testTextData;
 
 @end

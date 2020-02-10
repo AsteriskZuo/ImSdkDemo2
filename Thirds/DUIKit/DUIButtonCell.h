@@ -6,7 +6,7 @@
 //  Copyright © 2020 yu.zuo. All rights reserved.
 //
 
-#import "DCommonTableViewCell.h"
+#import "DUICommonCell.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,7 +18,7 @@ typedef enum : NSUInteger {
     ButtonBlue,
 } DUIButtonStyle;
 
-@interface DUIButtonCellData : DCommonCellData
+@interface DUIButtonCellData : DUICommonCellData
 
 @property (nonatomic, strong) NSString* title;
 @property (nonatomic, assign) SEL cButtonSelector;
@@ -26,7 +26,7 @@ typedef enum : NSUInteger {
 
 @end
 
-@interface DUIButtonCell : DCommonTableViewCell
+@interface DUIButtonCell : DUICommonCell
 
 @property (nonatomic, strong) UIButton* button;
 @property (nonatomic, readonly) DUIButtonCellData* buttonData;

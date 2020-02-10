@@ -23,7 +23,36 @@
 		3728CEA623C3194D00737362 /* SettingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CEA523C3194D00737362 /* SettingController.m */; };
 		3728CEAD23C320F800737362 /* Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CEAC23C320F800737362 /* Common.m */; };
 		37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C814D623CBFD19009564AA /* DUITestTextCell.m */; };
-		7AF9B54A23CB55C900EDB8F2 /* DCommonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54923CB55C900EDB8F2 /* DCommonTableViewCell.m */; };
+		7A0DFB9423EE670B0055A5A9 /* DUIGroupMemberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9323EE670B0055A5A9 /* DUIGroupMemberCell.m */; };
+		7A0DFB9723EFB58A0055A5A9 /* DUIMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9623EFB58A0055A5A9 /* DUIMessageController.m */; };
+		7A0DFB9A23EFB5AB0055A5A9 /* DUIInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */; };
+		7A0DFB9D23F011300055A5A9 /* NSDate+TUIKIT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */; };
+		7A0DFBA023F01D510055A5A9 /* DIMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */; };
+		7A0DFBA323F01F770055A5A9 /* DIMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA223F01F770055A5A9 /* DIMConversation.m */; };
+		7A443CD223E05A5E00C4D740 /* DUINavigationIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */; };
+		7A443CD523E074B400C4D740 /* TNaviBarIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */; };
+		7A443CD823E29D7C00C4D740 /* DUIPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD723E29D7C00C4D740 /* DUIPopView.m */; };
+		7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */; };
+		7AB4DA4F23E5786C0087E1E6 /* DContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4E23E5786C0087E1E6 /* DContactListViewModel.m */; };
+		7AB4DA5223E578E90087E1E6 /* DUIContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA5123E578E90087E1E6 /* DUIContactCell.m */; };
+		7AB4DA5523E588040087E1E6 /* DUIContactActionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA5423E588040087E1E6 /* DUIContactActionCell.m */; };
+		7AD283C423EA997700893CC9 /* DServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283C323EA997700893CC9 /* DServiceManager.m */; };
+		7AD283CC23EADA2300893CC9 /* DUIGroupListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283CB23EADA2300893CC9 /* DUIGroupListController.m */; };
+		7AD283D223EBA3F700893CC9 /* FriendProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283D123EBA3F700893CC9 /* FriendProfileController.m */; };
+		7AD283D523EBA9D200893CC9 /* DUITextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283D423EBA9D200893CC9 /* DUITextCell.m */; };
+		7AD283D823EBAA2200893CC9 /* DUISwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283D723EBAA2200893CC9 /* DUISwitchCell.m */; };
+		7AD283DB23ED6CB800893CC9 /* DUIChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283DA23ED6CB800893CC9 /* DUIChatController.m */; };
+		7AD283E423ED794900893CC9 /* ChatController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283E323ED794900893CC9 /* ChatController.m */; };
+		7AD283E723ED7C7200893CC9 /* DUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283E623ED7C7200893CC9 /* DUIMessageCell.m */; };
+		7AD283ED23ED807E00893CC9 /* DUIMessageCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283EC23ED807E00893CC9 /* DUIMessageCellLayout.m */; };
+		7AD283F023EE5D0F00893CC9 /* GroupProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */; };
+		7AF23D9B23DD8FA400C0D8DA /* DUIProfileCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */; };
+		7AF23D9E23DEE5ED00C0D8DA /* DUIConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23D9D23DEE5ED00C0D8DA /* DUIConversationListController.m */; };
+		7AF23DA123DEEB4700C0D8DA /* DConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA023DEEB4700C0D8DA /* DConversationListViewModel.m */; };
+		7AF23DA423DEED4400C0D8DA /* DUIConversationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA323DEED4400C0D8DA /* DUIConversationCell.m */; };
+		7AF23DA723DEF03800C0D8DA /* DCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA623DEF03800C0D8DA /* DCommon.m */; };
+		7AF23DAA23DEFD1D00C0D8DA /* DUIUnreadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */; };
+		7AF9B54A23CB55C900EDB8F2 /* DUICommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54923CB55C900EDB8F2 /* DUICommonCell.m */; };
 		7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */; };
 /* End PBXBuildFile section */
 
@@ -55,9 +84,70 @@
 		3728CEAC23C320F800737362 /* Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Common.m; sourceTree = "<group>"; };
 		37C814D523CBFD19009564AA /* DUITestTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITestTextCell.h; sourceTree = "<group>"; };
 		37C814D623CBFD19009564AA /* DUITestTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITestTextCell.m; sourceTree = "<group>"; };
-		7AF9B54823CB55C900EDB8F2 /* DCommonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommonTableViewCell.h; sourceTree = "<group>"; };
-		7AF9B54923CB55C900EDB8F2 /* DCommonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommonTableViewCell.m; sourceTree = "<group>"; };
-		7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DHeader.h; sourceTree = "<group>"; };
+		7A0DFB9223EE670B0055A5A9 /* DUIGroupMemberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupMemberCell.h; sourceTree = "<group>"; };
+		7A0DFB9323EE670B0055A5A9 /* DUIGroupMemberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupMemberCell.m; sourceTree = "<group>"; };
+		7A0DFB9523EFB58A0055A5A9 /* DUIMessageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIMessageController.h; sourceTree = "<group>"; };
+		7A0DFB9623EFB58A0055A5A9 /* DUIMessageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIMessageController.m; sourceTree = "<group>"; };
+		7A0DFB9823EFB5AB0055A5A9 /* DUIInputController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIInputController.h; sourceTree = "<group>"; };
+		7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputController.m; sourceTree = "<group>"; };
+		7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TUIKIT.m"; sourceTree = "<group>"; };
+		7A0DFB9C23F011300055A5A9 /* NSDate+TUIKIT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TUIKIT.h"; sourceTree = "<group>"; };
+		7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIMMessage.h; sourceTree = "<group>"; };
+		7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIMMessage.m; sourceTree = "<group>"; };
+		7A0DFBA123F01F770055A5A9 /* DIMConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIMConversation.h; sourceTree = "<group>"; };
+		7A0DFBA223F01F770055A5A9 /* DIMConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIMConversation.m; sourceTree = "<group>"; };
+		7A443CD023E05A5E00C4D740 /* DUINavigationIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUINavigationIndicatorView.h; sourceTree = "<group>"; };
+		7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUINavigationIndicatorView.m; sourceTree = "<group>"; };
+		7A443CD323E074B300C4D740 /* TNaviBarIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNaviBarIndicatorView.h; sourceTree = "<group>"; };
+		7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNaviBarIndicatorView.m; sourceTree = "<group>"; };
+		7A443CD623E29D7C00C4D740 /* DUIPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIPopView.h; sourceTree = "<group>"; };
+		7A443CD723E29D7C00C4D740 /* DUIPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIPopView.m; sourceTree = "<group>"; };
+		7AB4DA4A23E577F70087E1E6 /* DUIContactListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIContactListController.h; sourceTree = "<group>"; };
+		7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIContactListController.m; sourceTree = "<group>"; };
+		7AB4DA4D23E5786C0087E1E6 /* DContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DContactListViewModel.h; sourceTree = "<group>"; };
+		7AB4DA4E23E5786C0087E1E6 /* DContactListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DContactListViewModel.m; sourceTree = "<group>"; };
+		7AB4DA5023E578E90087E1E6 /* DUIContactCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIContactCell.h; sourceTree = "<group>"; };
+		7AB4DA5123E578E90087E1E6 /* DUIContactCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIContactCell.m; sourceTree = "<group>"; };
+		7AB4DA5323E588040087E1E6 /* DUIContactActionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIContactActionCell.h; sourceTree = "<group>"; };
+		7AB4DA5423E588040087E1E6 /* DUIContactActionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIContactActionCell.m; sourceTree = "<group>"; };
+		7AD283C223EA997700893CC9 /* DServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DServiceManager.h; sourceTree = "<group>"; };
+		7AD283C323EA997700893CC9 /* DServiceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DServiceManager.m; sourceTree = "<group>"; };
+		7AD283C523EABF4000893CC9 /* DServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DServiceProtocol.h; sourceTree = "<group>"; };
+		7AD283C923EAC5CB00893CC9 /* DFriendProfileControllerServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFriendProfileControllerServiceProtocol.h; sourceTree = "<group>"; };
+		7AD283CA23EADA2200893CC9 /* DUIGroupListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupListController.h; sourceTree = "<group>"; };
+		7AD283CB23EADA2300893CC9 /* DUIGroupListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupListController.m; sourceTree = "<group>"; };
+		7AD283D023EBA3F700893CC9 /* FriendProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendProfileController.h; sourceTree = "<group>"; };
+		7AD283D123EBA3F700893CC9 /* FriendProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendProfileController.m; sourceTree = "<group>"; };
+		7AD283D323EBA9D200893CC9 /* DUITextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITextCell.h; sourceTree = "<group>"; };
+		7AD283D423EBA9D200893CC9 /* DUITextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITextCell.m; sourceTree = "<group>"; };
+		7AD283D623EBAA2200893CC9 /* DUISwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUISwitchCell.h; sourceTree = "<group>"; };
+		7AD283D723EBAA2200893CC9 /* DUISwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUISwitchCell.m; sourceTree = "<group>"; };
+		7AD283D923ED6CB800893CC9 /* DUIChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIChatController.h; sourceTree = "<group>"; };
+		7AD283DA23ED6CB800893CC9 /* DUIChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIChatController.m; sourceTree = "<group>"; };
+		7AD283E223ED794900893CC9 /* ChatController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatController.h; sourceTree = "<group>"; };
+		7AD283E323ED794900893CC9 /* ChatController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatController.m; sourceTree = "<group>"; };
+		7AD283E523ED7C7200893CC9 /* DUIMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIMessageCell.h; sourceTree = "<group>"; };
+		7AD283E623ED7C7200893CC9 /* DUIMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIMessageCell.m; sourceTree = "<group>"; };
+		7AD283EB23ED807E00893CC9 /* DUIMessageCellLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIMessageCellLayout.h; sourceTree = "<group>"; };
+		7AD283EC23ED807E00893CC9 /* DUIMessageCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIMessageCellLayout.m; sourceTree = "<group>"; };
+		7AD283EE23EE5D0F00893CC9 /* GroupProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupProfileController.h; sourceTree = "<group>"; };
+		7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupProfileController.m; sourceTree = "<group>"; };
+		7AD283F223EE5DBA00893CC9 /* DGroupProfileControllerServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGroupProfileControllerServiceProtocol.h; sourceTree = "<group>"; };
+		7AF23D9923DD8FA400C0D8DA /* DUIProfileCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIProfileCardCell.h; sourceTree = "<group>"; };
+		7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIProfileCardCell.m; sourceTree = "<group>"; };
+		7AF23D9C23DEE5ED00C0D8DA /* DUIConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIConversationListController.h; sourceTree = "<group>"; };
+		7AF23D9D23DEE5ED00C0D8DA /* DUIConversationListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIConversationListController.m; sourceTree = "<group>"; };
+		7AF23D9F23DEEB4700C0D8DA /* DConversationListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DConversationListViewModel.h; sourceTree = "<group>"; };
+		7AF23DA023DEEB4700C0D8DA /* DConversationListViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DConversationListViewModel.m; sourceTree = "<group>"; };
+		7AF23DA223DEED4400C0D8DA /* DUIConversationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIConversationCell.h; sourceTree = "<group>"; };
+		7AF23DA323DEED4400C0D8DA /* DUIConversationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIConversationCell.m; sourceTree = "<group>"; };
+		7AF23DA523DEF03800C0D8DA /* DCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DCommon.h; sourceTree = "<group>"; };
+		7AF23DA623DEF03800C0D8DA /* DCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DCommon.m; sourceTree = "<group>"; };
+		7AF23DA823DEFD1D00C0D8DA /* DUIUnreadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIUnreadView.h; sourceTree = "<group>"; };
+		7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIUnreadView.m; sourceTree = "<group>"; };
+		7AF9B54823CB55C900EDB8F2 /* DUICommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUICommonCell.h; sourceTree = "<group>"; };
+		7AF9B54923CB55C900EDB8F2 /* DUICommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUICommonCell.m; sourceTree = "<group>"; };
+		7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHeader.h; sourceTree = "<group>"; };
 		7AF9B54C23CB66DA00EDB8F2 /* DUIButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIButtonCell.h; sourceTree = "<group>"; };
 		7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIButtonCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,20 +185,21 @@
 			isa = PBXGroup;
 			children = (
 				3728CE7423C3159600737362 /* AppDelegate.h */,
-				3728CE7723C3159600737362 /* ViewController.h */,
 				3728CE7523C3159600737362 /* AppDelegate.m */,
-				3728CE8323C3159B00737362 /* main.m */,
-				3728CE7823C3159600737362 /* ViewController.m */,
-				3728CE8223C3159B00737362 /* Info.plist */,
 				3728CE7D23C3159B00737362 /* Assets.xcassets */,
-				3728CE7F23C3159B00737362 /* LaunchScreen.storyboard */,
-				3728CE7A23C3159600737362 /* Main.storyboard */,
-				3728CE9923C318DB00737362 /* Chat */,
+				7AD283E123ED792F00893CC9 /* Chat */,
 				3728CEA723C320BA00737362 /* Common */,
 				3728CE9723C318C200737362 /* Contact */,
 				3728CE9623C3189600737362 /* Conversation */,
+				3728CE8223C3159B00737362 /* Info.plist */,
+				7AD283F123EE5D3000893CC9 /* information */,
+				3728CE7F23C3159B00737362 /* LaunchScreen.storyboard */,
 				3728CE9A23C318E700737362 /* Login */,
+				3728CE8323C3159B00737362 /* main.m */,
+				3728CE7A23C3159600737362 /* Main.storyboard */,
 				3728CE9823C318D000737362 /* Setting */,
+				3728CE7723C3159600737362 /* ViewController.h */,
+				3728CE7823C3159600737362 /* ViewController.m */,
 			);
 			path = ImSdkDemo;
 			sourceTree = "<group>";
@@ -127,7 +218,6 @@
 			children = (
 				7AF9B54723CB54F900EDB8F2 /* DUIKit */,
 				7AF9B54623CB4C4300EDB8F2 /* TUIKit */,
-				3728CE9023C317E700737362 /* MMLayout */,
 			);
 			path = Thirds;
 			sourceTree = "<group>";
@@ -169,13 +259,6 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
-		3728CE9923C318DB00737362 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
 		3728CE9A23C318E700737362 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +277,33 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		7AD283E123ED792F00893CC9 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				7AD283E223ED794900893CC9 /* ChatController.h */,
+				7AD283E323ED794900893CC9 /* ChatController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		7AD283F123EE5D3000893CC9 /* information */ = {
+			isa = PBXGroup;
+			children = (
+				7AD283D023EBA3F700893CC9 /* FriendProfileController.h */,
+				7AD283D123EBA3F700893CC9 /* FriendProfileController.m */,
+				7AD283EE23EE5D0F00893CC9 /* GroupProfileController.h */,
+				7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */,
+			);
+			path = information;
+			sourceTree = "<group>";
+		};
 		7AF9B54623CB4C4300EDB8F2 /* TUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				7A0DFB9C23F011300055A5A9 /* NSDate+TUIKIT.h */,
+				7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */,
+				7A443CD323E074B300C4D740 /* TNaviBarIndicatorView.h */,
+				7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */,
 			);
 			path = TUIKit;
 			sourceTree = "<group>";
@@ -204,13 +311,65 @@
 		7AF9B54723CB54F900EDB8F2 /* DUIKit */ = {
 			isa = PBXGroup;
 			children = (
-				7AF9B54823CB55C900EDB8F2 /* DCommonTableViewCell.h */,
-				7AF9B54923CB55C900EDB8F2 /* DCommonTableViewCell.m */,
+				7AF23DA523DEF03800C0D8DA /* DCommon.h */,
+				7AF23DA623DEF03800C0D8DA /* DCommon.m */,
+				7AB4DA4D23E5786C0087E1E6 /* DContactListViewModel.h */,
+				7AB4DA4E23E5786C0087E1E6 /* DContactListViewModel.m */,
+				7AF23D9F23DEEB4700C0D8DA /* DConversationListViewModel.h */,
+				7AF23DA023DEEB4700C0D8DA /* DConversationListViewModel.m */,
+				7AD283C923EAC5CB00893CC9 /* DFriendProfileControllerServiceProtocol.h */,
+				7AD283F223EE5DBA00893CC9 /* DGroupProfileControllerServiceProtocol.h */,
 				7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */,
+				7AD283C223EA997700893CC9 /* DServiceManager.h */,
+				7AD283C323EA997700893CC9 /* DServiceManager.m */,
+				7AD283C523EABF4000893CC9 /* DServiceProtocol.h */,
 				7AF9B54C23CB66DA00EDB8F2 /* DUIButtonCell.h */,
 				7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */,
+				7AD283D923ED6CB800893CC9 /* DUIChatController.h */,
+				7AD283DA23ED6CB800893CC9 /* DUIChatController.m */,
+				7AF9B54823CB55C900EDB8F2 /* DUICommonCell.h */,
+				7AF9B54923CB55C900EDB8F2 /* DUICommonCell.m */,
+				7AB4DA5323E588040087E1E6 /* DUIContactActionCell.h */,
+				7AB4DA5423E588040087E1E6 /* DUIContactActionCell.m */,
+				7AB4DA5023E578E90087E1E6 /* DUIContactCell.h */,
+				7AB4DA5123E578E90087E1E6 /* DUIContactCell.m */,
+				7AB4DA4A23E577F70087E1E6 /* DUIContactListController.h */,
+				7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */,
+				7AF23DA223DEED4400C0D8DA /* DUIConversationCell.h */,
+				7AF23DA323DEED4400C0D8DA /* DUIConversationCell.m */,
+				7AF23D9C23DEE5ED00C0D8DA /* DUIConversationListController.h */,
+				7AF23D9D23DEE5ED00C0D8DA /* DUIConversationListController.m */,
+				7AD283CA23EADA2200893CC9 /* DUIGroupListController.h */,
+				7AD283CB23EADA2300893CC9 /* DUIGroupListController.m */,
+				7A0DFB9223EE670B0055A5A9 /* DUIGroupMemberCell.h */,
+				7A0DFB9323EE670B0055A5A9 /* DUIGroupMemberCell.m */,
+				7AD283E523ED7C7200893CC9 /* DUIMessageCell.h */,
+				7AD283E623ED7C7200893CC9 /* DUIMessageCell.m */,
+				7AD283EB23ED807E00893CC9 /* DUIMessageCellLayout.h */,
+				7AD283EC23ED807E00893CC9 /* DUIMessageCellLayout.m */,
+				7A443CD023E05A5E00C4D740 /* DUINavigationIndicatorView.h */,
+				7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */,
+				7A443CD623E29D7C00C4D740 /* DUIPopView.h */,
+				7A443CD723E29D7C00C4D740 /* DUIPopView.m */,
+				7AF23D9923DD8FA400C0D8DA /* DUIProfileCardCell.h */,
+				7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */,
+				7AD283D623EBAA2200893CC9 /* DUISwitchCell.h */,
+				7AD283D723EBAA2200893CC9 /* DUISwitchCell.m */,
 				37C814D523CBFD19009564AA /* DUITestTextCell.h */,
 				37C814D623CBFD19009564AA /* DUITestTextCell.m */,
+				7AD283D323EBA9D200893CC9 /* DUITextCell.h */,
+				7AD283D423EBA9D200893CC9 /* DUITextCell.m */,
+				7AF23DA823DEFD1D00C0D8DA /* DUIUnreadView.h */,
+				7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */,
+				3728CE9023C317E700737362 /* MMLayout */,
+				7A0DFB9523EFB58A0055A5A9 /* DUIMessageController.h */,
+				7A0DFB9623EFB58A0055A5A9 /* DUIMessageController.m */,
+				7A0DFB9823EFB5AB0055A5A9 /* DUIInputController.h */,
+				7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */,
+				7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */,
+				7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */,
+				7A0DFBA123F01F770055A5A9 /* DIMConversation.h */,
+				7A0DFBA223F01F770055A5A9 /* DIMConversation.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -289,15 +448,44 @@
 			buildActionMask = 2147483647;
 			files = (
 				3728CEA623C3194D00737362 /* SettingController.m in Sources */,
-				7AF9B54A23CB55C900EDB8F2 /* DCommonTableViewCell.m in Sources */,
+				7AD283D223EBA3F700893CC9 /* FriendProfileController.m in Sources */,
+				7A0DFB9423EE670B0055A5A9 /* DUIGroupMemberCell.m in Sources */,
+				7A443CD523E074B400C4D740 /* TNaviBarIndicatorView.m in Sources */,
+				7AF9B54A23CB55C900EDB8F2 /* DUICommonCell.m in Sources */,
+				7A0DFB9723EFB58A0055A5A9 /* DUIMessageController.m in Sources */,
+				7AF23D9B23DD8FA400C0D8DA /* DUIProfileCardCell.m in Sources */,
+				7AD283DB23ED6CB800893CC9 /* DUIChatController.m in Sources */,
+				7A443CD823E29D7C00C4D740 /* DUIPopView.m in Sources */,
+				7AD283D823EBAA2200893CC9 /* DUISwitchCell.m in Sources */,
+				7AD283D523EBA9D200893CC9 /* DUITextCell.m in Sources */,
+				7AD283F023EE5D0F00893CC9 /* GroupProfileController.m in Sources */,
 				3728CEA323C3193F00737362 /* LoginController.m in Sources */,
 				3728CE9523C317E700737362 /* UIView+MMLayout.m in Sources */,
+				7AF23DA123DEEB4700C0D8DA /* DConversationListViewModel.m in Sources */,
+				7A0DFB9A23EFB5AB0055A5A9 /* DUIInputController.m in Sources */,
+				7AF23DA723DEF03800C0D8DA /* DCommon.m in Sources */,
+				7A0DFBA323F01F770055A5A9 /* DIMConversation.m in Sources */,
+				7AB4DA5223E578E90087E1E6 /* DUIContactCell.m in Sources */,
+				7AF23D9E23DEE5ED00C0D8DA /* DUIConversationListController.m in Sources */,
+				7AD283E423ED794900893CC9 /* ChatController.m in Sources */,
 				3728CE9D23C3192200737362 /* ContactController.m in Sources */,
+				7AD283E723ED7C7200893CC9 /* DUIMessageCell.m in Sources */,
+				7A0DFBA023F01D510055A5A9 /* DIMMessage.m in Sources */,
+				7AB4DA4F23E5786C0087E1E6 /* DContactListViewModel.m in Sources */,
 				3728CE7923C3159600737362 /* ViewController.m in Sources */,
+				7AD283ED23ED807E00893CC9 /* DUIMessageCellLayout.m in Sources */,
 				3728CE8423C3159B00737362 /* main.m in Sources */,
 				37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */,
 				3728CEAD23C320F800737362 /* Common.m in Sources */,
 				7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */,
+				7A0DFB9D23F011300055A5A9 /* NSDate+TUIKIT.m in Sources */,
+				7AD283CC23EADA2300893CC9 /* DUIGroupListController.m in Sources */,
+				7AF23DAA23DEFD1D00C0D8DA /* DUIUnreadView.m in Sources */,
+				7A443CD223E05A5E00C4D740 /* DUINavigationIndicatorView.m in Sources */,
+				7AF23DA423DEED4400C0D8DA /* DUIConversationCell.m in Sources */,
+				7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */,
+				7AD283C423EA997700893CC9 /* DServiceManager.m in Sources */,
+				7AB4DA5523E588040087E1E6 /* DUIContactActionCell.m in Sources */,
 				3728CEA023C3193100737362 /* ConversationController.m in Sources */,
 				3728CE7623C3159600737362 /* AppDelegate.m in Sources */,
 			);

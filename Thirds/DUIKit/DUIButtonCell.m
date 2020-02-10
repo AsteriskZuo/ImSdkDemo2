@@ -12,11 +12,6 @@
 
 @implementation DUIButtonCellData
 
-- (CGFloat)heightOfWidth:(CGFloat)width
-{
-    return 60;
-}
-
 @end
 
 @interface DUIButtonCell()
@@ -102,6 +97,11 @@
             self.button.backgroundColor = [UIColor whiteColor];
             //对于原本白色背景色的按钮，高亮颜色保持和白色 cell 统一。由于无法直接设置高亮时的背景色，所以高亮背景色的变化通过生成并设置纯色图片来实现。
             [self.button setBackgroundImage:[self imageWithColor:self.colorWhenTouched] forState:UIControlStateHighlighted];
+            
+//            [self.button setTitleEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];//右移20像素
+//            [self.button setTitleEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 0)];//右移20像素
+//            [self.button setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -20)];//右移20像素
+//            [self.button setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, 0, -20)];//没有效果
 
             break;
         }
@@ -123,7 +123,7 @@
     [super layoutSubviews];
     self.button.mm_width(Screen_Width - 2 * TButtonCell_Margin)
     .mm_height(self.mm_h - TButtonCell_Margin)
-    .mm_top(10)
+    .mm_top(0)
     .mm_left(TButtonCell_Margin);
     
 //    NSLog(@"button:%f, %f, %f, %f", self.button.frame.size.height, self.button.frame.size.width, self.button.frame.origin.x, self.button.frame.origin.y);
@@ -151,6 +151,11 @@
     UIGraphicsEndImageContext();
 
     return image;
+}
+
++ (CGFloat)getHeight
+{
+    return 60;
 }
 
 

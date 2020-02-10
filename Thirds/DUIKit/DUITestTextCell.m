@@ -12,12 +12,6 @@
 
 @implementation DUITestTextCellData
 
-- (CGFloat)heightOfWidth:(CGFloat)width
-{
-    return 30;
-}
-
-
 @end
 
 @implementation DUITestTextCell
@@ -38,6 +32,13 @@
     
     self.testLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     [self addSubview:self.testLabel];
+    
+    CGSize headSize = TPersonalCommonCell_Image_Size;
+    self.avaView = [[UIImageView alloc] initWithFrame:CGRectMake(TPersonalCommonCell_Margin, TPersonalCommonCell_Margin, headSize.width, headSize.height)];
+    self.avaView.contentMode = UIViewContentModeScaleAspectFit;
+    self.avaView.layer.masksToBounds = YES;
+    self.avaView.layer.cornerRadius = headSize.height / 2;
+    [self addSubview:self.avaView];
     
     [self setSeparatorInset:UIEdgeInsetsMake(0, Screen_Width, 0, 0)];
     [self setSelectionStyle:UITableViewCellSelectionStyleNone];
@@ -60,7 +61,12 @@
     [super fillWithData:data];
     self.testTextData = data;
     self.testLabel.text = data.test;
-   
+    [self.avaView setImage:data.ava];
+}
+
++ (CGFloat)getHeight
+{
+    return 30;
 }
 
 @end

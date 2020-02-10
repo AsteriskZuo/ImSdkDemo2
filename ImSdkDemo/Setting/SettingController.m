@@ -10,7 +10,13 @@
 #import "DHeader.h"
 #import "DUIButtonCell.h"
 #import "DUITestTextCell.h"
+#import "DUIProfileCardCell.h"
+#import "Common.h"
 #import "AppDelegate.h"
+
+static NSString* s_DUIButtonCell_ReuseId = @"DUIButtonCell_ReuseId";
+static NSString* s_DUITestTextCell_ReuseId = @"DUITestTextCell_ReuseId";
+static NSString* s_DUIProfileCardCell_ReuseId = @"DUIProfileCardCell_ReuseId";
 
 @interface SettingController ()
 
@@ -48,8 +54,9 @@
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.backgroundColor = TSettingController_Background_Color;
     
-    [self.tableView registerClass:[DUIButtonCell class] forCellReuseIdentifier:@"buttonCell"];
-    [self.tableView registerClass:[DUITestTextCell class] forCellReuseIdentifier:@"testTextCell"];
+    [self.tableView registerClass:[DUIButtonCell class] forCellReuseIdentifier:s_DUIButtonCell_ReuseId];
+    [self.tableView registerClass:[DUITestTextCell class] forCellReuseIdentifier:s_DUITestTextCell_ReuseId];
+    [self.tableView registerClass:[DUIProfileCardCell class] forCellReuseIdentifier:s_DUIProfileCardCell_ReuseId];
     
     
 }
@@ -63,6 +70,14 @@
 {
     self.data = [[NSMutableArray alloc] init];
     
+    DUIProfileCardCellData* accountData = [[DUIProfileCardCellData alloc] init];
+    accountData.avatarImage = [UIImage imageNamed:TUIKitResource(@"default_head")];
+    accountData.name = @"name";
+    accountData.identifier = @"identifier";
+    accountData.signature = @"煮酒论英雄";
+    accountData.showAccessory = true;
+    [self.data addObject:@[accountData]];
+    
     DUIButtonCellData* buttonData = [[DUIButtonCellData alloc] init];
     buttonData.title = @"退出登录";
     buttonData.style = ButtonRedText;
@@ -71,6 +86,7 @@
     
 //    DUITestTextCellData* testTextData = [[DUITestTextCellData alloc] init];
 //    testTextData.test = @"test";
+//    testTextData.ava = [UIImage imageNamed:TUIKitResource(@"default_head")];
 //    [self.data addObject:@[testTextData]];
     
     [self.tableView reloadData];
@@ -95,18 +111,44 @@
     return 20;
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor clearColor];
+    return view;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] init];
+//    view.backgroundColor = [UIColor blueColor];
+    return view;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    NSLog(@"section:%ld", (long)section);
     NSMutableArray *array = self.data[section];
+    NSLog(@"section:%ld, count:%lu", (long)section, (unsigned long)array.count);
     return array.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableArray *array = _data[indexPath.section];
-    DCommonCellData *data = array[indexPath.row];
-
-    return [data heightOfWidth:Screen_Width];
+    CGFloat heigth = [DUICommonCell getHeight];
+    if (0 == indexPath.section) {
+        heigth = [DUIProfileCardCell getHeight];
+    } else if (1 == indexPath.section) {
+        heigth = [DUIButtonCell getHeight];
+    } else {
+        
+    }
+    
+    NSLog(@"height:%f", heigth);
+    return heigth;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -115,11 +157,11 @@
     if([data isKindOfClass:[DUIButtonCellData class]]){
         
         DUIButtonCell* cell = nil;
-        if (true) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell" forIndexPath:indexPath];
+        if (false) {
+            cell = [tableView dequeueReusableCellWithIdentifier:s_DUIButtonCell_ReuseId forIndexPath:indexPath];
         }
         
-        if (false) {
+        if (true) {
             cell = [tableView dequeueReusableCellWithIdentifier:TButtonCell_ReuseId];
             if(!cell){
                 cell = [[DUIButtonCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TButtonCell_ReuseId];
@@ -129,8 +171,12 @@
         [cell fillWithData:(DUIButtonCellData *)data];
         return cell;
     } else if ([data isKindOfClass:[DUITestTextCellData class]]) {
-        DUITestTextCell* cell = [tableView dequeueReusableCellWithIdentifier:@"testTextCell" forIndexPath:indexPath];
+        DUITestTextCell* cell = [tableView dequeueReusableCellWithIdentifier:s_DUITestTextCell_ReuseId forIndexPath:indexPath];
         [cell fillWithData:(DUITestTextCellData*)data];
+        return cell;
+    } else if ([data isKindOfClass:[DUIProfileCardCellData class]]) {
+        DUIProfileCardCell* cell = [tableView dequeueReusableCellWithIdentifier:s_DUIProfileCardCell_ReuseId forIndexPath:indexPath];
+        [cell fillWithData:(DUIProfileCardCellData*)data];
         return cell;
     } else {
         NSLog(@"test");
