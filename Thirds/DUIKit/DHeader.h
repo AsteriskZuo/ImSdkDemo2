@@ -60,6 +60,9 @@
 //info controller
 #define TGroupInfoController_Background_Color RGBA(244, 244, 246, 1.0)
 
+//face item cell
+#define TFaceCell_ReuseId @"TFaceCell"
+
 //group member cell
 #define TGroupMemberCell_ReuseId @"TGroupMemberCell"
 #define TGroupMemberCell_Margin 5
@@ -179,5 +182,30 @@
 #define TMoreView_Line_Height 0.5
 #define TMoreView_Line_Color RGBA(188, 188, 188, 0.6)
 #define TMoreView_Background_Color  RGBA(244, 244, 246, 1.0)
+
+//path
+#define TUIKit_DB_Path [NSHomeDirectory() stringByAppendingString:@"/Documents/com_tencent_imsdk_data/"]
+#define TUIKit_Image_Path [NSHomeDirectory() stringByAppendingString:@"/Documents/com_tencent_imsdk_data/image/"]
+#define TUIKit_Video_Path [NSHomeDirectory() stringByAppendingString:@"/Documents/com_tencent_imsdk_data/video/"]
+#define TUIKit_Voice_Path [NSHomeDirectory() stringByAppendingString:@"/Documents/com_tencent_imsdk_data/voice/"]
+#define TUIKit_File_Path  [NSHomeDirectory() stringByAppendingString:@"/Documents/com_tencent_imsdk_data/file/"]
+
+//notification
+#define TUIKitNotification_TIMRefreshListener @"TUIKitNotification_TIMRefreshListener"
+#define TUIKitNotification_TIMMessageListener @"TUIKitNotification_TIMMessageListener"
+#define TUIKitNotification_TIMMessageRevokeListener @"TUIKitNotification_TIMMessageRevokeListener"
+#define TUIKitNotification_TIMUploadProgressListener @"TUIKitNotification_TIMUploadProgressListener"
+#define TUIKitNotification_TIMUserStatusListener @"TUIKitNotification_TIMUserStatusListener"
+#define TUIKitNotification_TIMConnListener @"TUIKitNotification_TIMConnListener"
+#define TUIKitNotification_onAddFriends @"TUIKitNotification_onAddFriends"
+#define TUIKitNotification_onDelFriends @"TUIKitNotification_onDelFriends"
+#define TUIKitNotification_onFriendProfileUpdate @"TUIKitNotification_onFriendProfileUpdate"
+#define TUIKitNotification_onAddFriendReqs @"TUIKitNotification_onAddFriendReqs"
+#define TUIKitNotification_onRecvMessageReceipts @"TUIKitNotification_onRecvMessageReceipts"
+#define TUIKitNotification_onChangeUnReadCount @"TUIKitNotification_onChangeUnReadCount"
+
+//message controller
+#define TMessageController_Background_Color RGBA(244, 244, 246, 1.0)
+#define TMessageController_Header_Height 40
 
 #endif /* DHeader_h */

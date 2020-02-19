@@ -81,7 +81,7 @@ typedef NS_ENUM(NSUInteger, DMsgDirection) {
  *  MsgDirectionIncoming 消息接收
  *  MsgDirectionOutgoing 消息发送
  */
-@property DMsgDirection direction;
+@property (nonatomic, assign) DMsgDirection direction;
 
 /**
  *  消息状态
@@ -164,8 +164,227 @@ typedef NS_ENUM(NSUInteger, DMsgDirection) {
 
 @end
 
+/////////////////////////////////////////////////////////////////////////////////
+//
+//                              TMessageCellDelegate
+//
+/////////////////////////////////////////////////////////////////////////////////
+
+
+@class DUIMessageCell;
+@protocol DUIMessageCellDelegate <NSObject>
+
+/**
+ *  长按消息回调
+ *  您可以通过该回调实现：在被长按的消息上方弹出删除、撤回（消息发送者长按自己消息时）等二级操作。
+ *
+ *  @param cell 委托者，消息单元
+ */
+- (void)onLongPressMessage:(DUIMessageCell *)cell;
+
+/**
+ *  重发消息点击回调。
+ *  在您点击重发图像（retryView）时执行的回调。
+ *  您可以通过该回调实现：对相应的消息单元对应的消息进行重发。
+ *
+ *  @param cell 委托者，消息单元
+ */
+- (void)onRetryMessage:(DUIMessageCell *)cell;
+
+/**
+ *  点击消息回调
+ *  通常情况下：点击声音消息 - 播放；点击文件消息 - 打开文件；点击图片消息 - 展示大图；点击视频消息 - 播放视频。
+ *  通常情况仅对函数实现提供参考作用，您可以根据需求个性化实现该委托函数。
+ *
+ *  @param cell 委托者，消息单元
+ */
+- (void)onSelectMessage:(DUIMessageCell *)cell;
+
+/**
+ *  点击消息单元中消息头像的回调
+ *  您可以通过该回调实现：响应用户点击，跳转到相应用户的详细信息界面。
+ *
+ *  @param cell 委托者，消息单元
+ */
+- (void)onSelectMessageAvatar:(DUIMessageCell *)cell;
+@end
+
+
+/////////////////////////////////////////////////////////////////////////////////
+//
+//                              TUIMessageCell
+//
+/////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * 【模块名称】TUIMessageCell
+ * 【功能说明】用于实现聊天窗口中的消息单元。
+ *  消息单元类存储了消息相关的各类信息，比如：发送者头像、发送者昵称、消息内容（支持文本、图片、视频等各种格式）等。
+ *  消息单元能够相应用户的多种交互动作。
+ *  同时，消息单元作为多种细化消息的父类，提供了各类消息单元属性与行为的基本模板。
+ */
 @interface DUIMessageCell : DUICommonCell
 
+/**
+ *  头像视图
+ */
+@property (nonatomic, strong) UIImageView *avatarView;
+
+/**
+ *  昵称标签
+ */
+@property (nonatomic, strong) UILabel *nameLabel;
+
+/**
+ *  容器视图。
+ *  包裹了 MesageCell 的各类视图，作为 MessageCell 的“底”，方便进行视图管理与布局。
+ */
+@property (nonatomic, strong) UIView *container;
+
+/**
+ *  活动指示器。
+ *  在消息发送中提供转圈图标，表明消息正在发送。
+ */
+@property (nonatomic, strong) UIActivityIndicatorView *indicator;
+
+/**
+ *  重发视图。
+ *  在发送失败后显示，点击该视图可以触发 onRetryMessage: 回调。
+ */
+@property (nonatomic, strong) UIImageView *retryView;
+
+/**
+ * 已读回执标签
+ * 发送的消息显示 （同步发送的消息显示）
+ */
+@property (nonatomic, strong) UILabel *readReceiptLabel;
+
+/**
+ *  信息数据类。
+ *  存储了该massageCell中所需的信息。包括发送者 ID，发送者头像、信息发送状态、信息气泡图标等。
+ *  messageData 详细信息请参考：Section\Chat\CellData\TUIMessageCellData.h
+ */
+@property (nonatomic, readonly) DUIMessageCellData *messageData;
+
+/**
+ *  协议委托
+ *  负责实现 TMessageCellDelegate 协议中的功能。
+ */
+@property (nonatomic, weak) id<DUIMessageCellDelegate> delegate;
+
+/**
+ *  单元填充函数
+ *  根据data填充消息单元
+ *
+ *  @param  data 填充数据源
+ */
+- (void)fillWithData:(DUIMessageCellData *)data;
+
 @end
+
+
+
+
+
+
+/**
+ * 【模块名称】TUIBubbleMessageCellData
+ * 【功能说明】气泡消息单元数据源。
+ *  气泡消息，即最常见的包含字符串与小表情的字符，大多数情况下将会是您最常见的消息单元类型。
+ *  而气泡消息单元数据源（一下简称数据源），则是负责存储气泡消息单元所需的各种信息。
+ *  数据源实现了一系列业务逻辑，使得数据源能够根据消息收发下的不同情况，向数据源提供正确的信息。
+ *  数据源帮助实现了 MVVM 架构，使数据与 UI 进一步解耦，同时使 UI 层更加细化、可定制化。
+ *  TUIFileMessageCellData 和 TUIVoiceMessageCellData 均继承于本类，实现了气泡消息的 UI 视觉。
+ */
+@interface DUIBubbleMessageCellData : DUIMessageCellData
+
+/**
+ *  气泡顶部 以便确定气泡位置
+ *  该数值用于确定气泡位置，方便气泡内的内容进行 UI 布局。
+ *  若该数值出现异常或者随意设置，会出现消息位置错位等 UI 错误。
+ */
+@property (nonatomic, assign, readwrite) CGFloat bubbleTop;
+
+/**
+ *  气泡图标（正常）
+ *  气泡图标会根据消息是发送还是接受作出改变，数据源中已实现相关业务逻辑。您也可以根据需求进行个性化定制。
+ */
+@property (nonatomic, strong, readwrite) UIImage *bubble;
+
+/**
+ *  气泡图标（高亮）
+ *  气泡图标会根据消息是发送还是接受作出改变，数据源中已实现相关业务逻辑。您也可以根据需求进行个性化定制。
+ */
+@property (nonatomic, strong, readwrite) UIImage *highlightedBubble;
+
+
+/**
+ *  发送气泡图标（正常）
+ *  气泡的发送图标，当气泡消息单元为发送时赋值给 bubble。
+ */
+@property (nonatomic, strong, readwrite, class) UIImage *outgoingBubble;
+
+/**
+ *  发送气泡图标（高亮）
+ *  气泡的发送图标（高亮），当气泡消息单元为发送时赋值给 highlightedBubble。
+ */
+@property (nonatomic, strong, readwrite, class) UIImage *outgoingHighlightedBubble;
+
+/**
+ *  接收气泡图标（正常）
+ *  气泡的接收图标，当气泡消息单元为接收时赋值给 bubble。
+ */
+@property (nonatomic, strong, readwrite, class) UIImage *incommingBubble;
+
+/**
+ *  接收气泡图标（高亮）
+ *  气泡的接收图标，当气泡消息单元为接收时赋值给 highlightedBubble。
+ */
+@property (nonatomic, strong, readwrite, class) UIImage *incommingHighlightedBubble;
+
+/**
+ *  发送气泡顶部
+ *  用于定位发送气泡的顶部，当气泡消息单元为发送时赋值给 bubbleTop。
+ */
+@property (nonatomic, assign, readwrite, class) CGFloat outgoingBubbleTop;
+
+/**
+ *  接收气泡顶部
+ *  用于定位接收气泡的顶部，当气泡消息单元为接收时赋值给 bubbleTop。
+ */
+@property (nonatomic, assign, readwrite, class) CGFloat incommingBubbleTop;
+
+@end
+
+
+/** 腾讯云 TUIKit
+ * 【模块名称】TUIBubbleMessageCell
+ * 【功能说明】气泡消息视图。
+ *  气泡消息，即最常见的包含字符串与小表情的字符，大多数情况下将会是您最常见的消息单元类型。
+ *  气泡消息负责包裹文本和小表情（如[微笑]），并将其以消息单元的形式展现出来。
+ */
+@interface DUIBubbleMessageCell : DUIMessageCell
+
+/**
+ *  气泡图像视图，即消息的气泡图标，在 UI 上作为气泡的背景板包裹消息信息内容。
+ */
+@property (nonatomic, strong, readwrite) UIImageView *bubbleView;
+
+/**
+ *  气泡单元数据源
+ *  气泡单元数据源中存放了气泡的各类图标，比如接收图标（正常与高亮）、发送图标（正常与高亮）。
+ *  并能根据具体的发送、接收状态选择相应的图标进行显示。
+ */
+@property (nonatomic, strong, readonly) DUIBubbleMessageCellData *bubbleData;
+
+/**
+ *  填充数据
+ *  根据 data 设置气泡消息的数据。
+ *
+ *  @param data 填充数据需要的数据源
+ */
+- (void)fillWithData:(DUIBubbleMessageCellData *)data;
+@end
+
 
 NS_ASSUME_NONNULL_END

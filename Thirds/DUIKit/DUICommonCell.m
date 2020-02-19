@@ -11,6 +11,11 @@
 
 @implementation DUICommonCellData
 
+- (CGFloat)heightOfWidth:(CGFloat)width
+{
+    return 44;
+}
+
 @end
 
 @interface DUICommonCell() <UIGestureRecognizerDelegate>

@@ -29,3 +29,30 @@ typedef NS_ENUM(NSInteger, DIMConversationType) {
      */
     TIM_SYSTEM           = 3,
 };
+
+
+/**
+ * 日志级别
+ */
+typedef NS_ENUM(NSInteger, DIMLogLevel) {
+    /**
+     *  不输出任何 sdk log
+     */
+    TIM_LOG_NONE                = 0,
+    /**
+     *  输出 DEBUG，INFO，WARNING，ERROR 级别的 log
+     */
+    TIM_LOG_DEBUG               = 3,
+    /**
+     *  输出 INFO，WARNING，ERROR 级别的 log
+     */
+    TIM_LOG_INFO                = 4,
+    /**
+     *  输出 WARNING，ERROR 级别的 log
+     */
+    TIM_LOG_WARN                = 5,
+    /**
+     *  输出 ERROR 级别的 log
+     */
+    TIM_LOG_ERROR               = 6,
+};
