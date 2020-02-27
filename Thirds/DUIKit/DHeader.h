@@ -26,6 +26,9 @@
 #define TUnReadView_Margin_TB 2
 #define TUnReadView_Margin_LR 4
 
+//input controller
+#define TInputView_Background_Color RGBA(244, 244, 246, 1.0)
+
 //button cell
 #define TButtonCell_ReuseId @"TButtonCell"
 #define TButtonCell_Height 60
@@ -145,6 +148,19 @@
 #define TVoiceMessageCell_Back_Width_Max (Screen_Width * 0.4)
 #define TVoiceMessageCell_Back_Width_Min 60
 #define TVoiceMessageCell_Duration_Size CGSizeMake(33, 33)
+
+//more item cell
+#define TMoreCell_ReuseId @"TMoreCell"
+#define TMoreCell_Margin 5
+#define TMoreCell_Image_Size CGSizeMake(70, 70)
+#define TMoreCell_Title_Height 20
+
+//menu item cell
+#define TMenuCell_ReuseId @"TMenuCell"
+#define TMenuCell_Margin 6
+#define TMenuCell_Line_ReuseId @"TMenuLineCell"
+#define TMenuCell_Selected_Background_Color  RGBA(244, 244, 246, 1.0)
+#define TMenuCell_UnSelected_Background_Color  RGBA(255, 255, 255, 1.0)
 
 //text view
 #define TTextView_Height (49)

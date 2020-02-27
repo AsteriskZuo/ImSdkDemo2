@@ -148,7 +148,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param data 需要设置的数据（TFaceGroup）。在此 NSMutableArray 中存放的对象为 TFaceGroup，即表情组。
  */
-- (void)setData:(NSMutableArray *)data;
+- (void)setData:(NSArray<DUIFaceGroup*> *)data;
 
 @end
 

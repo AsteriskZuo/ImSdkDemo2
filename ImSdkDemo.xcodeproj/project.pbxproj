@@ -35,6 +35,11 @@
 		7A443CD223E05A5E00C4D740 /* DUINavigationIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */; };
 		7A443CD523E074B400C4D740 /* TNaviBarIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */; };
 		7A443CD823E29D7C00C4D740 /* DUIPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD723E29D7C00C4D740 /* DUIPopView.m */; };
+		7AA427C92400E2F5000D0C52 /* DUIInputMoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427C82400E2F5000D0C52 /* DUIInputMoreCell.m */; };
+		7AA427CC2400F83E000D0C52 /* DUIInputMoreView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427CB2400F83E000D0C52 /* DUIInputMoreView.m */; };
+		7AA427CF24016981000D0C52 /* DUIFaceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427CE24016981000D0C52 /* DUIFaceMenuView.m */; };
+		7AA427D224016A4C000D0C52 /* DUIFaceMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */; };
+		7AA427D524020AEA000D0C52 /* DUIInputBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427D424020AEA000D0C52 /* DUIInputBarView.m */; };
 		7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */; };
 		7AB4DA4F23E5786C0087E1E6 /* DContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4E23E5786C0087E1E6 /* DContactListViewModel.m */; };
 		7AB4DA5223E578E90087E1E6 /* DUIContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA5123E578E90087E1E6 /* DUIContactCell.m */; };
@@ -209,6 +214,16 @@
 		7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TNaviBarIndicatorView.m; sourceTree = "<group>"; };
 		7A443CD623E29D7C00C4D740 /* DUIPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIPopView.h; sourceTree = "<group>"; };
 		7A443CD723E29D7C00C4D740 /* DUIPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIPopView.m; sourceTree = "<group>"; };
+		7AA427C72400E2F5000D0C52 /* DUIInputMoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIInputMoreCell.h; sourceTree = "<group>"; };
+		7AA427C82400E2F5000D0C52 /* DUIInputMoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputMoreCell.m; sourceTree = "<group>"; };
+		7AA427CA2400F83E000D0C52 /* DUIInputMoreView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIInputMoreView.h; sourceTree = "<group>"; };
+		7AA427CB2400F83E000D0C52 /* DUIInputMoreView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputMoreView.m; sourceTree = "<group>"; };
+		7AA427CD24016981000D0C52 /* DUIFaceMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFaceMenuView.h; sourceTree = "<group>"; };
+		7AA427CE24016981000D0C52 /* DUIFaceMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFaceMenuView.m; sourceTree = "<group>"; };
+		7AA427D024016A4C000D0C52 /* DUIFaceMenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFaceMenuCell.h; sourceTree = "<group>"; };
+		7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFaceMenuCell.m; sourceTree = "<group>"; };
+		7AA427D324020AEA000D0C52 /* DUIInputBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIInputBarView.h; sourceTree = "<group>"; };
+		7AA427D424020AEA000D0C52 /* DUIInputBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputBarView.m; sourceTree = "<group>"; };
 		7AB4DA4A23E577F70087E1E6 /* DUIContactListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIContactListController.h; sourceTree = "<group>"; };
 		7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIContactListController.m; sourceTree = "<group>"; };
 		7AB4DA4D23E5786C0087E1E6 /* DContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DContactListViewModel.h; sourceTree = "<group>"; };
@@ -878,6 +893,10 @@
 				7ABCECF923FA3A98007AFD87 /* DUIError.m */,
 				7ABCECEE23F7EC4A007AFD87 /* DUIFaceCell.h */,
 				7ABCECEF23F7EC4A007AFD87 /* DUIFaceCell.m */,
+				7AA427D024016A4C000D0C52 /* DUIFaceMenuCell.h */,
+				7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */,
+				7AA427CD24016981000D0C52 /* DUIFaceMenuView.h */,
+				7AA427CE24016981000D0C52 /* DUIFaceMenuView.m */,
 				7ABCECF223F8BB3C007AFD87 /* DUIFaceView.h */,
 				7ABCECF323F8BB3C007AFD87 /* DUIFaceView.m */,
 				7AD283CA23EADA2200893CC9 /* DUIGroupListController.h */,
@@ -886,8 +905,14 @@
 				7A0DFB9323EE670B0055A5A9 /* DUIGroupMemberCell.m */,
 				7A0DFBA423F683A50055A5A9 /* DUIImageCache.h */,
 				7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */,
+				7AA427D324020AEA000D0C52 /* DUIInputBarView.h */,
+				7AA427D424020AEA000D0C52 /* DUIInputBarView.m */,
 				7A0DFB9823EFB5AB0055A5A9 /* DUIInputController.h */,
 				7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */,
+				7AA427C72400E2F5000D0C52 /* DUIInputMoreCell.h */,
+				7AA427C82400E2F5000D0C52 /* DUIInputMoreCell.m */,
+				7AA427CA2400F83E000D0C52 /* DUIInputMoreView.h */,
+				7AA427CB2400F83E000D0C52 /* DUIInputMoreView.m */,
 				7ABCECE823F7E99E007AFD87 /* DUIKit.h */,
 				7ABCECE923F7E99E007AFD87 /* DUIKit.m */,
 				7ABCECEB23F7EB19007AFD87 /* DUIKitConfig.h */,
@@ -1019,6 +1044,7 @@
 				7ABCECED23F7EB19007AFD87 /* DUIKitConfig.m in Sources */,
 				7ABCEF4F23FD4092007AFD87 /* UIButton+RACCommandSupport.m in Sources */,
 				7AD283DB23ED6CB800893CC9 /* DUIChatController.m in Sources */,
+				7AA427D524020AEA000D0C52 /* DUIInputBarView.m in Sources */,
 				7ABCEF5C23FD4092007AFD87 /* RACEmptySignal.m in Sources */,
 				7ABCEF4C23FD4092007AFD87 /* UIControl+RACSignalSupport.m in Sources */,
 				7ABCEF5123FD4092007AFD87 /* RACSerialDisposable.m in Sources */,
@@ -1076,6 +1102,7 @@
 				7ABCEF3F23FD4092007AFD87 /* UISegmentedControl+RACSignalSupport.m in Sources */,
 				7AB4DA5223E578E90087E1E6 /* DUIContactCell.m in Sources */,
 				7A0DFBA623F683A50055A5A9 /* DUIImageCache.m in Sources */,
+				7AA427D224016A4C000D0C52 /* DUIFaceMenuCell.m in Sources */,
 				7ABCEF0923FD4092007AFD87 /* RACSubscriptionScheduler.m in Sources */,
 				7ABCEF5423FD4092007AFD87 /* NSObject+RACKVOWrapper.m in Sources */,
 				7ABCEF5023FD4092007AFD87 /* UIActionSheet+RACSignalSupport.m in Sources */,
@@ -1083,10 +1110,12 @@
 				7ABCEF2123FD4092007AFD87 /* RACSequence.m in Sources */,
 				7ABCEF3B23FD4092007AFD87 /* RACPassthroughSubscriber.m in Sources */,
 				7ABCEF4323FD4092007AFD87 /* UIAlertView+RACSignalSupport.m in Sources */,
+				7AA427C92400E2F5000D0C52 /* DUIInputMoreCell.m in Sources */,
 				7AF23D9E23DEE5ED00C0D8DA /* DUIConversationListController.m in Sources */,
 				7AD283E423ED794900893CC9 /* ChatController.m in Sources */,
 				3728CE9D23C3192200737362 /* ContactController.m in Sources */,
 				7ABCEF5623FD4092007AFD87 /* RACSubscriber.m in Sources */,
+				7AA427CF24016981000D0C52 /* DUIFaceMenuView.m in Sources */,
 				7ABCEF5F23FD4092007AFD87 /* NSIndexSet+RACSequenceAdditions.m in Sources */,
 				7AD283E723ED7C7200893CC9 /* DUIMessageCell.m in Sources */,
 				7ABCEF1423FD4092007AFD87 /* RACIndexSetSequence.m in Sources */,
@@ -1116,6 +1145,7 @@
 				7A0DFBAC23F7AD090055A5A9 /* DUITextMessageCell.m in Sources */,
 				7ABCEF1B23FD4092007AFD87 /* RACEXTRuntimeExtensions.m in Sources */,
 				7AF23DAA23DEFD1D00C0D8DA /* DUIUnreadView.m in Sources */,
+				7AA427CC2400F83E000D0C52 /* DUIInputMoreView.m in Sources */,
 				7ABCEF1123FD4092007AFD87 /* RACTargetQueueScheduler.m in Sources */,
 				7ABCEF0623FD4092007AFD87 /* NSFileHandle+RACSupport.m in Sources */,
 				7ABCEF4A23FD4092007AFD87 /* RACReturnSignal.m in Sources */,

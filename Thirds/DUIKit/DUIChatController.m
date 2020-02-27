@@ -48,14 +48,14 @@
 {
     _messageController = [[DUIMessageController alloc] init];
     _messageController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight);
-    _messageController.view.backgroundColor = [UIColor redColor];
+//    _messageController.view.backgroundColor = [UIColor redColor];
     [self addChildViewController:_messageController];
     [self.view addSubview:_messageController.view];
     
     _inputController = [[DUIInputController alloc] init];
     _inputController.view.frame = CGRectMake(0, self.view.frame.size.height - TTextView_Height - Bottom_SafeHeight, self.view.frame.size.width, TTextView_Height - Bottom_SafeHeight);
     _inputController.view.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    _inputController.view.backgroundColor = [UIColor purpleColor];
+//    _inputController.view.backgroundColor = [UIColor purpleColor];
     [self addChildViewController:_inputController];
     [self.view addSubview:_inputController.view];
     

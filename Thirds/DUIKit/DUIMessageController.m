@@ -421,6 +421,14 @@
     });
 }
 
+- (void)onRetryMessage:(DUIMessageCell *)cell
+{
+}
+
+- (void)onSelectMessageAvatar:(DUIMessageCell *)cell
+{
+}
+
 - (void)menuDidHide:(NSNotification*)notification
 {
     if(_delegate && [_delegate respondsToSelector:@selector(didHideMenuInMessageController:)]){

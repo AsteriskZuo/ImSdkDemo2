@@ -20,7 +20,7 @@
 
 
 @interface DUIFaceView () <UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
-@property (nonatomic, strong) NSMutableArray *faceGroups;
+@property (nonatomic, strong) NSArray<DUIFaceGroup*> *faceGroups;
 @property (nonatomic, strong) NSMutableArray *sectionIndexInGroup;
 @property (nonatomic, strong) NSMutableArray *pageCountInGroup;
 @property (nonatomic, strong) NSMutableArray *groupIndexInSection;
@@ -90,7 +90,7 @@
     _faceCollectionView.frame = CGRectMake(0, _lineView.frame.origin.y + _lineView.frame.size.height + TFaceView_Margin, self.frame.size.width, self.frame.size.height - _pageControl.frame.size.height - _lineView.frame.size.height - 2 * TFaceView_Margin);
 }
 
-- (void)setData:(NSMutableArray *)data
+- (void)setData:(NSArray<DUIFaceGroup*> *)data
 {
     _faceGroups = data;
     [self defaultLayout];
@@ -168,6 +168,7 @@
             [cell setData:data];
         }
         else{
+            NSLog(@"%s,%d", __func__, __LINE__);
             [cell setData:nil];
         }
     }
