@@ -9,7 +9,7 @@
 #import "DUIInputMoreCell.h"
 #import "DCommon.h"
 #import "DHeader.h"
-#import "Common.h"
+
 
 static DUIInputMoreCellData *TUI_Photo_MoreCell;
 static DUIInputMoreCellData *TUI_Picture_MoreCell;

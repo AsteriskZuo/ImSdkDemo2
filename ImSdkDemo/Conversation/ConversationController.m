@@ -10,7 +10,6 @@
 #import "AppDelegate.h"
 #import "DUIConversationListController.h"
 #import "DHeader.h"
-#import "Common.h"
 #import "DUINavigationIndicatorView.h"
 #import "TNaviBarIndicatorView.h"
 #import "DUIPopView.h"
@@ -53,13 +52,22 @@
     
 //    [self beginAppearanceTransition:YES animated:YES];
     
-    AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    UIViewController* controller = [delegate getLoginController];
-    controller.modalPresentationStyle = UIModalPresentationFullScreen;
-//    [self presentViewController:controller animated:YES completion:nil];
-    [delegate.window.rootViewController presentViewController:controller animated:YES completion:nil];
+//    AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    UIViewController* controller = [delegate getLoginController];
+//    controller.modalPresentationStyle = UIModalPresentationFullScreen;
+////    [self presentViewController:controller animated:YES completion:nil];
+//    [delegate.window.rootViewController presentViewController:controller animated:YES completion:nil];
     
 //    [self endAppearanceTransition];
+    
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        AppDelegate* delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        UIViewController* controller = [delegate getLoginController];
+        controller.modalPresentationStyle = UIModalPresentationFullScreen;
+        [delegate.window.rootViewController presentViewController:controller animated:YES completion:nil];
+    });
     
 }
 
@@ -68,19 +76,23 @@
 {
     [super viewWillAppear:animated];
 //    [self beginAppearanceTransition:YES animated:animated];
+    NSLog(@"%s, %d", __func__, __LINE__);
 }
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
 //    [self endAppearanceTransition];
+    NSLog(@"%s, %d", __func__, __LINE__);
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
+    NSLog(@"%s, %d", __func__, __LINE__);
 }
 - (void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    NSLog(@"%s, %d", __func__, __LINE__);
 }
 
 

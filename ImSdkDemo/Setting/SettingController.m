@@ -11,7 +11,6 @@
 #import "DUIButtonCell.h"
 #import "DUITestTextCell.h"
 #import "DUIProfileCardCell.h"
-#import "Common.h"
 #import "AppDelegate.h"
 
 static NSString* s_DUIButtonCell_ReuseId = @"DUIButtonCell_ReuseId";

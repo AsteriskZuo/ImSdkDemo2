@@ -56,3 +56,34 @@ typedef NS_ENUM(NSInteger, DIMLogLevel) {
      */
     TIM_LOG_ERROR               = 6,
 };
+
+
+/**
+ *  消息状态
+ */
+typedef NS_ENUM(NSInteger, DIMMessageStatus){
+    /**
+     *  消息发送中
+     */
+    TIM_MSG_STATUS_SENDING              = 1,
+    /**
+     *  消息发送成功
+     */
+    TIM_MSG_STATUS_SEND_SUCC            = 2,
+    /**
+     *  消息发送失败
+     */
+    TIM_MSG_STATUS_SEND_FAIL            = 3,
+    /**
+     *  消息被删除
+     */
+    TIM_MSG_STATUS_HAS_DELETED          = 4,
+    /**
+     *  导入到本地的消息
+     */
+    TIM_MSG_STATUS_LOCAL_STORED         = 5,
+    /**
+     *  被撤销的消息
+     */
+    TIM_MSG_STATUS_LOCAL_REVOKED        = 6,
+};

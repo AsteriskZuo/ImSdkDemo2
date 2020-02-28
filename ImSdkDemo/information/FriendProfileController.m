@@ -13,7 +13,6 @@
 #import "DUIProfileCardCell.h"
 #import "DCommon.h"
 #import "DHeader.h"
-#import "Common.h"
 
 #import "DServiceManager.h"
 

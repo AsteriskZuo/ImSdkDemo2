@@ -51,9 +51,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  您可以根据您的需求个性化实现该委托函数。
  *
  *  @param controller 委托者，消息控制器
- *  @param view 控制器所在view
+ *  @param cell 消息数据对象
  */
-- (BOOL)messageController:(DUIMessageController *)controller willShowMenuInCell:(UIView *)view;
+- (BOOL)messageController:(DUIMessageController *)controller willShowMenuInCell:(DUIMessageCell *)cell;
 
 /**
  *  收到新消息的函数委托

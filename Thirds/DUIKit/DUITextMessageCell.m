@@ -257,6 +257,14 @@ static UIFont *sIncommingTextFont;
 {
     [super layoutSubviews];
     self.content.frame = (CGRect){.origin = self.textData.textOrigin, .size = self.textData.textSize};
+    self.content.backgroundColor = [UIColor yellowColor];
+    NSLog(@"%s, %d, self.content = %f,%f,%f,%f", __func__, __LINE__, _content.frame.origin.x, _content.frame.origin.y
+    , _content.frame.size.width, _content.frame.size.height);
+    NSLog(@"%s, %d, self.bubbleView = %f,%f,%f,%f", __func__, __LINE__, self.bubbleView.frame.origin.x, self.bubbleView.frame.origin.y
+    , self.bubbleView.frame.size.width, self.bubbleView.frame.size.height);
+    NSLog(@"%s, %d, self.container = %f,%f,%f,%f", __func__, __LINE__, self.container.frame.origin.x, self.container.frame.origin.y
+    , self.container.frame.size.width, self.container.frame.size.height);
+
 }
 
 

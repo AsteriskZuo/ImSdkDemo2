@@ -152,6 +152,9 @@
 		7AD283E723ED7C7200893CC9 /* DUIMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283E623ED7C7200893CC9 /* DUIMessageCell.m */; };
 		7AD283ED23ED807E00893CC9 /* DUIMessageCellLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283EC23ED807E00893CC9 /* DUIMessageCellLayout.m */; };
 		7AD283F023EE5D0F00893CC9 /* GroupProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */; };
+		7AEFBC5A2407D6FB006FFBDB /* DUIGroupPendencyViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */; };
+		7AEFBC5D2407E40F006FFBDB /* DUIGroupPendencyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFBC5C2407E40F006FFBDB /* DUIGroupPendencyController.m */; };
+		7AEFBC602407E46B006FFBDB /* DUIGroupPendencyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AEFBC5F2407E46B006FFBDB /* DUIGroupPendencyCell.m */; };
 		7AF23D9B23DD8FA400C0D8DA /* DUIProfileCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */; };
 		7AF23D9E23DEE5ED00C0D8DA /* DUIConversationListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23D9D23DEE5ED00C0D8DA /* DUIConversationListController.m */; };
 		7AF23DA123DEEB4700C0D8DA /* DConversationListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA023DEEB4700C0D8DA /* DConversationListViewModel.m */; };
@@ -460,6 +463,12 @@
 		7AD283EE23EE5D0F00893CC9 /* GroupProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupProfileController.h; sourceTree = "<group>"; };
 		7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupProfileController.m; sourceTree = "<group>"; };
 		7AD283F223EE5DBA00893CC9 /* DGroupProfileControllerServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGroupProfileControllerServiceProtocol.h; sourceTree = "<group>"; };
+		7AEFBC582407D6FB006FFBDB /* DUIGroupPendencyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupPendencyViewModel.h; sourceTree = "<group>"; };
+		7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupPendencyViewModel.m; sourceTree = "<group>"; };
+		7AEFBC5B2407E40F006FFBDB /* DUIGroupPendencyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupPendencyController.h; sourceTree = "<group>"; };
+		7AEFBC5C2407E40F006FFBDB /* DUIGroupPendencyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupPendencyController.m; sourceTree = "<group>"; };
+		7AEFBC5E2407E46B006FFBDB /* DUIGroupPendencyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupPendencyCell.h; sourceTree = "<group>"; };
+		7AEFBC5F2407E46B006FFBDB /* DUIGroupPendencyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupPendencyCell.m; sourceTree = "<group>"; };
 		7AF23D9923DD8FA400C0D8DA /* DUIProfileCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIProfileCardCell.h; sourceTree = "<group>"; };
 		7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIProfileCardCell.m; sourceTree = "<group>"; };
 		7AF23D9C23DEE5ED00C0D8DA /* DUIConversationListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIConversationListController.h; sourceTree = "<group>"; };
@@ -942,6 +951,12 @@
 				3728CE9023C317E700737362 /* MMLayout */,
 				7ABCECF623FA2E92007AFD87 /* UIView+Toast.h */,
 				7ABCECF523FA2E92007AFD87 /* UIView+Toast.m */,
+				7AEFBC582407D6FB006FFBDB /* DUIGroupPendencyViewModel.h */,
+				7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */,
+				7AEFBC5B2407E40F006FFBDB /* DUIGroupPendencyController.h */,
+				7AEFBC5C2407E40F006FFBDB /* DUIGroupPendencyController.m */,
+				7AEFBC5E2407E46B006FFBDB /* DUIGroupPendencyCell.h */,
+				7AEFBC5F2407E46B006FFBDB /* DUIGroupPendencyCell.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1128,6 +1143,7 @@
 				3728CE8423C3159B00737362 /* main.m in Sources */,
 				7ABCEF2D23FD4092007AFD87 /* RACArraySequence.m in Sources */,
 				7ABCEF1223FD4092007AFD87 /* NSUserDefaults+RACSupport.m in Sources */,
+				7AEFBC5D2407E40F006FFBDB /* DUIGroupPendencyController.m in Sources */,
 				7ABCEF4723FD4092007AFD87 /* NSSet+RACSequenceAdditions.m in Sources */,
 				37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */,
 				7ABCEF0D23FD4092007AFD87 /* UITableViewHeaderFooterView+RACSignalSupport.m in Sources */,
@@ -1144,6 +1160,7 @@
 				7ABCEF1323FD4092007AFD87 /* NSEnumerator+RACSequenceAdditions.m in Sources */,
 				7A0DFBAC23F7AD090055A5A9 /* DUITextMessageCell.m in Sources */,
 				7ABCEF1B23FD4092007AFD87 /* RACEXTRuntimeExtensions.m in Sources */,
+				7AEFBC602407E46B006FFBDB /* DUIGroupPendencyCell.m in Sources */,
 				7AF23DAA23DEFD1D00C0D8DA /* DUIUnreadView.m in Sources */,
 				7AA427CC2400F83E000D0C52 /* DUIInputMoreView.m in Sources */,
 				7ABCEF1123FD4092007AFD87 /* RACTargetQueueScheduler.m in Sources */,
@@ -1161,6 +1178,7 @@
 				7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */,
 				7AD283C423EA997700893CC9 /* DServiceManager.m in Sources */,
 				7ABCEF2E23FD4092007AFD87 /* RACBlockTrampoline.m in Sources */,
+				7AEFBC5A2407D6FB006FFBDB /* DUIGroupPendencyViewModel.m in Sources */,
 				7AB4DA5523E588040087E1E6 /* DUIContactActionCell.m in Sources */,
 				7ABCEF2523FD4092007AFD87 /* RACKVOTrampoline.m in Sources */,
 				3728CEA023C3193100737362 /* ConversationController.m in Sources */,

@@ -8,7 +8,6 @@
 
 #import "ContactController.h"
 #import "DHeader.h"
-#import "Common.h"
 #import "DUIPopView.h"
 #import "DUINavigationIndicatorView.h"
 #import "DUIContactCell.h"

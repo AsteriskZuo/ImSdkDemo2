@@ -7,7 +7,6 @@
 //
 
 #import "GroupProfileController.h"
-#import "Common.h"
 #import "DHeader.h"
 #import "DUITextCell.h"
 #import "DUIProfileCardCell.h"

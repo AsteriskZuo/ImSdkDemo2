@@ -8,7 +8,7 @@
 
 #import "DContactListViewModel.h"
 #import "DUIContactCell.h"
-#import "Common.h"
+#import "DHeader.h"
 
 @implementation DContactListViewModel
 

@@ -9,8 +9,9 @@
 #import "ChatController.h"
 #import "DUIChatController.h"
 #import "DUIUnreadView.h"
-#import "Common.h"
+#import "DHeader.h"
 #import "DUIProfileCardCell.h"
+#import "DIMConversation.h"
 #import "FriendProfileController.h"
 #import "GroupProfileController.h"
 
@@ -30,7 +31,8 @@
 
 - (void)setupViews
 {
-    DUIChatController* controller = [[DUIChatController alloc] init];
+    DIMConversation* conv = [[DIMConversation alloc] initWithConvId:_conversationData.convId convType:_conversationData.convType];
+    DUIChatController* controller = [[DUIChatController alloc] initWithConversation:conv];
     [self addChildViewController:controller];
     [self.view addSubview:controller.view];
     

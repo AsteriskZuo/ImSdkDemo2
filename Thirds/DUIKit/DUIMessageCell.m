@@ -12,7 +12,6 @@
 #import "DHeader.h"
 #import "MMLayout/UIView+MMLayout.h"
 
-#import "Common.h"
 #import "DUIImageCache.h"
 
 
@@ -233,7 +232,10 @@ static UIFont *sIncommingNameFont;
 - (void)fillWithData:(DUIMessageCellData *)data
 {
     [super fillWithData:data];
+    _messageData = data;
+    
     [_avatarView setImage:data.avatarImage];
+    
     _nameLabel.text = data.name;
     _nameLabel.textColor = data.nameColor;
     _nameLabel.font = data.nameFont;
@@ -298,8 +300,8 @@ static UIFont *sIncommingNameFont;
         self.container.mm_left(cellLayout.messageInsets.left+self.avatarView.mm_maxX)
         .mm_top(ctop).mm_width(csize.width).mm_height(csize.height);
         
-        self.nameLabel.mm_left(_container.mm_x + 7) ;//与气泡对齐
-        self.indicator.mm_sizeToFit().mm__centerY(_container.mm_centerY).mm_left(_container.mm_maxX + 8);
+        self.nameLabel.mm_left(self.container.mm_x + 7) ;//与气泡对齐
+        self.indicator.mm_sizeToFit().mm__centerY(self.container.mm_centerY).mm_left(self.container.mm_maxX + 8);
         self.retryView.frame = self.indicator.frame;
         self.readReceiptLabel.hidden = YES;
         
@@ -323,6 +325,7 @@ static UIFont *sIncommingNameFont;
         self.readReceiptLabel.mm_sizeToFitThan(0,self.indicator.mm_w).mm_bottom(self.container.mm_b + cellLayout.bubbleInsets.bottom).mm_left(_container.mm_x - 8 - _indicator.mm_w);
         
     }
+    self.container.backgroundColor = [UIColor redColor];
 }
 
 //- (NSString *)getReadReceiptResult{
@@ -476,13 +479,17 @@ static CGFloat sIncommingBubbleTop = -2;
     _bubbleData = data;
 //    self.bubbleData = data;//error
     self.bubbleView.image = data.bubble;
+//    NSLog(@"%s, %d,%f,%f", __func__, __LINE__, data.bubble.size.width, data.bubble.size.height);
     self.bubbleView.highlightedImage = data.highlightedBubble;
+    self.bubbleView.backgroundColor = [UIColor greenColor];
+//    NSLog(@"%s, %d, %f,%f,%f,%f", __func__, __LINE__, _bubbleView.frame.origin.x, _bubbleView.frame.origin.y
+//          , _bubbleView.frame.size.width, _bubbleView.frame.size.height);
 }
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.bubbleView.mm_top(self.bubbleData.bubbleTop);
+//    self.bubbleView.mm_top(self.bubbleData.bubbleTop);//跑偏了
     self.retryView.mm__centerY(self.bubbleView.mm_centerY);
 }
 

@@ -26,7 +26,8 @@
 //    self.view.backgroundColor = [UIColor greenColor];
 
     //ref: https://developer.apple.com/documentation/uikit/uicontrol/1618259-addtarget?language=objc
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:forEvent:)];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTap:forEvent:)];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.view addGestureRecognizer:tap];
 }
 
@@ -41,6 +42,11 @@
 */
 
 - (void)onTap:(id)sender forEvent:(UIEvent*)event
+{
+    [self.userId resignFirstResponder];
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)sender
 {
     [self.userId resignFirstResponder];
 }

@@ -34,6 +34,7 @@
 //#import "TIMMessage+DataProvider.h"
 //#import "TUIUserProfileControllerServiceProtocol.h"
 //#import <ImSDK/ImSDK.h>
+#import "DIMMessage.h"
 
 
 #define MAX_MESSAGE_SEP_DLAY (5 * 60)
@@ -181,8 +182,106 @@
 
 - (void)sendMessage:(DUIMessageCellData *)msg
 {
-    //TODO:待实现
+    [self.tableView beginUpdates];
+    DIMMessage *imMsg = msg.innerMessage;
+    DUIMessageCellData *dateMsg = nil;
+    if (msg.status == Msg_Status_Init)
+    {
+        //新消息
+        if (!imMsg) {
+            imMsg = [self transIMMsgFromUIMsg:msg];
+        }
+//        dateMsg = [self transSystemMsgFromDate:imMsg.timestamp];
+
+    } else if (imMsg) {
+        //重发
+//        dateMsg = [self transSystemMsgFromDate:[NSDate date]];
+//        NSInteger row = [_uiMsgs indexOfObject:msg];
+//        [_heightCache removeObjectAtIndex:row];
+//        [_uiMsgs removeObjectAtIndex:row];
+//        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+//                              withRowAnimation:UITableViewRowAnimationFade];
+    } else {
+        [self.tableView endUpdates];
+        NSLog(@"Unknown message state");
+        return;
+    }
+//    DIMUserProfile *selfProfile = [[TIMFriendshipManager sharedInstance] querySelfProfile];
+
+//    msg.status = Msg_Status_Sending;
+//    msg.name = [selfProfile showName];
+    msg.name = imMsg.sender;
+//    msg.avatarUrl = [NSURL URLWithString:selfProfile.faceURL];
+    msg.avatarImage = [UIImage imageNamed:TUIKitResource(@"default_head")];
+
+    if(dateMsg){
+        _msgForDate = imMsg;
+        [_uiMsgs addObject:dateMsg];
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_uiMsgs.count - 1 inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [_uiMsgs addObject:msg];
+    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_uiMsgs.count - 1 inSection:0]]
+                          withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView endUpdates];
+    [self scrollToBottom:YES];
+
+//    __weak typeof(self) ws = self;
+//    [self.conv sendMessage:imMsg succ:^{
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [ws changeMsg:msg status:Msg_Status_Succ];
+//        });
+//    } fail:^(int code, NSString *desc) {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            [THelper makeToastError:code msg:desc];
+//            [ws changeMsg:msg status:Msg_Status_Fail];
+//        });
+//    }];
+
+//    int delay = 1;
+//    if([msg isKindOfClass:[TUIImageMessageCellData class]]){
+//        delay = 0;
+//    }
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        if(msg.status == Msg_Status_Sending){
+//            [ws changeMsg:msg status:Msg_Status_Sending_2];
+//        }
+//    });
 }
+
+- (DIMMessage *)transIMMsgFromUIMsg:(DUIMessageCellData *)data
+{
+    static int count = 0;
+    DIMMessage* msg = [[DIMMessage alloc] init];
+    msg.timestamp = [NSDate date];
+    msg.conversation = _conv;
+    msg.sender = @"self";
+    msg.isPeerReaded = false;
+    msg.isReaded = true;
+    msg.isSelf = true;
+    msg.msgId = [[NSUUID UUID] UUIDString];
+    msg.status = TIM_MSG_STATUS_SEND_SUCC;
+    msg.uniqueId = ++count;
+
+    if ([data isKindOfClass:[DUITextMessageCellData class]]) {
+        TIMTextElem* elem = [[TIMTextElem alloc] init];
+        elem.text = ((DUITextMessageCellData*)data).content;
+        [msg addElem:elem];
+        return msg;
+    }
+    return nil;
+}
+
+//- (TUISystemMessageCellData *)transSystemMsgFromDate:(NSDate *)date
+//{
+//    if(_msgForDate == nil || fabs([date timeIntervalSinceDate:_msgForDate.timestamp]) > MAX_MESSAGE_SEP_DLAY){
+//        TUISystemMessageCellData *system = [[TUISystemMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+//        system.content = [date tk_messageString];
+//        system.reuseId = TSystemMessageCell_ReuseId;
+//        return system;
+//    }
+//    return nil;
+//}
 
 - (void)changeMsg:(DUIMessageCellData *)msg status:(DMsgStatus)status
 {
@@ -311,6 +410,11 @@
     if (_uiMsgs.count > 0) {
         [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:_uiMsgs.count - 1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:animate];
     }
+}
+
+- (void)setConversation:(DIMConversation *)conversation
+{
+    _conv = conversation;
 }
 
 

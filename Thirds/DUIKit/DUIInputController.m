@@ -104,6 +104,7 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
 {
     CGRect keyboardFrame = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     if (_delegate && [_delegate respondsToSelector:@selector(inputController:didChangeHeight:)]){
+        NSLog(@"%s, %d, %f, %f", __func__, __LINE__, _inputBar.frame.size.height, keyboardFrame.size.height);
         [_delegate inputController:self didChangeHeight:keyboardFrame.size.height + _inputBar.frame.size.height];
     }
 }

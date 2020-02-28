@@ -9,6 +9,13 @@
 #ifndef DHeader_h
 #define DHeader_h
 
+#define TUIKitFace(name) [[[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"TUIKitFace" ofType:@"bundle"]] resourcePath] stringByAppendingPathComponent:name]
+#define TUIKitResource(name) [[[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"TUIKitResource" ofType:@"bundle"]] resourcePath] stringByAppendingPathComponent:name]
+
+#define weakify(object) autoreleasepool   {} __weak  typeof(object) weak##object = object;
+#define strongify(object) autoreleasepool {} __strong  typeof(weak##object) object = weak##object;
+
+
 #define Screen_Width        [UIScreen mainScreen].bounds.size.width
 #define Screen_Height       [UIScreen mainScreen].bounds.size.height
 #define Is_Iphone (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)

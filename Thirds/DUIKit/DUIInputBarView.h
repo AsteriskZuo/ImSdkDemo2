@@ -10,11 +10,14 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DUIInputBarView;
-
 @interface DUIInputBarTextView : UITextView
+
 @property (nonatomic, weak) UIResponder *overrideNextResponder;
+
 @end
+
+
+@class DUIInputBarView;
 
 /**
  *  输入条的回调委托
