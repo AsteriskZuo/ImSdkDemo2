@@ -201,10 +201,10 @@
 		7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputController.m; sourceTree = "<group>"; };
 		7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TUIKIT.m"; sourceTree = "<group>"; };
 		7A0DFB9C23F011300055A5A9 /* NSDate+TUIKIT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TUIKIT.h"; sourceTree = "<group>"; };
-		7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIMMessage.h; sourceTree = "<group>"; };
-		7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIMMessage.m; sourceTree = "<group>"; };
-		7A0DFBA123F01F770055A5A9 /* DIMConversation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DIMConversation.h; sourceTree = "<group>"; };
-		7A0DFBA223F01F770055A5A9 /* DIMConversation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DIMConversation.m; sourceTree = "<group>"; };
+		7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIMMessage.h; sourceTree = "<group>"; };
+		7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIMMessage.m; sourceTree = "<group>"; };
+		7A0DFBA123F01F770055A5A9 /* DIMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIMConversation.h; sourceTree = "<group>"; };
+		7A0DFBA223F01F770055A5A9 /* DIMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIMConversation.m; sourceTree = "<group>"; };
 		7A0DFBA423F683A50055A5A9 /* DUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIImageCache.h; sourceTree = "<group>"; };
 		7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIImageCache.m; sourceTree = "<group>"; };
 		7A0DFBA723F685430055A5A9 /* DHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHelper.h; sourceTree = "<group>"; };
@@ -462,7 +462,7 @@
 		7AD283EC23ED807E00893CC9 /* DUIMessageCellLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIMessageCellLayout.m; sourceTree = "<group>"; };
 		7AD283EE23EE5D0F00893CC9 /* GroupProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupProfileController.h; sourceTree = "<group>"; };
 		7AD283EF23EE5D0F00893CC9 /* GroupProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupProfileController.m; sourceTree = "<group>"; };
-		7AD283F223EE5DBA00893CC9 /* DGroupProfileControllerServiceProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DGroupProfileControllerServiceProtocol.h; sourceTree = "<group>"; };
+		7AD283F223EE5DBA00893CC9 /* DGroupProfileControllerServiceProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DGroupProfileControllerServiceProtocol.h; sourceTree = "<group>"; };
 		7AEFBC582407D6FB006FFBDB /* DUIGroupPendencyViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupPendencyViewModel.h; sourceTree = "<group>"; };
 		7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIGroupPendencyViewModel.m; sourceTree = "<group>"; };
 		7AEFBC5B2407E40F006FFBDB /* DUIGroupPendencyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIGroupPendencyController.h; sourceTree = "<group>"; };
@@ -912,6 +912,12 @@
 				7AD283CB23EADA2300893CC9 /* DUIGroupListController.m */,
 				7A0DFB9223EE670B0055A5A9 /* DUIGroupMemberCell.h */,
 				7A0DFB9323EE670B0055A5A9 /* DUIGroupMemberCell.m */,
+				7AEFBC5E2407E46B006FFBDB /* DUIGroupPendencyCell.h */,
+				7AEFBC5F2407E46B006FFBDB /* DUIGroupPendencyCell.m */,
+				7AEFBC5B2407E40F006FFBDB /* DUIGroupPendencyController.h */,
+				7AEFBC5C2407E40F006FFBDB /* DUIGroupPendencyController.m */,
+				7AEFBC582407D6FB006FFBDB /* DUIGroupPendencyViewModel.h */,
+				7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */,
 				7A0DFBA423F683A50055A5A9 /* DUIImageCache.h */,
 				7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */,
 				7AA427D324020AEA000D0C52 /* DUIInputBarView.h */,
@@ -951,12 +957,6 @@
 				3728CE9023C317E700737362 /* MMLayout */,
 				7ABCECF623FA2E92007AFD87 /* UIView+Toast.h */,
 				7ABCECF523FA2E92007AFD87 /* UIView+Toast.m */,
-				7AEFBC582407D6FB006FFBDB /* DUIGroupPendencyViewModel.h */,
-				7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */,
-				7AEFBC5B2407E40F006FFBDB /* DUIGroupPendencyController.h */,
-				7AEFBC5C2407E40F006FFBDB /* DUIGroupPendencyController.m */,
-				7AEFBC5E2407E46B006FFBDB /* DUIGroupPendencyCell.h */,
-				7AEFBC5F2407E46B006FFBDB /* DUIGroupPendencyCell.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
