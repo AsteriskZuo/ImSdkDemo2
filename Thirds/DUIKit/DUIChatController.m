@@ -15,12 +15,15 @@
 #import "DIMConversation.h"
 #import "DIMMessage.h"
 #import "DUIMessageCell.h"
+#import "DUIImageMessageCell.h"
 #import "DUIInputMoreCell.h"
+#import "DUIInputMoreView.h"
 #import "DUIInputBarView.h"
 #import "DUIGroupPendencyViewModel.h"
 #import "DUIGroupPendencyController.h"
 
 #import "MMLayout/UIView+MMLayout.h"
+#import "ReactiveObjC.h"
 
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
@@ -103,7 +106,29 @@
 //    self.tipsView.hidden = NO;
 //    self.tipsView.mm_top(self.navigationController.navigationBar.mm_maxY);
     
+    @weakify(self);
+    [RACObserve(self, moreMenus) subscribeNext:^(NSArray *x) {
+        @strongify(self)
+        [self.inputController.moreView setData:x];
+    }];
     
+//    [RACObserve(self.pendencyViewModel, unReadCnt) subscribeNext:^(NSNumber *unReadCnt) {
+//        @strongify(self)
+//        if ([unReadCnt intValue]) {
+//            self.pendencyLabel.text = [NSString stringWithFormat:@"%@条入群请求", unReadCnt];
+//            [self.pendencyLabel sizeToFit];
+//            CGFloat gap = (self.tipsView.mm_w - self.pendencyLabel.mm_w - self.pendencyBtn.mm_w-8)/2;
+//            self.pendencyLabel.mm_left(gap).mm__centerY(self.tipsView.mm_h/2);
+//            self.pendencyBtn.mm_hstack(8);
+//
+//            [UIView animateWithDuration:1.f animations:^{
+//                self.tipsView.hidden = NO;
+//                self.tipsView.mm_top(self.navigationController.navigationBar.mm_maxY);
+//            }];
+//        } else {
+//            self.tipsView.hidden = YES;
+//        }
+//    }];
 }
 
 
@@ -352,14 +377,14 @@
             NSString *path = [TUIKit_Image_Path stringByAppendingString:[DHelper genImageName:nil]];
             [[NSFileManager defaultManager] createFileAtPath:path contents:data attributes:nil];
             
-//            TUIImageMessageCellData *uiImage = [[TUIImageMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-//            uiImage.path = path;
-//            uiImage.length = data.length;
-//            [self sendMessage:uiImage];
-//
-//            if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
-//                [self.delegate chatController:self didSendMessage:uiImage];
-//            }
+            DUIImageMessageCellData *uiImage = [[DUIImageMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+            uiImage.path = path;
+            uiImage.length = data.length;
+            [self sendMessage:uiImage];
+
+            if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
+                [self.delegate chatController:self didSendMessage:uiImage];
+            }
         }
         else if([mediaType isEqualToString:(NSString *)kUTTypeMovie]){
             NSURL *url = [info objectForKey:UIImagePickerControllerMediaURL];

@@ -8,7 +8,9 @@
 
 #import "DUIProfileCardCell.h"
 #import "DHeader.h"
+
 #import "UIView+MMLayout.h"
+#import "ReactiveObjC.h"
 
 @implementation DUIProfileCardCellData
 
@@ -78,6 +80,34 @@
     } else {
         self.accessoryType = UITableViewCellAccessoryNone;
     }
+    
+    @weakify(self)
+    RAC(_signature, text) = [RACObserve(data, signature) takeUntil:self.rac_prepareForReuseSignal];
+    [[[RACObserve(data, identifier) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
+        @strongify(self)
+        self.identifier.text = [@"帐号: " stringByAppendingString:data.identifier];
+    }];
+    
+    [[[RACObserve(data, name) takeUntil:self.rac_prepareForReuseSignal] distinctUntilChanged] subscribeNext:^(NSString *x) {
+        @strongify(self)
+        self.name.text = x;
+    }];
+//    [[RACObserve(data, avatarUrl) takeUntil:self.rac_prepareForReuseSignal] subscribeNext:^(NSURL *x) {
+//        @strongify(self)
+//        [self.avatar sd_setImageWithURL:x placeholderImage:self.cardData.avatarImage];
+//    }];
+//    
+//    [[RACObserve(data, genderString) takeUntil:self.rac_prepareForReuseSignal] subscribeNext:^(NSString *x) {
+//        @strongify(self)
+//        if([x isEqualToString:@"男"]){
+//            self.genderIcon.image = [UIImage tk_imageNamed:@"male"];
+//        }else if([x isEqualToString:@"女"]){
+//            self.genderIcon.image = [UIImage tk_imageNamed:@"female"];
+//        }else{
+//            //(性别 iCon 在未设置性别时不显示)
+//            self.genderIcon.image = nil;
+//        }
+//    }];
 }
 
 - (void)layoutSubviews

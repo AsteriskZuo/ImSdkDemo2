@@ -8,6 +8,8 @@
 
 #import "DUITextCell.h"
 
+#import "ReactiveObjC/ReactiveObjc.h"
+
 @implementation DUITextCellData
 
 @end
@@ -66,6 +68,9 @@
     } else {
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
+    
+    RAC(_keyView, text) = [RACObserve(_textData, key) takeUntil:self.rac_prepareForReuseSignal];
+    RAC(_valueView, text) = [RACObserve(_textData, value) takeUntil:self.rac_prepareForReuseSignal];
 }
 
 + (CGFloat)getHeight

@@ -29,6 +29,96 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic,strong) NSString * text;
 @end
 
+
+/**
+ *  图片
+ */
+@interface DIMImage : NSObject
+/**
+ *  图片 ID，内部标识，可用于外部缓存key
+ */
+@property(nonatomic,strong) NSString * uuid;
+/**
+ *  图片类型
+ */
+@property(nonatomic,assign) DIM_IMAGE_TYPE type;
+/**
+ *  图片大小
+ */
+@property(nonatomic,assign) int size;
+/**
+ *  图片宽度
+ */
+@property(nonatomic,assign) int width;
+/**
+ *  图片高度
+ */
+@property(nonatomic,assign) int height;
+/**
+ *  下载URL
+ */
+@property(nonatomic, strong) NSString * url;
+
+/**
+ *  获取图片
+ *
+ *  下载的数据需要由开发者缓存，IM SDK 每次调用 getImage 都会从服务端重新下载数据。建议通过图片的 uuid 作为 key 进行图片文件的存储。
+ *
+ *  @param path 图片保存路径
+ *  @param succ 成功回调，返回图片数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getImage:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+/**
+ *  获取图片（有进度回调）
+ *
+ *  下载的数据需要由开发者缓存，IM SDK 每次调用 getImage 都会从服务端重新下载数据。建议通过图片的 uuid 作为 key 进行图片文件的存储。
+ *
+ *  @param path 图片保存路径
+ *  @param progress 图片下载进度
+ *  @param succ 成功回调，返回图片数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getImage:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+@end
+
+/**
+ *  图片消息Elem
+ */
+@interface DIMImageElem : TIMElem
+
+/**
+ *  要发送的图片路径
+ */
+@property(nonatomic,strong) NSString * path;
+
+/**
+ *  所有类型图片，只读，发送的时候不用关注，接收的时候这个字段会保存图片的所有规格，目前最多包含三种规格：原图、大图、缩略图，每种规格保存在一个 TIMImage 对象中
+ */
+@property(nonatomic,strong) NSArray * imageList;
+
+/**
+ * 上传时任务 ID，可用来查询上传进度（已废弃，请在 TIMUploadProgressListener 监听上传进度）
+ */
+@property(nonatomic,assign) uint32_t taskId DEPRECATED_ATTRIBUTE;
+
+/**
+ *  图片压缩等级，详见 TIM_IMAGE_COMPRESS_TYPE（仅对 jpg 格式有效）
+ */
+@property(nonatomic,assign) DIM_IMAGE_COMPRESS_TYPE level;
+
+/**
+ *  图片格式，详见 TIM_IMAGE_FORMAT
+ */
+@property(nonatomic,assign) DIM_IMAGE_FORMAT format;
+
+@end
+
+
+
+
 @interface DIMMessage : NSObject
 
 /**

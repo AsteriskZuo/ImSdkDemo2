@@ -15,7 +15,11 @@
 #import "FriendProfileController.h"
 #import "GroupProfileController.h"
 
+#import "ReactiveObjC/ReactiveObjC.h"
+
 @interface ChatController ()
+
+@property (nonatomic, strong, readwrite) DUIChatController* chat;
 
 @end
 
@@ -32,9 +36,9 @@
 - (void)setupViews
 {
     DIMConversation* conv = [[DIMConversation alloc] initWithConvId:_conversationData.convId convType:_conversationData.convType];
-    DUIChatController* controller = [[DUIChatController alloc] initWithConversation:conv];
-    [self addChildViewController:controller];
-    [self.view addSubview:controller.view];
+    _chat = [[DUIChatController alloc] initWithConversation:conv];
+    [self addChildViewController:_chat];
+    [self.view addSubview:_chat.view];
     
     _unreadView = [[DUIUnreadView alloc] init];
     [_unreadView setNum:10];
@@ -52,12 +56,14 @@
     }
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItems = @[rightBarButtonItem];
+    
+    RAC(self, title) = [RACObserve(_conversationData, title) distinctUntilChanged];
 
 }
 
 - (void)sendMessage:(DUIMessageCellData*)msg
 {
-    
+    [_chat sendMessage:msg];
 }
 
 - (void)rightBarButtonClick:(UIButton*)sender

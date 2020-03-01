@@ -12,7 +12,7 @@
 #import "DUITextMessageCell.h"
 //#import "TUISystemMessageCell.h"
 //#import "TUIVoiceMessageCell.h"
-//#import "TUIImageMessageCell.h"
+#import "DUIImageMessageCell.h"
 //#import "TUIFaceMessageCell.h"
 //#import "TUIVideoMessageCell.h"
 //#import "TUIFileMessageCell.h"
@@ -96,7 +96,7 @@
 
     [self.tableView registerClass:[DUITextMessageCell class] forCellReuseIdentifier:TTextMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIVoiceMessageCell class] forCellReuseIdentifier:TVoiceMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUIImageMessageCell class] forCellReuseIdentifier:TImageMessageCell_ReuseId];
+    [self.tableView registerClass:[DUIImageMessageCell class] forCellReuseIdentifier:TImageMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
@@ -268,6 +268,11 @@
         elem.text = ((DUITextMessageCellData*)data).content;
         [msg addElem:elem];
         return msg;
+    } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
+        DIMImageElem *imImage = [[DIMImageElem alloc] init];
+        DUIImageMessageCellData *uiImage = (DUIImageMessageCellData *)data;
+        imImage.path = uiImage.path;
+        [msg addElem:imImage];
     }
     return nil;
 }
@@ -367,27 +372,27 @@
         if([data isKindOfClass:[DUITextMessageCellData class]]) {
             data.reuseId = TTextMessageCell_ReuseId;
         }
-        /*else if([data isKindOfClass:[TUIFaceMessageCellData class]]) {
-            data.reuseId = TFaceMessageCell_ReuseId;
-        }
-        else if([data isKindOfClass:[TUIImageMessageCellData class]]) {
+//        else if([data isKindOfClass:[TUIFaceMessageCellData class]]) {
+//            data.reuseId = TFaceMessageCell_ReuseId;
+//        }
+        else if([data isKindOfClass:[DUIImageMessageCellData class]]) {
             data.reuseId = TImageMessageCell_ReuseId;
         }
-        else if([data isKindOfClass:[TUIVideoMessageCellData class]]) {
-            data.reuseId = TVideoMessageCell_ReuseId;
-        }
-        else if([data isKindOfClass:[TUIVoiceMessageCellData class]]) {
-            data.reuseId = TVoiceMessageCell_ReuseId;
-        }
-        else if([data isKindOfClass:[TUIFileMessageCellData class]]) {
-            data.reuseId = TFileMessageCell_ReuseId;
-        }
-        else if([data isKindOfClass:[TUIJoinGroupMessageCellData class]]){//入群小灰条对应的数据源
-            data.reuseId = TJoinGroupMessageCell_ReuseId;
-        }
-        else if([data isKindOfClass:[TUISystemMessageCellData class]]) {
-            data.reuseId = TSystemMessageCell_ReuseId;
-        }*/
+//        else if([data isKindOfClass:[TUIVideoMessageCellData class]]) {
+//            data.reuseId = TVideoMessageCell_ReuseId;
+//        }
+//        else if([data isKindOfClass:[TUIVoiceMessageCellData class]]) {
+//            data.reuseId = TVoiceMessageCell_ReuseId;
+//        }
+//        else if([data isKindOfClass:[TUIFileMessageCellData class]]) {
+//            data.reuseId = TFileMessageCell_ReuseId;
+//        }
+//        else if([data isKindOfClass:[TUIJoinGroupMessageCellData class]]){//入群小灰条对应的数据源
+//            data.reuseId = TJoinGroupMessageCell_ReuseId;
+//        }
+//        else if([data isKindOfClass:[TUISystemMessageCellData class]]) {
+//            data.reuseId = TSystemMessageCell_ReuseId;
+//        }
         else {
             return nil;
         }

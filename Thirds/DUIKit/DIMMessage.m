@@ -23,6 +23,27 @@
 @end
 
 
+@implementation DIMImage
+
+- (void)getImage:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getImage:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+@end
+
+@implementation DIMImageElem
+
+
+
+@end
+
+
 @interface DIMMessage ()
 
 @property (nonatomic, strong) NSMutableArray* elems;

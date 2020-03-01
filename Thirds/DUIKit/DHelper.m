@@ -10,6 +10,7 @@
 #import "DHelper.h"
 #import "UIView+Toast.h"
 #import "DUIError.h"
+#import "SDWebImage.h"
 
 typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 
@@ -116,7 +117,7 @@ typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
         UIImage *image = nil;
         
         if ([path containsString:@".gif"]) { //支持动图
-//            image = [UIImage sd_imageWithGIFData:[NSData dataWithContentsOfFile:path]];//TODO:带实现
+            image = [UIImage sd_imageWithGIFData:[NSData dataWithContentsOfFile:path]];//TODO:带实现
             if(complete){
                 complete(path, image);
             }

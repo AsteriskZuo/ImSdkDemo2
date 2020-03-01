@@ -87,3 +87,89 @@ typedef NS_ENUM(NSInteger, DIMMessageStatus){
      */
     TIM_MSG_STATUS_LOCAL_REVOKED        = 6,
 };
+
+
+/**
+ *  图片类型
+ */
+typedef NS_ENUM(NSInteger, DIM_IMAGE_TYPE){
+    /**
+     *  原图
+     */
+    TIM_IMAGE_TYPE_ORIGIN              = 0x01,
+    /**
+     *  缩略图
+     */
+    TIM_IMAGE_TYPE_THUMB               = 0x02,
+    /**
+     *  大图
+     */
+    TIM_IMAGE_TYPE_LARGE               = 0x04,
+};
+
+/**
+ *  图片格式
+ */
+typedef NS_ENUM(NSInteger, DIM_IMAGE_FORMAT){
+    /**
+     *  JPG 格式
+     */
+    TIM_IMAGE_FORMAT_JPG            = 0x1,
+    /**
+     *  GIF 格式
+     */
+    TIM_IMAGE_FORMAT_GIF            = 0x2,
+    /**
+     *  PNG 格式
+     */
+    TIM_IMAGE_FORMAT_PNG            = 0x3,
+    /**
+     *  BMP 格式
+     */
+    TIM_IMAGE_FORMAT_BMP            = 0x4,
+    /**
+     *  未知格式
+     */
+    TIM_IMAGE_FORMAT_UNKNOWN        = 0xff,
+};
+
+/**
+ *  图片压缩选项
+ */
+typedef NS_ENUM(NSInteger, DIM_IMAGE_COMPRESS_TYPE){
+    /**
+     *  原图(不压缩）
+     */
+    TIM_IMAGE_COMPRESS_ORIGIN              = 0x00,
+    /**
+     *  高压缩率：图片较小，默认值
+     */
+    TIM_IMAGE_COMPRESS_HIGH                = 0x01,
+    /**
+     *  低压缩：高清图发送(图片较大)
+     */
+    TIM_IMAGE_COMPRESS_LOW                 = 0x02,
+};
+
+
+
+/**
+ *  一般操作成功回调
+ */
+typedef void (^DIMSucc)(void);
+
+/**
+ *  操作失败回调
+ *
+ *  @param code 错误码
+ *  @param msg  错误描述，配合错误码使用，如果问题建议打印信息定位
+ */
+typedef void (^DIMFail)(int code, NSString * msg);
+
+/**
+ *  进度毁掉
+ *
+ *  @param curSize 已下载大小
+ *  @param totalSize  总大小
+ */
+typedef void (^DIMProgress)(NSInteger curSize, NSInteger totalSize);

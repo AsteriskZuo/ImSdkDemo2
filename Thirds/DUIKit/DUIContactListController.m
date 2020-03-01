@@ -11,7 +11,7 @@
 #import "DUIContactActionCell.h"
 #import "DUIContactCell.h"
 #import "DHeader.h"
-
+#import "DUINewFriendViewController.h"
 
 #import "DFriendProfileControllerServiceProtocol.h"
 #import "DServiceManager.h"
@@ -91,6 +91,9 @@ static NSString* s_UITableViewHeaderFooterView_reuseId = @"UITableViewHeaderFoot
 - (void)onAddNewFriend:(DUIContactActionCell*)sender
 {
     NSLog(@"%s", __func__);
+    DUINewFriendViewController* vc = [[DUINewFriendViewController alloc] init];
+    vc.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onGroupConversation:(DUIContactActionCell*)sender

@@ -7,9 +7,11 @@
 //
 
 #import "DUIGroupPendencyCell.h"
-#import "MMLayout/UIView+MMLayout.h"
 #import "DHeader.h"
 #import "DCommon.h"
+
+#import "MMLayout/UIView+MMLayout.h"
+#import "ReactiveObjC/ReactiveObjC.h"
 
 @implementation DUIGroupPendencyCellData
 
@@ -90,6 +92,26 @@
         self.agreeButton.layer.borderWidth = 1;
     }
     self.agreeButton.mm_sizeToFit().mm_width(self.agreeButton.mm_w+20);
+    
+    @weakify(self)
+    [[RACObserve(pendencyData, isAccepted) takeUntil:self.rac_prepareForReuseSignal] subscribeNext:^(NSNumber *isAccepted) {
+        @strongify(self)
+        if ([isAccepted boolValue]) {
+            [self.agreeButton setTitle:@"已同意" forState:UIControlStateNormal];
+            self.agreeButton.enabled = NO;
+            [self.agreeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            self.agreeButton.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+    }];
+    [[RACObserve(pendencyData, isRejectd) takeUntil:self.rac_prepareForReuseSignal] subscribeNext:^(NSNumber *isAccepted) {
+        @strongify(self)
+        if ([isAccepted boolValue]) {
+            [self.agreeButton setTitle:@"已拒绝" forState:UIControlStateNormal];
+            self.agreeButton.enabled = NO;
+            [self.agreeButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+            self.agreeButton.layer.borderColor = [UIColor clearColor].CGColor;
+        }
+    }];
 }
 
 - (void)clickAgree:(UIButton* )sender
