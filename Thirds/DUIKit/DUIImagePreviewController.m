@@ -177,6 +177,7 @@
     _imagePreview.minimumZoomScale = 0.5;
     _imagePreview.maximumZoomScale = 4;
     _imagePreview.delegate = self;
+    _imagePreview.backgroundColor = [UIColor blackColor];//过分啊
     [_imagePreview addSubview:_imageView];
     [self.view addSubview:_imagePreview];
     _imagePreview.mm_fill();
