@@ -15,7 +15,6 @@
 		3728CE8423C3159B00737362 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE8323C3159B00737362 /* main.m */; };
 		3728CE8D23C317CA00737362 /* TUIKitResource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3728CE8B23C317CA00737362 /* TUIKitResource.bundle */; };
 		3728CE8E23C317CA00737362 /* TUIKitFace.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3728CE8C23C317CA00737362 /* TUIKitFace.bundle */; };
-		3728CE9423C317E700737362 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3728CE9223C317E700737362 /* README.md */; };
 		3728CE9523C317E700737362 /* UIView+MMLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE9323C317E700737362 /* UIView+MMLayout.m */; };
 		3728CE9D23C3192200737362 /* ContactController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE9C23C3192200737362 /* ContactController.m */; };
 		3728CEA023C3193100737362 /* ConversationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3728CE9F23C3193100737362 /* ConversationController.m */; };
@@ -247,6 +246,7 @@
 		7AF23DAA23DEFD1D00C0D8DA /* DUIUnreadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */; };
 		7AF9B54A23CB55C900EDB8F2 /* DUICommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54923CB55C900EDB8F2 /* DUICommonCell.m */; };
 		7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */; };
+		EE51DD77240D0F9D000032BE /* DUIImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -753,6 +753,8 @@
 		7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DHeader.h; sourceTree = "<group>"; };
 		7AF9B54C23CB66DA00EDB8F2 /* DUIButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIButtonCell.h; sourceTree = "<group>"; };
 		7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIButtonCell.m; sourceTree = "<group>"; };
+		EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIImagePreviewController.h; sourceTree = "<group>"; };
+		EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIImagePreviewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -819,6 +821,7 @@
 		3728CE8F23C317CE00737362 /* Thirds */ = {
 			isa = PBXGroup;
 			children = (
+				3728CE9023C317E700737362 /* MMLayout */,
 				7A699D39240B4EC600A54E0C /* AFNetworking */,
 				7A699C65240B4E4600A54E0C /* SDWebImage */,
 				7ABCEE4323FD4092007AFD87 /* ReactiveObjC */,
@@ -1452,7 +1455,6 @@
 				7A0DFBAB23F7AD090055A5A9 /* DUITextMessageCell.m */,
 				7AF23DA823DEFD1D00C0D8DA /* DUIUnreadView.h */,
 				7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */,
-				3728CE9023C317E700737362 /* MMLayout */,
 				7ABCECF623FA2E92007AFD87 /* UIView+Toast.h */,
 				7ABCECF523FA2E92007AFD87 /* UIView+Toast.m */,
 				7A699C5C240A5DA800A54E0C /* DUINewFriendViewController.h */,
@@ -1463,6 +1465,8 @@
 				7A699C63240A5E3600A54E0C /* DUIPendencyCell.m */,
 				7A699D71240BA50900A54E0C /* DUIImageMessageCell.h */,
 				7A699D72240BA50900A54E0C /* DUIImageMessageCell.m */,
+				EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */,
+				EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1524,7 +1528,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3728CE9423C317E700737362 /* README.md in Resources */,
 				3728CE8123C3159B00737362 /* LaunchScreen.storyboard in Resources */,
 				3728CE7E23C3159B00737362 /* Assets.xcassets in Resources */,
 				3728CE7C23C3159600737362 /* Main.storyboard in Resources */,
@@ -1582,6 +1585,7 @@
 				7ABCEF5A23FD4092007AFD87 /* RACCompoundDisposable.m in Sources */,
 				7ABCEF4023FD4092007AFD87 /* NSDictionary+RACSequenceAdditions.m in Sources */,
 				7ABCEF0823FD4092007AFD87 /* UIStepper+RACSignalSupport.m in Sources */,
+				EE51DD77240D0F9D000032BE /* DUIImagePreviewController.m in Sources */,
 				7A699D09240B4E4600A54E0C /* SDImageCodersManager.m in Sources */,
 				7ABCECF723FA2E92007AFD87 /* UIView+Toast.m in Sources */,
 				7ABCEF5823FD4092007AFD87 /* RACEagerSequence.m in Sources */,

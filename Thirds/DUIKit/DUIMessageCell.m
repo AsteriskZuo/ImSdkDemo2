@@ -141,59 +141,54 @@ static UIFont *sIncommingNameFont;
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self setupViews];
+        self.backgroundColor = [UIColor clearColor];
+        //head
+        _avatarView = [[UIImageView alloc] init];
+        _avatarView.contentMode = UIViewContentModeScaleAspectFit;
+        _avatarView.layer.cornerRadius = 5;//default
+        UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSelectMessageAvatar:)];
+        [_avatarView addGestureRecognizer:tap1];
+        [_avatarView setUserInteractionEnabled:YES];
+        [self addSubview:_avatarView];
+
+        //nameLabel
+        _nameLabel = [[UILabel alloc] init];
+        _nameLabel.font = [UIFont systemFontOfSize:13];
+        _nameLabel.textColor = [UIColor grayColor];
+        [self addSubview:_nameLabel];
+
+        //container
+        _container = [[UIView alloc] init];
+        _container.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSelectMessage:)];
+        [_container addGestureRecognizer:tap];
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
+        [_container addGestureRecognizer:longPress];
+        [self addSubview:_container];
+        
+        //indicator
+        _indicator = [[UIActivityIndicatorView alloc] init];
+        _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
+        [self addSubview:_indicator];
+        
+        //error
+        _retryView = [[UIImageView alloc] init];
+        _retryView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *resendTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onRetryMessage:)];
+        [_retryView addGestureRecognizer:resendTap];
+        [self addSubview:_retryView];
+        
+        //已读label,由于 indicator 和 error，所以默认隐藏，消息发送成功后进行显示
+        _readReceiptLabel = [[UILabel alloc] init];
+        _readReceiptLabel.hidden = YES;
+        _readReceiptLabel.font = [UIFont systemFontOfSize:12];
+        _readReceiptLabel.textColor = [UIColor grayColor];
+        _readReceiptLabel.lineBreakMode = NSLineBreakByCharWrapping;
+        [self addSubview:_readReceiptLabel];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
-}
-
-- (void)setupViews
-{
-    self.backgroundColor = [UIColor clearColor];
-    //head
-    _avatarView = [[UIImageView alloc] init];
-    _avatarView.contentMode = UIViewContentModeScaleAspectFit;
-    _avatarView.layer.cornerRadius = 5;//default
-    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSelectMessageAvatar:)];
-    [_avatarView addGestureRecognizer:tap1];
-    [_avatarView setUserInteractionEnabled:YES];
-    [self addSubview:_avatarView];
-
-    //nameLabel
-    _nameLabel = [[UILabel alloc] init];
-    _nameLabel.font = [UIFont systemFontOfSize:13];
-    _nameLabel.textColor = [UIColor grayColor];
-    [self addSubview:_nameLabel];
-
-    //container
-    _container = [[UIView alloc] init];
-    _container.backgroundColor = [UIColor clearColor];
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onSelectMessage:)];
-    [_container addGestureRecognizer:tap];
-    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(onLongPress:)];
-    [_container addGestureRecognizer:longPress];
-    [self addSubview:_container];
-    
-    //indicator
-    _indicator = [[UIActivityIndicatorView alloc] init];
-    _indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleGray;
-    [self addSubview:_indicator];
-    
-    //error
-    _retryView = [[UIImageView alloc] init];
-    _retryView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *resendTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onRetryMessage:)];
-    [_retryView addGestureRecognizer:resendTap];
-    [self addSubview:_retryView];
-    
-    //已读label,由于 indicator 和 error，所以默认隐藏，消息发送成功后进行显示
-    _readReceiptLabel = [[UILabel alloc] init];
-    _readReceiptLabel.hidden = YES;
-    _readReceiptLabel.font = [UIFont systemFontOfSize:12];
-    _readReceiptLabel.textColor = [UIColor grayColor];
-    _readReceiptLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    [self addSubview:_readReceiptLabel];
-    
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)onSelectMessageAvatar:(UIGestureRecognizer*)sender

@@ -75,6 +75,18 @@
 //    }];
 }
 
+//- (void)updateProgress:(NSUInteger)progress withType:(TUIImageType)type
+//{
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        if (type == TImage_Type_Thumb)
+//            self.thumbProgress = progress;
+//        if (type == TImage_Type_Large)
+//            self.largeProgress = progress;
+//        if (type == TImage_Type_Origin)
+//            self.originProgress = progress;
+//    });
+//}
+
 - (void)decodeImage:(DUIImageType)type
 {
     BOOL isExist = NO;
@@ -181,51 +193,51 @@
 //    return nil;
 //}
 
-//- (CGSize)contentSize
-//{
-//    CGSize size = CGSizeZero;
-//    BOOL isDir = NO;
-//    if(![self.path isEqualToString:@""] &&
-//       [[NSFileManager defaultManager] fileExistsAtPath:self.path isDirectory:&isDir]){
-//        if(!isDir){
-//            size = [UIImage imageWithContentsOfFile:self.path].size;
-//        }
-//    }
-//
-//    if (CGSizeEqualToSize(size, CGSizeZero)) {
-//        for (TUIImageItem *item in self.items) {
-//            if(item.type == TImage_Type_Thumb){
-//                size = item.size;
-//            }
-//        }
-//    }
-//    if (CGSizeEqualToSize(size, CGSizeZero)) {
-//        for (TUIImageItem *item in self.items) {
-//            if(item.type == TImage_Type_Large){
-//                size = item.size;
-//            }
-//        }
-//    }
-//    if (CGSizeEqualToSize(size, CGSizeZero)) {
-//        for (TUIImageItem *item in self.items) {
-//            if(item.type == TImage_Type_Origin){
-//                size = item.size;
-//            }
-//        }
-//    }
-//
-//    if(CGSizeEqualToSize(size, CGSizeZero)){
-//        return size;
-//    }
-//    if(size.height > size.width){
-//        size.width = size.width / size.height * TImageMessageCell_Image_Height_Max;
-//        size.height = TImageMessageCell_Image_Height_Max;
-//    } else {
-//        size.height = size.height / size.width * TImageMessageCell_Image_Width_Max;
-//        size.width = TImageMessageCell_Image_Width_Max;
-//    }
-//    return size;
-//}
+- (CGSize)contentSize
+{
+    CGSize size = CGSizeZero;
+    BOOL isDir = NO;
+    if(![self.path isEqualToString:@""] &&
+       [[NSFileManager defaultManager] fileExistsAtPath:self.path isDirectory:&isDir]){
+        if(!isDir){
+            size = [UIImage imageWithContentsOfFile:self.path].size;
+        }
+    }
+
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        for (DUIImageItem *item in self.items) {
+            if(item.type == TImage_Type_Thumb){
+                size = item.size;
+            }
+        }
+    }
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        for (DUIImageItem *item in self.items) {
+            if(item.type == TImage_Type_Large){
+                size = item.size;
+            }
+        }
+    }
+    if (CGSizeEqualToSize(size, CGSizeZero)) {
+        for (DUIImageItem *item in self.items) {
+            if(item.type == TImage_Type_Origin){
+                size = item.size;
+            }
+        }
+    }
+
+    if(CGSizeEqualToSize(size, CGSizeZero)){
+        return size;
+    }
+    if(size.height > size.width){
+        size.width = size.width / size.height * TImageMessageCell_Image_Height_Max;
+        size.height = TImageMessageCell_Image_Height_Max;
+    } else {
+        size.height = size.height / size.width * TImageMessageCell_Image_Width_Max;
+        size.width = TImageMessageCell_Image_Width_Max;
+    }
+    return size;
+}
 
 @end
 
@@ -290,6 +302,11 @@
         @strongify(self)
         if (thumbImage) {
             self.thumb.image = thumbImage;
+//            self.thumb.backgroundColor = [UIColor redColor];
+//            self.container.backgroundColor = [UIColor greenColor];
+//
+//            NSLog(@"%s,%d,thumb.size=%f,%f", __func__, __LINE__, self.thumb.image.size.width, self.thumb.image.size.height);
+//            NSLog(@"%s,%d,container.size=%f,%f, origin=%f,%f", __func__, __LINE__, self.container.frame.size.width, self.container.frame.size.height, self.container.frame.origin.x, self.container.frame.origin.y);
         }
     }];
     

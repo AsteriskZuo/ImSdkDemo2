@@ -24,7 +24,7 @@
 #import "DHelper.h"
 #import "DUIConversationCell.h"
 //#import "TIMMessage+DataProvider.h"
-//#import "TUIImageViewController.h"
+#import "DUIImagePreviewController.h"
 //#import "TUIVideoViewController.h"
 //#import "TUIFileViewController.h"
 //#import "TUIConversationDataProviderService.h"
@@ -474,9 +474,9 @@
 //    if([cell isKindOfClass:[TUIVoiceMessageCell class]]){
 //        [self playVoiceMessage:(TUIVoiceMessageCell *)cell];
 //    }
-//    if ([cell isKindOfClass:[TUIImageMessageCell class]]) {
-//        [self showImageMessage:(TUIImageMessageCell *)cell];
-//    }
+    if ([cell isKindOfClass:[DUIImageMessageCell class]]) {
+        [self showImageMessage:(DUIImageMessageCell *)cell];
+    }
 //    if ([cell isKindOfClass:[TUIVideoMessageCell class]]) {
 //        [self showVideoMessage:(TUIVideoMessageCell *)cell];
 //    }
@@ -607,6 +607,44 @@
 //    [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
 //    [self.tableView endUpdates];
 //    [self scrollToBottom:YES];
+//}
+
+//- (void)playVoiceMessage:(TUIVoiceMessageCell *)cell
+//{
+//    for (NSInteger index = 0; index < _uiMsgs.count; ++index) {
+//        if(![_uiMsgs[index] isKindOfClass:[TUIVoiceMessageCellData class]]){
+//            continue;
+//        }
+//        TUIVoiceMessageCellData *uiMsg = _uiMsgs[index];
+//        if(uiMsg == cell.voiceData){
+//            [uiMsg playVoiceMessage];
+//            cell.voiceReadPoint.hidden = YES;
+//        }
+//        else{
+//            [uiMsg stopVoiceMessage];
+//        }
+//    }
+//}
+
+- (void)showImageMessage:(DUIImageMessageCell *)cell
+{
+    DUIImagePreviewController *image = [[DUIImagePreviewController alloc] init];
+    image.data = [cell imageData];
+    [self.navigationController pushViewController:image animated:YES];
+}
+
+//- (void)showVideoMessage:(TUIVideoMessageCell *)cell
+//{
+//    TUIVideoViewController *video = [[TUIVideoViewController alloc] init];
+//    video.data = [cell videoData];
+//    [self.navigationController pushViewController:video animated:YES];
+//}
+//
+//- (void)showFileMessage:(TUIFileMessageCell *)cell
+//{
+//    TUIFileViewController *file = [[TUIFileViewController alloc] init];
+//    file.data = [cell fileData];
+//    [self.navigationController pushViewController:file animated:YES];
 //}
 
 @end
