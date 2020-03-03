@@ -138,6 +138,16 @@
     _inputTextView.frame = _recordButton.frame;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGRect newFrame = self.frame;
+//    newFrame.size.width = [super frame].size.width;
+    newFrame.size.width = Screen_Width;
+    self.frame = newFrame;
+    [self defaultLayout];
+}
+
 - (void)layoutButton:(CGFloat)height
 {
     CGRect frame = self.frame;
