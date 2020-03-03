@@ -11,7 +11,7 @@
 #import "DUIMessageCell.h"
 #import "DUITextMessageCell.h"
 //#import "TUISystemMessageCell.h"
-//#import "TUIVoiceMessageCell.h"
+#import "DUIVoiceMessageCell.h"
 #import "DUIImageMessageCell.h"
 //#import "TUIFaceMessageCell.h"
 //#import "TUIVideoMessageCell.h"
@@ -95,7 +95,7 @@
     self.tableView.backgroundColor = TMessageController_Background_Color;
 
     [self.tableView registerClass:[DUITextMessageCell class] forCellReuseIdentifier:TTextMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUIVoiceMessageCell class] forCellReuseIdentifier:TVoiceMessageCell_ReuseId];
+    [self.tableView registerClass:[DUIVoiceMessageCell class] forCellReuseIdentifier:TVoiceMessageCell_ReuseId];
     [self.tableView registerClass:[DUIImageMessageCell class] forCellReuseIdentifier:TImageMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
@@ -273,6 +273,13 @@
         DUIImageMessageCellData *uiImage = (DUIImageMessageCellData *)data;
         imImage.path = uiImage.path;
         [msg addElem:imImage];
+    } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
+        DIMSoundElem *imImage = [[DIMSoundElem alloc] init];
+        DUIVoiceMessageCellData *uiImage = (DUIVoiceMessageCellData *)data;
+        imImage.path = uiImage.path;
+        imImage.second = uiImage.duration;
+        imImage.dataSize = uiImage.length;
+        [msg addElem:imImage];
     }
     return nil;
 }
@@ -381,9 +388,9 @@
 //        else if([data isKindOfClass:[TUIVideoMessageCellData class]]) {
 //            data.reuseId = TVideoMessageCell_ReuseId;
 //        }
-//        else if([data isKindOfClass:[TUIVoiceMessageCellData class]]) {
-//            data.reuseId = TVoiceMessageCell_ReuseId;
-//        }
+        else if([data isKindOfClass:[DUIVoiceMessageCellData class]]) {
+            data.reuseId = TVoiceMessageCell_ReuseId;
+        }
 //        else if([data isKindOfClass:[TUIFileMessageCellData class]]) {
 //            data.reuseId = TFileMessageCell_ReuseId;
 //        }
@@ -471,9 +478,9 @@
 
 - (void)onSelectMessage:(DUIMessageCell *)cell
 {
-//    if([cell isKindOfClass:[TUIVoiceMessageCell class]]){
-//        [self playVoiceMessage:(TUIVoiceMessageCell *)cell];
-//    }
+    if([cell isKindOfClass:[DUIVoiceMessageCell class]]){
+        [self playVoiceMessage:(DUIVoiceMessageCell *)cell];
+    }
     if ([cell isKindOfClass:[DUIImageMessageCell class]]) {
         [self showImageMessage:(DUIImageMessageCell *)cell];
     }
@@ -609,22 +616,22 @@
 //    [self scrollToBottom:YES];
 //}
 
-//- (void)playVoiceMessage:(TUIVoiceMessageCell *)cell
-//{
-//    for (NSInteger index = 0; index < _uiMsgs.count; ++index) {
-//        if(![_uiMsgs[index] isKindOfClass:[TUIVoiceMessageCellData class]]){
-//            continue;
-//        }
-//        TUIVoiceMessageCellData *uiMsg = _uiMsgs[index];
-//        if(uiMsg == cell.voiceData){
-//            [uiMsg playVoiceMessage];
-//            cell.voiceReadPoint.hidden = YES;
-//        }
-//        else{
-//            [uiMsg stopVoiceMessage];
-//        }
-//    }
-//}
+- (void)playVoiceMessage:(DUIVoiceMessageCell *)cell
+{
+    for (NSInteger index = 0; index < _uiMsgs.count; ++index) {
+        if(![_uiMsgs[index] isKindOfClass:[DUIVoiceMessageCellData class]]){
+            continue;
+        }
+        DUIVoiceMessageCellData *uiMsg = _uiMsgs[index];
+        if(uiMsg == cell.voiceData){
+            [uiMsg playVoiceMessage];
+            cell.voiceReadPoint.hidden = YES;
+        }
+        else{
+            [uiMsg stopVoiceMessage];
+        }
+    }
+}
 
 - (void)showImageMessage:(DUIImageMessageCell *)cell
 {

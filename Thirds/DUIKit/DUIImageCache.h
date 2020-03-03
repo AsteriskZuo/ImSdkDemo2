@@ -36,6 +36,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param path 本地缓存所在路径
  */
 - (UIImage *)getResourceFromCache:(NSString *)path;
+- (UIImage *)getResourceFromCacheWithAutoAdd:(NSString *)path;
 
 /**
  *  将表情添加进本地缓存中

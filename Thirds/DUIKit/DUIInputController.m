@@ -15,7 +15,9 @@
 #import "DHeader.h"
 #import "DUIKit.h"
 #import "DUITextMessageCell.h"
+#import "DUIVoiceMessageCell.h"
 #import "DUIFaceCell.h"
+
 #import <AVFoundation/AVFoundation.h>
 
 
@@ -275,13 +277,13 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
     int duration = (int)CMTimeGetSeconds(audioAsset.duration);
     int length = (int)[[[NSFileManager defaultManager] attributesOfItemAtPath:path error:nil] fileSize];
 
-//    TUIVoiceMessageCellData *voice = [[TUIVoiceMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-//    voice.path = path;
-//    voice.duration = duration;
-//    voice.length = length;
-//    if(_delegate && [_delegate respondsToSelector:@selector(inputController:didSendMessage:)]){
-//        [_delegate inputController:self didSendMessage:voice];
-//    }
+    DUIVoiceMessageCellData *voice = [[DUIVoiceMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+    voice.path = path;
+    voice.duration = duration;
+    voice.length = length;
+    if(_delegate && [_delegate respondsToSelector:@selector(inputController:didSendMessage:)]){
+        [_delegate inputController:self didSendMessage:voice];
+    }
 }
 
 #pragma mark - DUIFaceMenuViewDelegate

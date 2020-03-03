@@ -47,7 +47,7 @@ NS_ASSUME_NONNULL_BEGIN
  * <pre>
  *  - (TUIMessageCellData *)chatController:(TUIChatController *)controller onNewMessage:(TIMMessage *)msg
  *  {
- *     TIMElem *elem = [msg getElem:0];
+ *     DIMElem *elem = [msg getElem:0];
  *     //判断是否为自定义元素。
  *     if([elem isKindOfClass:[TIMCustomElem class]]){
  *        MyCustomCellData *cellData = [[MyCustomCellData alloc] initWithDirection:msg.isSelf ? MsgDirectionOutgoing : MsgDirectionIncoming];

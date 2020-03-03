@@ -61,6 +61,19 @@
     return image;
 }
 
+- (UIImage *)getResourceFromCacheWithAutoAdd:(NSString *)path
+{
+    if(path.length == 0){
+        return nil;
+    }
+    UIImage *image = [_resourceCache objectForKey:path];
+    if(!image){
+        image = [UIImage imageNamed:path];
+        [self addResourceToCache:path];//yu.zuo:这样做才灵活:如果是高并发这样写应该会有问题
+    }
+    return image;
+}
+
 - (void)addFaceToCache:(NSString *)path
 {
     __weak typeof(self) ws = self;

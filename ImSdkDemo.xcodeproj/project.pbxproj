@@ -26,7 +26,6 @@
 		7A0DFB9723EFB58A0055A5A9 /* DUIMessageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9623EFB58A0055A5A9 /* DUIMessageController.m */; };
 		7A0DFB9A23EFB5AB0055A5A9 /* DUIInputController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9923EFB5AB0055A5A9 /* DUIInputController.m */; };
 		7A0DFB9D23F011300055A5A9 /* NSDate+TUIKIT.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */; };
-		7A0DFBA023F01D510055A5A9 /* DIMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */; };
 		7A0DFBA323F01F770055A5A9 /* DIMConversation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA223F01F770055A5A9 /* DIMConversation.m */; };
 		7A0DFBA623F683A50055A5A9 /* DUIImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */; };
 		7A0DFBA923F685430055A5A9 /* DHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA823F685430055A5A9 /* DHelper.m */; };
@@ -247,6 +246,14 @@
 		7AF9B54A23CB55C900EDB8F2 /* DUICommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54923CB55C900EDB8F2 /* DUICommonCell.m */; };
 		7AF9B54E23CB66DA00EDB8F2 /* DUIButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */; };
 		EE51DD77240D0F9D000032BE /* DUIImagePreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */; };
+		EE51DD7A240DEC89000032BE /* DUIVoiceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */; };
+		EE51DD7D240E102D000032BE /* DIMMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD7C240E102D000032BE /* DIMMessage.m */; };
+		EE51DD80240E115E000032BE /* DUIRecordPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD7F240E115E000032BE /* DUIRecordPopView.m */; };
+		EE51DD9C240E3429000032BE /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE51DD8E240E3429000032BE /* libopencore-amrwb.a */; };
+		EE51DD9D240E3429000032BE /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EE51DD94240E3429000032BE /* libopencore-amrnb.a */; };
+		EE51DD9E240E3429000032BE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD97240E3429000032BE /* wav.mm */; };
+		EE51DD9F240E3429000032BE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD98240E3429000032BE /* amrFileCodec.mm */; };
+		EE51DDA0240E3429000032BE /* EMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -286,7 +293,6 @@
 		7A0DFB9B23F011300055A5A9 /* NSDate+TUIKIT.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+TUIKIT.m"; sourceTree = "<group>"; };
 		7A0DFB9C23F011300055A5A9 /* NSDate+TUIKIT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+TUIKIT.h"; sourceTree = "<group>"; };
 		7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIMMessage.h; sourceTree = "<group>"; };
-		7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIMMessage.m; sourceTree = "<group>"; };
 		7A0DFBA123F01F770055A5A9 /* DIMConversation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIMConversation.h; sourceTree = "<group>"; };
 		7A0DFBA223F01F770055A5A9 /* DIMConversation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIMConversation.m; sourceTree = "<group>"; };
 		7A0DFBA423F683A50055A5A9 /* DUIImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIImageCache.h; sourceTree = "<group>"; };
@@ -755,6 +761,23 @@
 		7AF9B54D23CB66DA00EDB8F2 /* DUIButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIButtonCell.m; sourceTree = "<group>"; };
 		EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIImagePreviewController.h; sourceTree = "<group>"; };
 		EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIImagePreviewController.m; sourceTree = "<group>"; };
+		EE51DD78240DEC89000032BE /* DUIVoiceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIVoiceMessageCell.h; sourceTree = "<group>"; };
+		EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIVoiceMessageCell.m; sourceTree = "<group>"; };
+		EE51DD7C240E102D000032BE /* DIMMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIMMessage.m; sourceTree = "<group>"; };
+		EE51DD7E240E115E000032BE /* DUIRecordPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIRecordPopView.h; sourceTree = "<group>"; };
+		EE51DD7F240E115E000032BE /* DUIRecordPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIRecordPopView.m; sourceTree = "<group>"; };
+		EE51DD8E240E3429000032BE /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		EE51DD8F240E3429000032BE /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		EE51DD90240E3429000032BE /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		EE51DD91240E3429000032BE /* EMVoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVoiceConverter.h; sourceTree = "<group>"; };
+		EE51DD93240E3429000032BE /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		EE51DD94240E3429000032BE /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		EE51DD95240E3429000032BE /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		EE51DD97240E3429000032BE /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		EE51DD98240E3429000032BE /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		EE51DD99240E3429000032BE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		EE51DD9A240E3429000032BE /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EMVoiceConverter.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -762,6 +785,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EE51DD9C240E3429000032BE /* libopencore-amrwb.a in Frameworks */,
+				EE51DD9D240E3429000032BE /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -821,11 +846,13 @@
 		3728CE8F23C317CE00737362 /* Thirds */ = {
 			isa = PBXGroup;
 			children = (
-				3728CE9023C317E700737362 /* MMLayout */,
+				EE51DD8C240E3429000032BE /* VoiceConvert */,
 				7A699D39240B4EC600A54E0C /* AFNetworking */,
-				7A699C65240B4E4600A54E0C /* SDWebImage */,
-				7ABCEE4323FD4092007AFD87 /* ReactiveObjC */,
+				EE51DD7B240E0B83000032BE /* DKit */,
 				7AF9B54723CB54F900EDB8F2 /* DUIKit */,
+				3728CE9023C317E700737362 /* MMLayout */,
+				7ABCEE4323FD4092007AFD87 /* ReactiveObjC */,
+				7A699C65240B4E4600A54E0C /* SDWebImage */,
 				7AF9B54623CB4C4300EDB8F2 /* TUIKit */,
 			);
 			path = Thirds;
@@ -1376,10 +1403,6 @@
 				7AF9B54B23CB5F0F00EDB8F2 /* DHeader.h */,
 				7A0DFBA723F685430055A5A9 /* DHelper.h */,
 				7A0DFBA823F685430055A5A9 /* DHelper.m */,
-				7A0DFBA123F01F770055A5A9 /* DIMConversation.h */,
-				7A0DFBA223F01F770055A5A9 /* DIMConversation.m */,
-				7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */,
-				7A0DFB9F23F01D510055A5A9 /* DIMMessage.m */,
 				7AD283C223EA997700893CC9 /* DServiceManager.h */,
 				7AD283C323EA997700893CC9 /* DServiceManager.m */,
 				7AD283C523EABF4000893CC9 /* DServiceProtocol.h */,
@@ -1467,8 +1490,66 @@
 				7A699D72240BA50900A54E0C /* DUIImageMessageCell.m */,
 				EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */,
 				EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */,
+				EE51DD78240DEC89000032BE /* DUIVoiceMessageCell.h */,
+				EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */,
+				EE51DD7E240E115E000032BE /* DUIRecordPopView.h */,
+				EE51DD7F240E115E000032BE /* DUIRecordPopView.m */,
 			);
 			path = DUIKit;
+			sourceTree = "<group>";
+		};
+		EE51DD7B240E0B83000032BE /* DKit */ = {
+			isa = PBXGroup;
+			children = (
+				7A0DFBA123F01F770055A5A9 /* DIMConversation.h */,
+				7A0DFBA223F01F770055A5A9 /* DIMConversation.m */,
+				7A0DFB9E23F01D510055A5A9 /* DIMMessage.h */,
+				EE51DD7C240E102D000032BE /* DIMMessage.m */,
+			);
+			path = DKit;
+			sourceTree = "<group>";
+		};
+		EE51DD8C240E3429000032BE /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				EE51DD8D240E3429000032BE /* opencore-amrwb */,
+				EE51DD92240E3429000032BE /* opencore-amrnb */,
+				EE51DD96240E3429000032BE /* amrwapper */,
+				EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */,
+				EE51DD91240E3429000032BE /* EMVoiceConverter.h */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		EE51DD8D240E3429000032BE /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				EE51DD8E240E3429000032BE /* libopencore-amrwb.a */,
+				EE51DD8F240E3429000032BE /* if_rom.h */,
+				EE51DD90240E3429000032BE /* dec_if.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		EE51DD92240E3429000032BE /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				EE51DD93240E3429000032BE /* interf_dec.h */,
+				EE51DD94240E3429000032BE /* libopencore-amrnb.a */,
+				EE51DD95240E3429000032BE /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		EE51DD96240E3429000032BE /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				EE51DD97240E3429000032BE /* wav.mm */,
+				EE51DD98240E3429000032BE /* amrFileCodec.mm */,
+				EE51DD99240E3429000032BE /* amrFileCodec.h */,
+				EE51DD9A240E3429000032BE /* wav.h */,
+			);
+			path = amrwapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1642,6 +1723,7 @@
 				7ABCEF3C23FD4092007AFD87 /* NSArray+RACSequenceAdditions.m in Sources */,
 				7ABCEF1723FD4092007AFD87 /* RACSignal+Operations.m in Sources */,
 				7ABCEF3423FD4092007AFD87 /* RACSignalProvider.d in Sources */,
+				EE51DD80240E115E000032BE /* DUIRecordPopView.m in Sources */,
 				7ABCEF2A23FD4092007AFD87 /* UIControl+RACSignalSupportPrivate.m in Sources */,
 				7A699D2F240B4E4600A54E0C /* SDImageAssetManager.m in Sources */,
 				7ABCEF0F23FD4092007AFD87 /* UITableViewCell+RACSignalSupport.m in Sources */,
@@ -1681,6 +1763,7 @@
 				7A699D6F240B4EC600A54E0C /* AFNetworkReachabilityManager.m in Sources */,
 				7ABCEF0923FD4092007AFD87 /* RACSubscriptionScheduler.m in Sources */,
 				7ABCEF5423FD4092007AFD87 /* NSObject+RACKVOWrapper.m in Sources */,
+				EE51DDA0240E3429000032BE /* EMVoiceConverter.mm in Sources */,
 				7A699D0E240B4E4600A54E0C /* SDWebImageDownloaderResponseModifier.m in Sources */,
 				7ABCEF5023FD4092007AFD87 /* UIActionSheet+RACSignalSupport.m in Sources */,
 				7A699D1D240B4E4600A54E0C /* SDImageCachesManager.m in Sources */,
@@ -1692,12 +1775,14 @@
 				7A699CFE240B4E4600A54E0C /* UIImageView+HighlightedWebCache.m in Sources */,
 				7A699D6B240B4EC600A54E0C /* AFURLResponseSerialization.m in Sources */,
 				7AF23D9E23DEE5ED00C0D8DA /* DUIConversationListController.m in Sources */,
+				EE51DD9E240E3429000032BE /* wav.mm in Sources */,
 				7A699D23240B4E4600A54E0C /* SDImageCacheDefine.m in Sources */,
 				7A699D0C240B4E4600A54E0C /* SDWebImageCompat.m in Sources */,
 				7AD283E423ED794900893CC9 /* ChatController.m in Sources */,
 				7A699D1B240B4E4600A54E0C /* SDWebImageDownloaderOperation.m in Sources */,
 				3728CE9D23C3192200737362 /* ContactController.m in Sources */,
 				7ABCEF5623FD4092007AFD87 /* RACSubscriber.m in Sources */,
+				EE51DD9F240E3429000032BE /* amrFileCodec.mm in Sources */,
 				7A699D27240B4E4600A54E0C /* SDWebImageDefine.m in Sources */,
 				7AA427CF24016981000D0C52 /* DUIFaceMenuView.m in Sources */,
 				7A699D04240B4E4600A54E0C /* SDWebImageDownloader.m in Sources */,
@@ -1714,7 +1799,6 @@
 				7A699D25240B4E4600A54E0C /* SDImageCacheConfig.m in Sources */,
 				7ABCEF1423FD4092007AFD87 /* RACIndexSetSequence.m in Sources */,
 				7A699D2A240B4E4600A54E0C /* UIView+WebCache.m in Sources */,
-				7A0DFBA023F01D510055A5A9 /* DIMMessage.m in Sources */,
 				7A699D08240B4E4600A54E0C /* UIImage+GIF.m in Sources */,
 				7AB4DA4F23E5786C0087E1E6 /* DContactListViewModel.m in Sources */,
 				7A699D31240B4E4600A54E0C /* SDWeakProxy.m in Sources */,
@@ -1732,6 +1816,7 @@
 				7AEFBC5D2407E40F006FFBDB /* DUIGroupPendencyController.m in Sources */,
 				7ABCEF4723FD4092007AFD87 /* NSSet+RACSequenceAdditions.m in Sources */,
 				37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */,
+				EE51DD7A240DEC89000032BE /* DUIVoiceMessageCell.m in Sources */,
 				7ABCEF0D23FD4092007AFD87 /* UITableViewHeaderFooterView+RACSignalSupport.m in Sources */,
 				7ABCEF1523FD4092007AFD87 /* UITextView+RACSignalSupport.m in Sources */,
 				7A699D69240B4EC600A54E0C /* AFAutoPurgingImageCache.m in Sources */,
@@ -1769,6 +1854,7 @@
 				7ABCEF5223FD4092007AFD87 /* NSObject+RACLifting.m in Sources */,
 				7ABCECEA23F7E99E007AFD87 /* DUIKit.m in Sources */,
 				7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */,
+				EE51DD7D240E102D000032BE /* DIMMessage.m in Sources */,
 				7AD283C423EA997700893CC9 /* DServiceManager.m in Sources */,
 				7ABCEF2E23FD4092007AFD87 /* RACBlockTrampoline.m in Sources */,
 				7AEFBC5A2407D6FB006FFBDB /* DUIGroupPendencyViewModel.m in Sources */,
@@ -1928,11 +2014,19 @@
 					"\"$(SRCROOT)/Thirds/ReactiveObjC\"",
 					"\"$(SRCROOT)/Thirds/SDWebImage\"",
 					"\"$(SRCROOT)/Thirds/AFNetworking\"",
+					"\"$(SRCROOT)/Thirds/DKit\"",
+					"\"$(SRCROOT)/Thirds/DUIKit\"",
+					"\"$(SRCROOT)/Thirds/Decoder\"",
 				);
 				INFOPLIST_FILE = ImSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Thirds/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/Thirds/VoiceConvert/opencore-amrnb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.citylife.ios.ImSdkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1954,11 +2048,19 @@
 					"\"$(SRCROOT)/Thirds/ReactiveObjC\"",
 					"\"$(SRCROOT)/Thirds/SDWebImage\"",
 					"\"$(SRCROOT)/Thirds/AFNetworking\"",
+					"\"$(SRCROOT)/Thirds/DKit\"",
+					"\"$(SRCROOT)/Thirds/DUIKit\"",
+					"\"$(SRCROOT)/Thirds/Decoder\"",
 				);
 				INFOPLIST_FILE = ImSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Thirds/VoiceConvert/opencore-amrwb",
+					"$(PROJECT_DIR)/Thirds/VoiceConvert/opencore-amrnb",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.citylife.ios.ImSdkDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

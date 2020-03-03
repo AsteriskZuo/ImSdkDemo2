@@ -231,4 +231,11 @@
 #define TMessageController_Background_Color RGBA(244, 244, 246, 1.0)
 #define TMessageController_Header_Height 40
 
+//record
+#define Record_Background_Color RGBA(0, 0, 0, 0.6)
+#define Record_Background_Size CGSizeMake(Screen_Width * 0.4, Screen_Width * 0.4)
+#define Record_Title_Height 30
+#define Record_Title_Background_Color RGBA(186, 60, 65, 1.0)
+#define Record_Margin 8
+
 #endif /* DHeader_h */

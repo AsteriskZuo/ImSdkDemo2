@@ -125,7 +125,7 @@ typedef NS_ENUM(NSInteger, DUIImageType)
  *  2、当图像不在本地时，通过 IM SDK 中 TIMImage 提供的 getImage 接口在线获取。
  *  3-1、下载进度百分比则通过接口回调的 progress（代码块）参数进行更新。
  *  3-2、代码块具有 curSize 和 totalSize 两个参数，由回调函数维护 curSize，然后通过 curSize * 100 / totalSize 计算出当前进度百分比。
- *  4-1、图像消息中存放的格式为 TIMElem，图片列表需通过 TIMElem.imageList 获取，在 imalgelist 中，包含了原图、大图与缩略图，可通过 imageType 进一步获取。
+ *  4-1、图像消息中存放的格式为 DIMElem，图片列表需通过 DIMElem.imageList 获取，在 imalgelist 中，包含了原图、大图与缩略图，可通过 imageType 进一步获取。
  *  4-2、通过 SDK 接口获取的图像为二进制文件，需先进行解码，转换为 CGIamge 进行解码操作后包装为 UIImage 才可使用。
  *  5、下载成功后，会生成图像 path 并存储下来。
  */

@@ -12,6 +12,8 @@
 #import "DUIError.h"
 #import "SDWebImage.h"
 
+#import "EMVoiceConverter.h"
+
 typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 
 @implementation DHelper
@@ -84,20 +86,17 @@ typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 
 + (BOOL)isAmr:(NSString *)path
 {
-//    return [EMVoiceConverter isAMRFile:path];
-    return NO;
+    return [EMVoiceConverter isAMRFile:path];
 }
 
 + (BOOL)convertAmr:(NSString*)amrPath toWav:(NSString*)wavPath
 {
-//    return [EMVoiceConverter amrToWav:amrPath wavSavePath:wavPath];
-    return NO;
+    return [EMVoiceConverter amrToWav:amrPath wavSavePath:wavPath];
 }
 
 + (BOOL)convertWav:(NSString*)wavPath toAmr:(NSString*)amrPath
 {
-//    return [EMVoiceConverter wavToAmr:wavPath amrSavePath:amrPath];
-    return NO;
+    return [EMVoiceConverter wavToAmr:wavPath amrSavePath:amrPath];
 }
 
 
