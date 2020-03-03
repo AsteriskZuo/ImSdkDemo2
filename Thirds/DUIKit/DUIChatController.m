@@ -106,6 +106,12 @@
 //    self.tipsView.hidden = NO;
 //    self.tipsView.mm_top(self.navigationController.navigationBar.mm_maxY);
     
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+    
+
+    
+    
     @weakify(self);
     [RACObserve(self, moreMenus) subscribeNext:^(NSArray *x) {
         @strongify(self)
@@ -129,6 +135,19 @@
 //            self.tipsView.hidden = YES;
 //        }
 //    }];
+}
+
+- (void)changeRotate:(NSNotification*)noti
+{
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+        || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+        //竖屏
+        NSLog(@"竖屏");
+    } else {
+        //横屏
+         NSLog(@"横屏");
+    }
+    [self.view setNeedsLayout];
 }
 
 

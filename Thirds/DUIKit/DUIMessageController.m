@@ -39,6 +39,45 @@
 
 #define MAX_MESSAGE_SEP_DLAY (5 * 60)
 
+@interface DUIPopLabel : UILabel
+
+@property (nonatomic, weak) UITableView* content;
+
+@end
+
+@implementation DUIPopLabel
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    CGRect newFrame = self.frame;
+    newFrame.size.width = Screen_Width;
+    CGFloat offset = StatusBar_Height + NavBar_Height;
+    {
+        UIInterfaceOrientation status = [UIApplication sharedApplication].statusBarOrientation;
+        if (UIInterfaceOrientationPortrait == status
+            || UIInterfaceOrientationPortraitUpsideDown == status) {
+            offset = StatusBar_Height + NavBar_Height;
+        } else if (UIInterfaceOrientationLandscapeLeft == status
+                   || UIInterfaceOrientationLandscapeRight == status) {
+            offset = NavBar_Height;
+        } else {
+            NSLog(@"%s,%d", __func__, __LINE__);
+        }
+    }
+    if (_content) {
+        __strong typeof(_content) scontent = _content;
+        newFrame.origin.y = offset + scontent.contentOffset.y;
+        NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+              , NSStringFromClass([scontent class])
+              , scontent.contentOffset.y, self.mm_y
+              , scontent.contentInset.top, scontent.contentInset.bottom, scontent.tableHeaderView.frame.size.height);
+    }
+    self.frame = newFrame;
+}
+
+@end
+
 @interface DUIMessageController () <DUIMessageCellDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) DIMConversation *conv;
 @property (nonatomic, strong) NSMutableArray *uiMsgs;
@@ -55,7 +94,7 @@
 @property (nonatomic, assign) BOOL noMoreMsg;
 @property (nonatomic, assign) BOOL firstLoad;
 //@property id<TUIConversationDataProviderServiceProtocol> conversationDataProviderService;
-@property (nonatomic, strong) UILabel* testView;
+@property (nonatomic, strong) DUIPopLabel* notifyView;
 @end
 
 @implementation DUIMessageController
@@ -109,9 +148,10 @@
     self.tableView.tableHeaderView = _indicatorView;
     
 
-    _testView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 30)];
-    _testView.backgroundColor = RGBA(100, 100, 100, 0.5);
-    [self.view addSubview:_testView];
+    _notifyView = [[DUIPopLabel alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 30)];
+    _notifyView.backgroundColor = RGBA(100, 100, 100, 0.5);
+    _notifyView.content = self.tableView;
+    [self.view addSubview:_notifyView];
 
     _heightCache = [NSMutableArray array];
     _uiMsgs = [[NSMutableArray alloc] init];
@@ -306,8 +346,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGFloat offset = StatusBar_Height + NavBar_Height;
-    _testView.mm_top(offset + scrollView.contentOffset.y);
-    NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__, NSStringFromClass([scrollView class]), scrollView.contentOffset.y, _testView.mm_y, scrollView.contentInset.top, scrollView.contentInset.bottom, self.tableView.tableHeaderView.frame.size.height);
+    _notifyView.mm_top(offset + scrollView.contentOffset.y);
+    NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__, NSStringFromClass([scrollView class]), scrollView.contentOffset.y, _notifyView.mm_y, scrollView.contentInset.top, scrollView.contentInset.bottom, self.tableView.tableHeaderView.frame.size.height);
     
     if(!_noMoreMsg && scrollView.contentOffset.y <= TMessageController_Header_Height){
         if(!_indicatorView.isAnimating){
