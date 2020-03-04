@@ -86,6 +86,11 @@
 @end
 
 
+@implementation DIMFaceElem
+
+@end
+
+
 @interface DIMMessage ()
 
 @property (nonatomic, strong) NSMutableArray* elems;

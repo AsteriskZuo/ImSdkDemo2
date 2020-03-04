@@ -17,6 +17,7 @@
 #import "DUITextMessageCell.h"
 #import "DUIVoiceMessageCell.h"
 #import "DUIFaceCell.h"
+#import "DUIFaceMessageCell.h"
 
 #import <AVFoundation/AVFoundation.h>
 
@@ -322,13 +323,13 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
         [_inputBar addEmoji:face.name];
     }
     else{
-//        TUIFaceMessageCellData *data = [[TUIFaceMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-//        data.groupIndex = group.groupIndex;
-//        data.path = face.path;
-//        data.faceName = face.name;
-//        if(_delegate && [_delegate respondsToSelector:@selector(inputController:didSendMessage:)]){
-//            [_delegate inputController:self didSendMessage:data];
-//        }
+        DUIFaceMessageCellData *data = [[DUIFaceMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+        data.groupIndex = group.groupIndex;
+        data.path = face.path;
+        data.faceName = face.name;
+        if(_delegate && [_delegate respondsToSelector:@selector(inputController:didSendMessage:)]){
+            [_delegate inputController:self didSendMessage:data];
+        }
     }
 }
 

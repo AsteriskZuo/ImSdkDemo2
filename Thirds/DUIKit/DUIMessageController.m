@@ -13,7 +13,7 @@
 //#import "TUISystemMessageCell.h"
 #import "DUIVoiceMessageCell.h"
 #import "DUIImageMessageCell.h"
-//#import "TUIFaceMessageCell.h"
+#import "DUIFaceMessageCell.h"
 //#import "TUIVideoMessageCell.h"
 #import "DUIFileMessageCell.h"
 //#import "TUIJoinGroupMessageCell.h"
@@ -137,7 +137,7 @@
     [self.tableView registerClass:[DUIVoiceMessageCell class] forCellReuseIdentifier:TVoiceMessageCell_ReuseId];
     [self.tableView registerClass:[DUIImageMessageCell class] forCellReuseIdentifier:TImageMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
+    [self.tableView registerClass:[DUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
     [self.tableView registerClass:[DUIFileMessageCell class] forCellReuseIdentifier:TFileMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIJoinGroupMessageCell class] forCellReuseIdentifier:TJoinGroupMessageCell_ReuseId];
@@ -313,20 +313,30 @@
         DUIImageMessageCellData *uiImage = (DUIImageMessageCellData *)data;
         imImage.path = uiImage.path;
         [msg addElem:imImage];
-    } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
+        return msg;
+    } else if ([data isKindOfClass:[DUIVoiceMessageCellData class]]) {
         DIMSoundElem *imImage = [[DIMSoundElem alloc] init];
         DUIVoiceMessageCellData *uiImage = (DUIVoiceMessageCellData *)data;
         imImage.path = uiImage.path;
         imImage.second = uiImage.duration;
         imImage.dataSize = uiImage.length;
         [msg addElem:imImage];
-    } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
+        return msg;
+    } else if ([data isKindOfClass:[DUIFileMessageCellData class]]) {
         DIMFileElem *imImage = [[DIMFileElem alloc] init];
         DUIFileMessageCellData *uiImage = (DUIFileMessageCellData *)data;
         imImage.path = uiImage.path;
         imImage.filename = uiImage.fileName;
         imImage.fileSize = uiImage.length;
         [msg addElem:imImage];
+        return msg;
+    } else if ([data isKindOfClass:[DUIFaceMessageCellData class]]) {
+        DIMFaceElem *imImage = [[DIMFaceElem alloc] init];
+        DUIFaceMessageCellData *uiImage = (DUIFaceMessageCellData *)data;
+        imImage.index = (int)uiImage.groupIndex;
+        imImage.data = [uiImage.faceName dataUsingEncoding:NSUTF8StringEncoding];
+        [msg addElem:imImage];
+        return msg;
     }
     return nil;
 }
@@ -426,9 +436,9 @@
         if([data isKindOfClass:[DUITextMessageCellData class]]) {
             data.reuseId = TTextMessageCell_ReuseId;
         }
-//        else if([data isKindOfClass:[TUIFaceMessageCellData class]]) {
-//            data.reuseId = TFaceMessageCell_ReuseId;
-//        }
+        else if([data isKindOfClass:[DUIFaceMessageCellData class]]) {
+            data.reuseId = TFaceMessageCell_ReuseId;
+        }
         else if([data isKindOfClass:[DUIImageMessageCellData class]]) {
             data.reuseId = TImageMessageCell_ReuseId;
         }

@@ -256,6 +256,7 @@
 		EE51DDA0240E3429000032BE /* EMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */; };
 		EE51DDA7240F9E16000032BE /* DUIFileMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */; };
 		EE51DDAA240FA494000032BE /* DUIFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDA9240FA494000032BE /* DUIFileViewController.m */; };
+		EE51DDAD240FA979000032BE /* DUIFaceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -784,6 +785,8 @@
 		EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFileMessageCell.m; sourceTree = "<group>"; };
 		EE51DDA8240FA494000032BE /* DUIFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFileViewController.h; sourceTree = "<group>"; };
 		EE51DDA9240FA494000032BE /* DUIFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFileViewController.m; sourceTree = "<group>"; };
+		EE51DDAB240FA979000032BE /* DUIFaceMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFaceMessageCell.h; sourceTree = "<group>"; };
+		EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFaceMessageCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1504,6 +1507,8 @@
 				EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */,
 				EE51DDA8240FA494000032BE /* DUIFileViewController.h */,
 				EE51DDA9240FA494000032BE /* DUIFileViewController.m */,
+				EE51DDAB240FA979000032BE /* DUIFaceMessageCell.h */,
+				EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1856,6 +1861,7 @@
 				7ABCEF0623FD4092007AFD87 /* NSFileHandle+RACSupport.m in Sources */,
 				7ABCEF4A23FD4092007AFD87 /* RACReturnSignal.m in Sources */,
 				7ABCEF2623FD4092007AFD87 /* RACSubscriptingAssignmentTrampoline.m in Sources */,
+				EE51DDAD240FA979000032BE /* DUIFaceMessageCell.m in Sources */,
 				7A699D70240B4EC600A54E0C /* AFSecurityPolicy.m in Sources */,
 				7A443CD223E05A5E00C4D740 /* DUINavigationIndicatorView.m in Sources */,
 				7ABCEF2223FD4092007AFD87 /* NSString+RACSupport.m in Sources */,
