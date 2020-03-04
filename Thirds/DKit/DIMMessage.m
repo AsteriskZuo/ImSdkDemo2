@@ -65,6 +65,27 @@
 @end
 
 
+
+@implementation DIMFileElem
+
+-(void)getUrl:(void (^)(NSString * url))urlCallBack
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getFile:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getFile:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+@end
+
+
 @interface DIMMessage ()
 
 @property (nonatomic, strong) NSMutableArray* elems;

@@ -183,6 +183,64 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
+/**
+ *  文件消息Elem
+ */
+@interface DIMFileElem : DIMElem
+/**
+ *  上传时任务 ID，可用来查询上传进度（已废弃，请在 TIMUploadProgressListener 监听上传进度）
+ */
+@property(nonatomic,assign) uint32_t taskId DEPRECATED_ATTRIBUTE;
+/**
+ *  上传时，文件的路径（设置 path 时，优先上传文件）
+ */
+@property(nonatomic,strong) NSString * path;
+/**
+ *  文件内部 ID
+ */
+@property(nonatomic,strong) NSString * uuid;
+/**
+ *  文件大小
+ */
+@property(nonatomic,assign) int fileSize;
+/**
+ *  文件显示名，发消息时设置
+ */
+@property(nonatomic,strong) NSString * filename;
+
+/**
+ *  获取文件的 URL 下载地址
+ *
+ *  @param urlCallBack 获取 URL 地址回调
+ */
+-(void)getUrl:(void (^)(NSString * url))urlCallBack;
+
+/**
+ *  获取文件数据到指定路径的文件中
+ *
+ *  getFile 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 文件保存路径
+ *  @param succ 成功回调，返回数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getFile:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+/**
+ *  获取文件数据到指定路径的文件中（有进度回调）
+ *
+ *  getFile 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 文件保存路径
+ *  @param progress 文件下载进度
+ *  @param succ 成功回调，返回数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getFile:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+@end
+
+
 @interface DIMMessage : NSObject
 
 /**

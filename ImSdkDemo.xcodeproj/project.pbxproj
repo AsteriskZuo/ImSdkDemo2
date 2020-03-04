@@ -254,6 +254,8 @@
 		EE51DD9E240E3429000032BE /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD97240E3429000032BE /* wav.mm */; };
 		EE51DD9F240E3429000032BE /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD98240E3429000032BE /* amrFileCodec.mm */; };
 		EE51DDA0240E3429000032BE /* EMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */; };
+		EE51DDA7240F9E16000032BE /* DUIFileMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */; };
+		EE51DDAA240FA494000032BE /* DUIFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDA9240FA494000032BE /* DUIFileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -778,6 +780,10 @@
 		EE51DD99240E3429000032BE /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
 		EE51DD9A240E3429000032BE /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
 		EE51DD9B240E3429000032BE /* EMVoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EMVoiceConverter.mm; sourceTree = "<group>"; };
+		EE51DDA5240F9E16000032BE /* DUIFileMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFileMessageCell.h; sourceTree = "<group>"; };
+		EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFileMessageCell.m; sourceTree = "<group>"; };
+		EE51DDA8240FA494000032BE /* DUIFileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIFileViewController.h; sourceTree = "<group>"; };
+		EE51DDA9240FA494000032BE /* DUIFileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1494,6 +1500,10 @@
 				EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */,
 				EE51DD7E240E115E000032BE /* DUIRecordPopView.h */,
 				EE51DD7F240E115E000032BE /* DUIRecordPopView.m */,
+				EE51DDA5240F9E16000032BE /* DUIFileMessageCell.h */,
+				EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */,
+				EE51DDA8240FA494000032BE /* DUIFileViewController.h */,
+				EE51DDA9240FA494000032BE /* DUIFileViewController.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1631,6 +1641,7 @@
 				7ABCEF4823FD4092007AFD87 /* RACTestScheduler.m in Sources */,
 				7ABCEF1023FD4092007AFD87 /* UISwitch+RACSignalSupport.m in Sources */,
 				7AD283D223EBA3F700893CC9 /* FriendProfileController.m in Sources */,
+				EE51DDA7240F9E16000032BE /* DUIFileMessageCell.m in Sources */,
 				7A699D18240B4E4600A54E0C /* SDImageCache.m in Sources */,
 				7A0DFB9423EE670B0055A5A9 /* DUIGroupMemberCell.m in Sources */,
 				7ABCECF423F8BB3C007AFD87 /* DUIFaceView.m in Sources */,
@@ -1784,6 +1795,7 @@
 				7ABCEF5623FD4092007AFD87 /* RACSubscriber.m in Sources */,
 				EE51DD9F240E3429000032BE /* amrFileCodec.mm in Sources */,
 				7A699D27240B4E4600A54E0C /* SDWebImageDefine.m in Sources */,
+				EE51DDAA240FA494000032BE /* DUIFileViewController.m in Sources */,
 				7AA427CF24016981000D0C52 /* DUIFaceMenuView.m in Sources */,
 				7A699D04240B4E4600A54E0C /* SDWebImageDownloader.m in Sources */,
 				7ABCEF5F23FD4092007AFD87 /* NSIndexSet+RACSequenceAdditions.m in Sources */,

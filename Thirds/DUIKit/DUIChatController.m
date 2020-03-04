@@ -16,6 +16,7 @@
 #import "DIMMessage.h"
 #import "DUIMessageCell.h"
 #import "DUIImageMessageCell.h"
+#import "DUIFileMessageCell.h"
 #import "DUIInputMoreCell.h"
 #import "DUIInputMoreView.h"
 #import "DUIInputBarView.h"
@@ -184,16 +185,6 @@
     DUIGroupPendencyController *vc = [[DUIGroupPendencyController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 
 #pragma mark - UINavigationControllerDelegate
@@ -510,16 +501,16 @@
         [[NSFileManager defaultManager] createFileAtPath:filePath contents:fileData attributes:nil];
         if([[NSFileManager defaultManager] fileExistsAtPath:filePath]){
             long fileSize = [[[NSFileManager defaultManager] attributesOfItemAtPath:filePath error:nil] fileSize];
-//            TUIFileMessageCellData *uiFile = [[TUIFileMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-//            uiFile.path = filePath;
-//            uiFile.fileName = fileName;
-//            uiFile.length = (int)fileSize;
-//            uiFile.uploadProgress = 0;
-//            [self sendMessage:uiFile];
-//
-//            if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
-//                [self.delegate chatController:self didSendMessage:uiFile];
-//            }
+            DUIFileMessageCellData *uiFile = [[DUIFileMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+            uiFile.path = filePath;
+            uiFile.fileName = fileName;
+            uiFile.length = (int)fileSize;
+            uiFile.uploadProgress = 0;
+            [self sendMessage:uiFile];
+
+            if (self.delegate && [self.delegate respondsToSelector:@selector(chatController:didSendMessage:)]) {
+                [self.delegate chatController:self didSendMessage:uiFile];
+            }
         }
     }];
     [url stopAccessingSecurityScopedResource];

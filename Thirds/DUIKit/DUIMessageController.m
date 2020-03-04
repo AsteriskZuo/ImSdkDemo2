@@ -15,7 +15,7 @@
 #import "DUIImageMessageCell.h"
 //#import "TUIFaceMessageCell.h"
 //#import "TUIVideoMessageCell.h"
-//#import "TUIFileMessageCell.h"
+#import "DUIFileMessageCell.h"
 //#import "TUIJoinGroupMessageCell.h"
 #import "DUIKitConfig.h"
 #import "DUIFaceView.h"
@@ -26,7 +26,7 @@
 //#import "TIMMessage+DataProvider.h"
 #import "DUIImagePreviewController.h"
 //#import "TUIVideoViewController.h"
-//#import "TUIFileViewController.h"
+#import "DUIFileViewController.h"
 //#import "TUIConversationDataProviderService.h"
 #import "NSString+TUICommon.h"
 #import "ReactiveObjC/ReactiveObjC.h"
@@ -139,7 +139,7 @@
 //    [self.tableView registerClass:[TUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUIFileMessageCell class] forCellReuseIdentifier:TFileMessageCell_ReuseId];
+    [self.tableView registerClass:[DUIFileMessageCell class] forCellReuseIdentifier:TFileMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIJoinGroupMessageCell class] forCellReuseIdentifier:TJoinGroupMessageCell_ReuseId];
 
 
@@ -320,6 +320,13 @@
         imImage.second = uiImage.duration;
         imImage.dataSize = uiImage.length;
         [msg addElem:imImage];
+    } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
+        DIMFileElem *imImage = [[DIMFileElem alloc] init];
+        DUIFileMessageCellData *uiImage = (DUIFileMessageCellData *)data;
+        imImage.path = uiImage.path;
+        imImage.filename = uiImage.fileName;
+        imImage.fileSize = uiImage.length;
+        [msg addElem:imImage];
     }
     return nil;
 }
@@ -431,9 +438,9 @@
         else if([data isKindOfClass:[DUIVoiceMessageCellData class]]) {
             data.reuseId = TVoiceMessageCell_ReuseId;
         }
-//        else if([data isKindOfClass:[TUIFileMessageCellData class]]) {
-//            data.reuseId = TFileMessageCell_ReuseId;
-//        }
+        else if([data isKindOfClass:[DUIFileMessageCellData class]]) {
+            data.reuseId = TFileMessageCell_ReuseId;
+        }
 //        else if([data isKindOfClass:[TUIJoinGroupMessageCellData class]]){//入群小灰条对应的数据源
 //            data.reuseId = TJoinGroupMessageCell_ReuseId;
 //        }
@@ -527,9 +534,9 @@
 //    if ([cell isKindOfClass:[TUIVideoMessageCell class]]) {
 //        [self showVideoMessage:(TUIVideoMessageCell *)cell];
 //    }
-//    if ([cell isKindOfClass:[TUIFileMessageCell class]]) {
-//        [self showFileMessage:(TUIFileMessageCell *)cell];
-//    }
+    if ([cell isKindOfClass:[DUIFileMessageCell class]]) {
+        [self showFileMessage:(DUIFileMessageCell *)cell];
+    }
     if ([self.delegate respondsToSelector:@selector(messageController:onSelectMessageContent:)]) {
         [self.delegate messageController:self onSelectMessageContent:cell];
     }
@@ -687,11 +694,11 @@
 //    [self.navigationController pushViewController:video animated:YES];
 //}
 //
-//- (void)showFileMessage:(TUIFileMessageCell *)cell
-//{
-//    TUIFileViewController *file = [[TUIFileViewController alloc] init];
-//    file.data = [cell fileData];
-//    [self.navigationController pushViewController:file animated:YES];
-//}
+- (void)showFileMessage:(DUIFileMessageCell *)cell
+{
+    DUIFileViewController *file = [[DUIFileViewController alloc] init];
+    file.data = [cell fileData];
+    [self.navigationController pushViewController:file animated:YES];
+}
 
 @end
