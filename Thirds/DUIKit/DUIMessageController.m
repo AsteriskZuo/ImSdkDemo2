@@ -66,14 +66,25 @@
         }
     }
     if (_content) {
+        //这样写？有问题？？？
         __strong typeof(_content) scontent = _content;
         newFrame.origin.y = offset + scontent.contentOffset.y;
         NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
               , NSStringFromClass([scontent class])
               , scontent.contentOffset.y, self.mm_y
               , scontent.contentInset.top, scontent.contentInset.bottom, scontent.tableHeaderView.frame.size.height);
+    } else {
+        UITableView* superView = (UITableView*)[self superview];
+        if (superView) {
+            newFrame.origin.y = offset + superView.contentOffset.y;
+            NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+                  , NSStringFromClass([superView class])
+                  , superView.contentOffset.y, self.mm_y
+                  , superView.contentInset.top, superView.contentInset.bottom, superView.tableHeaderView.frame.size.height);
+        }
+        
     }
-    self.frame = newFrame;
+    self.frame = newFrame;//导致虚拟机问题？死循环了~~~
 }
 
 @end
@@ -150,7 +161,7 @@
 
     _notifyView = [[DUIPopLabel alloc] initWithFrame:CGRectMake(0, 0, Screen_Width, 30)];
     _notifyView.backgroundColor = RGBA(100, 100, 100, 0.5);
-    _notifyView.content = self.tableView;
+//    _notifyView.content = self.tableView;
     [self.view addSubview:_notifyView];
 
     _heightCache = [NSMutableArray array];
