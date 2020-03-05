@@ -178,6 +178,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSString *)getInput;
 
+/**
+ * 更新布局
+ */
+- (void)updateLayout:(NSNotification* )notification;
+
 @end
 
 NS_ASSUME_NONNULL_END

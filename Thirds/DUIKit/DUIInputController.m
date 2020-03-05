@@ -112,6 +112,17 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
     }
 }
 
+- (void)changeRotate:(NSNotification* )notification
+{
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+        || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"竖屏");//竖屏
+    } else {
+        NSLog(@"横屏");//横屏
+    }
+    [_inputBar updateLayout:notification];
+}
+
 - (void)hideMoreAnimation
 {
     self.moreView.hidden = NO;

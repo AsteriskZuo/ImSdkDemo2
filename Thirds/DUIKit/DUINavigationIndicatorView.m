@@ -71,11 +71,11 @@
         , _title.frame.size.height > _indicator.frame.size.height ? _title.frame.size.height : _indicator.frame.size.height);
     }
     
-    NSLog(@"\n%s: title:%f,%f,%f,%f;\n indicator:%f,%f,%f,%f;\n self:%f,%f,%f,%f"
-          , __FUNCTION__
-          , _title.frame.origin.x, _title.frame.origin.y, _title.frame.size.width, _title.frame.size.height
-          , _indicator.frame.origin.x, _indicator.frame.origin.y, _indicator.frame.size.width, _indicator.frame.size.height
-          , self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+//    NSLog(@"\n%s: title:%f,%f,%f,%f;\n indicator:%f,%f,%f,%f;\n self:%f,%f,%f,%f"
+//          , __FUNCTION__
+//          , _title.frame.origin.x, _title.frame.origin.y, _title.frame.size.width, _title.frame.size.height
+//          , _indicator.frame.origin.x, _indicator.frame.origin.y, _indicator.frame.size.width, _indicator.frame.size.height
+//          , self.frame.origin.x, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
 }
 
 - (void)setLabel:(NSString *)title

@@ -42,18 +42,87 @@
 @interface DUIPopLabel : UILabel
 
 @property (nonatomic, weak) UITableView* content;
+@property (nonatomic, strong) UILabel* test;
 
 @end
 
 @implementation DUIPopLabel
 
-- (void)layoutSubviews
+- (instancetype)init
 {
-    [super layoutSubviews];
+    if (self = [super init]) {
+        _test = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 1, 1)];
+        _test.backgroundColor = [UIColor blackColor];
+        [self addSubview:_test];
+    }
+    return self;
+}
+
+- (instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        _test = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 1, 1)];
+        _test.backgroundColor = [UIColor blackColor];
+        [self addSubview:_test];
+    }
+    return self;
+}
+
+/**
+ * 只能更新子类，不能更新本身，不然就会死循环！！！！
+ */
+//- (void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//    CGRect newFrame = self.frame;
+//    newFrame.size.width = Screen_Width;
+//    CGFloat offset = StatusBar_Height + NavBar_Height;
+//    {
+//        UIInterfaceOrientation status = [UIApplication sharedApplication].statusBarOrientation;
+//        if (UIInterfaceOrientationPortrait == status
+//            || UIInterfaceOrientationPortraitUpsideDown == status) {
+//            offset = StatusBar_Height + NavBar_Height;
+//        } else if (UIInterfaceOrientationLandscapeLeft == status
+//                   || UIInterfaceOrientationLandscapeRight == status) {
+//            offset = NavBar_Height;
+//        } else {
+//            NSLog(@"%s,%d", __func__, __LINE__);
+//        }
+//    }
+//    if (_content) {
+//        //这样写？有问题？？？
+//        __strong typeof(_content) scontent = _content;
+//        newFrame.origin.y = offset + scontent.contentOffset.y;
+//        NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+//              , NSStringFromClass([scontent class])
+//              , scontent.contentOffset.y, self.mm_y
+//              , scontent.contentInset.top, scontent.contentInset.bottom, scontent.tableHeaderView.frame.size.height);
+//    } else {
+//        UITableView* superView = (UITableView*)[self superview];
+//        if (superView) {
+//            newFrame.origin.y = offset + superView.contentOffset.y;
+//            NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+//                  , NSStringFromClass([superView class])
+//                  , superView.contentOffset.y, self.mm_y
+//                  , superView.contentInset.top, superView.contentInset.bottom, superView.tableHeaderView.frame.size.height);
+//        }
+//
+//    }
+////    self.frame = newFrame;//导致虚拟机问题？死循环了~~~
+//    static int count = 0;
+//    count = count % 3;
+//    self.test.mm_left(++count);
+//}
+
+- (void)updateLayout:(NSNotification* )notification
+{
     CGRect newFrame = self.frame;
     newFrame.size.width = Screen_Width;
     CGFloat offset = StatusBar_Height + NavBar_Height;
+    
+    if (false)
     {
+        
         UIInterfaceOrientation status = [UIApplication sharedApplication].statusBarOrientation;
         if (UIInterfaceOrientationPortrait == status
             || UIInterfaceOrientationPortraitUpsideDown == status) {
@@ -65,26 +134,36 @@
             NSLog(@"%s,%d", __func__, __LINE__);
         }
     }
+    
+    if (true)
+    {
+        if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+            || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+            offset = StatusBar_Height + NavBar_Height;
+        } else {
+            offset = NavBar_Height;
+        }
+    }
     if (_content) {
         //这样写？有问题？？？
         __strong typeof(_content) scontent = _content;
         newFrame.origin.y = offset + scontent.contentOffset.y;
-        NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+        NSLog(@"%s, %@,%f,%f,%f,%f,%f,%f", __func__
               , NSStringFromClass([scontent class])
               , scontent.contentOffset.y, self.mm_y
-              , scontent.contentInset.top, scontent.contentInset.bottom, scontent.tableHeaderView.frame.size.height);
+              , scontent.contentInset.top, scontent.contentInset.bottom, scontent.tableHeaderView.frame.size.height, newFrame.origin.y);
     } else {
         UITableView* superView = (UITableView*)[self superview];
         if (superView) {
             newFrame.origin.y = offset + superView.contentOffset.y;
-            NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__
+            NSLog(@"%s, %@,%f,%f,%f,%f,%f,%f", __func__
                   , NSStringFromClass([superView class])
                   , superView.contentOffset.y, self.mm_y
-                  , superView.contentInset.top, superView.contentInset.bottom, superView.tableHeaderView.frame.size.height);
+                  , superView.contentInset.top, superView.contentInset.bottom, superView.tableHeaderView.frame.size.height, newFrame.origin.y);
         }
-        
+
     }
-    self.frame = newFrame;//导致虚拟机问题？死循环了~~~
+    self.frame = newFrame;
 }
 
 @end
@@ -169,6 +248,28 @@
     _firstLoad = YES;
     
     NSLog(@"%s,%d", __func__, self.view == self.tableView);
+}
+
+- (void)changeRotate:(NSNotification* )notification
+{
+    return;
+    
+    CGFloat offset = 0;
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+        || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"竖屏");//竖屏
+        offset = StatusBar_Height + NavBar_Height;
+    } else {
+        NSLog(@"横屏");//横屏
+        offset = StatusBar_Height + 200;
+    }
+    
+    _notifyView.mm_top(offset + self.tableView.contentOffset.y);
+    _notifyView.mm_width(Screen_Width);
+    
+    NSLog(@"[%s:%d][notify = x:%f y:%f width:%f height:%f][table = y:%f][offset = %f]", __func__, __LINE__, _notifyView.frame.origin.x, _notifyView.frame.origin.y, _notifyView.frame.size.width, _notifyView.frame.size.height, self.tableView.contentOffset.y, offset);
+    
+    [self.view setNeedsLayout];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -373,18 +474,30 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    CGFloat offset = StatusBar_Height + NavBar_Height;
+    CGFloat offset = 0;
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+        || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"竖屏");//竖屏
+        offset = StatusBar_Height + NavBar_Height;
+    } else {
+        NSLog(@"横屏");//横屏
+        offset = 32;
+    }
     _notifyView.mm_top(offset + scrollView.contentOffset.y);
-    NSLog(@"%s, %@,%f,%f,%f,%f,%f", __func__, NSStringFromClass([scrollView class]), scrollView.contentOffset.y, _notifyView.mm_y, scrollView.contentInset.top, scrollView.contentInset.bottom, self.tableView.tableHeaderView.frame.size.height);
+    _notifyView.mm_width(Screen_Width);
+    NSLog(@"[%s:%d][notify = x:%f y:%f width:%f height:%f][table = y:%f][offset = %f]", __func__, __LINE__, _notifyView.frame.origin.x, _notifyView.frame.origin.y, _notifyView.frame.size.width, _notifyView.frame.size.height, self.tableView.contentOffset.y, offset);
+    
     
     if(!_noMoreMsg && scrollView.contentOffset.y <= TMessageController_Header_Height){
         if(!_indicatorView.isAnimating){
             [_indicatorView startAnimating];
+            NSLog(@"%s,%d", __func__, __LINE__);
         }
     }
     else{
         if(_indicatorView.isAnimating){
             [_indicatorView stopAnimating];
+            NSLog(@"%s,%d", __func__, __LINE__);
         }
     }
 }

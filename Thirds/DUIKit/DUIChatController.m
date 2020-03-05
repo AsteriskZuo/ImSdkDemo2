@@ -108,7 +108,7 @@
 //    self.tipsView.mm_top(self.navigationController.navigationBar.mm_maxY);
     
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notifyRotate:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
     
 
     
@@ -138,19 +138,41 @@
 //    }];
 }
 
-- (void)changeRotate:(NSNotification*)noti
+- (void)notifyRotate:(NSNotification* )notification
 {
     if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
         || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
-        //竖屏
-        NSLog(@"竖屏");
+        NSLog(@"竖屏");//竖屏
     } else {
-        //横屏
-         NSLog(@"横屏");
+        NSLog(@"横屏");//横屏
     }
+    [self dispatchRotate:self withNotification:notification];
     [self.view setNeedsLayout];
 }
 
+- (void)dispatchRotate:(UIViewController* )controller withNotification:(NSNotification* )notification
+{
+    if (controller) {
+        NSArray<__kindof UIViewController *> * children = controller.childViewControllers;
+        for (UIViewController* child in children) {
+            [self dispatchRotate:child withNotification:notification];
+            if ([child respondsToSelector:@selector(changeRotate:)]) {
+                [child performSelector:@selector(changeRotate:) withObject:notification];
+            }
+        }
+    }
+}
+
+- (void)changeRotate:(NSNotification* )notification
+{
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait
+        || [[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"竖屏");//竖屏
+    } else {
+        NSLog(@"横屏");//横屏
+    }
+    [self.view setNeedsLayout];
+}
 
 - (instancetype)initWithConversation:(DIMConversation *)conversation
 {

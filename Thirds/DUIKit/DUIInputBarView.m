@@ -138,9 +138,8 @@
     _inputTextView.frame = _recordButton.frame;
 }
 
-- (void)layoutSubviews
+- (void)updateLayout:(NSNotification* )notification
 {
-    [super layoutSubviews];
     CGRect newFrame = self.frame;
 //    newFrame.size.width = [super frame].size.width;
     newFrame.size.width = Screen_Width;

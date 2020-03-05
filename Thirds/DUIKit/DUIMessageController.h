@@ -102,6 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param controller 委托者，消息控制器
  *  @param cell 所点击的入群消息单元
  */
+//- (void)messageController:(DUIMessageController *)controller onSelectMessageContent2:(DUIMessageCell *)cell;
 
 @end
 
