@@ -10,11 +10,11 @@
 
 #import "DUIMessageCell.h"
 #import "DUITextMessageCell.h"
-//#import "TUISystemMessageCell.h"
+#import "DUISystemMessageCell.h"
 #import "DUIVoiceMessageCell.h"
 #import "DUIImageMessageCell.h"
 #import "DUIFaceMessageCell.h"
-//#import "TUIVideoMessageCell.h"
+#import "DUIVideoMessageCell.h"
 #import "DUIFileMessageCell.h"
 //#import "TUIJoinGroupMessageCell.h"
 #import "DUIKitConfig.h"
@@ -25,7 +25,7 @@
 #import "DUIConversationCell.h"
 //#import "TIMMessage+DataProvider.h"
 #import "DUIImagePreviewController.h"
-//#import "TUIVideoViewController.h"
+#import "DUIVideoController.h"
 #import "DUIFileViewController.h"
 //#import "TUIConversationDataProviderService.h"
 #import "NSString+TUICommon.h"
@@ -226,9 +226,9 @@
     [self.tableView registerClass:[DUITextMessageCell class] forCellReuseIdentifier:TTextMessageCell_ReuseId];
     [self.tableView registerClass:[DUIVoiceMessageCell class] forCellReuseIdentifier:TVoiceMessageCell_ReuseId];
     [self.tableView registerClass:[DUIImageMessageCell class] forCellReuseIdentifier:TImageMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
+    [self.tableView registerClass:[DUISystemMessageCell class] forCellReuseIdentifier:TSystemMessageCell_ReuseId];
     [self.tableView registerClass:[DUIFaceMessageCell class] forCellReuseIdentifier:TFaceMessageCell_ReuseId];
-//    [self.tableView registerClass:[TUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
+    [self.tableView registerClass:[DUIVideoMessageCell class] forCellReuseIdentifier:TVideoMessageCell_ReuseId];
     [self.tableView registerClass:[DUIFileMessageCell class] forCellReuseIdentifier:TFileMessageCell_ReuseId];
 //    [self.tableView registerClass:[TUIJoinGroupMessageCell class] forCellReuseIdentifier:TJoinGroupMessageCell_ReuseId];
 
@@ -343,11 +343,11 @@
         if (!imMsg) {
             imMsg = [self transIMMsgFromUIMsg:msg];
         }
-//        dateMsg = [self transSystemMsgFromDate:imMsg.timestamp];
+        dateMsg = [self transSystemMsgFromDate:imMsg.timestamp];
 
     } else if (imMsg) {
         //重发
-//        dateMsg = [self transSystemMsgFromDate:[NSDate date]];
+        dateMsg = [self transSystemMsgFromDate:[NSDate date]];
 //        NSInteger row = [_uiMsgs indexOfObject:msg];
 //        [_heightCache removeObjectAtIndex:row];
 //        [_uiMsgs removeObjectAtIndex:row];
@@ -449,20 +449,32 @@
         imImage.data = [uiImage.faceName dataUsingEncoding:NSUTF8StringEncoding];
         [msg addElem:imImage];
         return msg;
+    } else if ([data isKindOfClass:[DUIVideoMessageCellData class]]) {
+        DIMVideoElem *imVideo = [[DIMVideoElem alloc] init];
+        DUIVideoMessageCellData *uiVideo = (DUIVideoMessageCellData *)data;
+        imVideo.videoPath = uiVideo.videoPath;
+        imVideo.snapshotPath = uiVideo.snapshotPath;
+        imVideo.snapshot = [[DIMSnapshot alloc] init];
+        imVideo.snapshot.width = uiVideo.snapshotItem.size.width;
+        imVideo.snapshot.height = uiVideo.snapshotItem.size.height;
+        imVideo.video = [[DIMVideo alloc] init];
+        imVideo.video.duration = (int)uiVideo.videoItem.duration;
+        imVideo.video.type = uiVideo.videoItem.type;
+        [msg addElem:imVideo];
     }
     return nil;
 }
 
-//- (TUISystemMessageCellData *)transSystemMsgFromDate:(NSDate *)date
-//{
-//    if(_msgForDate == nil || fabs([date timeIntervalSinceDate:_msgForDate.timestamp]) > MAX_MESSAGE_SEP_DLAY){
-//        TUISystemMessageCellData *system = [[TUISystemMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
-//        system.content = [date tk_messageString];
-//        system.reuseId = TSystemMessageCell_ReuseId;
-//        return system;
-//    }
-//    return nil;
-//}
+- (DUISystemMessageCellData *)transSystemMsgFromDate:(NSDate *)date
+{
+    if(_msgForDate == nil || fabs([date timeIntervalSinceDate:_msgForDate.timestamp]) > MAX_MESSAGE_SEP_DLAY){
+        DUISystemMessageCellData *system = [[DUISystemMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
+        system.content = [date tk_messageString];
+        system.reuseId = TSystemMessageCell_ReuseId;
+        return system;
+    }
+    return nil;
+}
 
 - (void)changeMsg:(DUIMessageCellData *)msg status:(DMsgStatus)status
 {
@@ -566,9 +578,9 @@
         else if([data isKindOfClass:[DUIImageMessageCellData class]]) {
             data.reuseId = TImageMessageCell_ReuseId;
         }
-//        else if([data isKindOfClass:[TUIVideoMessageCellData class]]) {
-//            data.reuseId = TVideoMessageCell_ReuseId;
-//        }
+        else if([data isKindOfClass:[DUIVideoMessageCellData class]]) {
+            data.reuseId = TVideoMessageCell_ReuseId;
+        }
         else if([data isKindOfClass:[DUIVoiceMessageCellData class]]) {
             data.reuseId = TVoiceMessageCell_ReuseId;
         }
@@ -611,49 +623,7 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 #pragma mark - message cell delegate
 
@@ -665,9 +635,9 @@
     if ([cell isKindOfClass:[DUIImageMessageCell class]]) {
         [self showImageMessage:(DUIImageMessageCell *)cell];
     }
-//    if ([cell isKindOfClass:[TUIVideoMessageCell class]]) {
-//        [self showVideoMessage:(TUIVideoMessageCell *)cell];
-//    }
+    if ([cell isKindOfClass:[DUIVideoMessageCell class]]) {
+        [self showVideoMessage:(DUIVideoMessageCell *)cell];
+    }
     if ([cell isKindOfClass:[DUIFileMessageCell class]]) {
         [self showFileMessage:(DUIFileMessageCell *)cell];
     }
@@ -821,13 +791,13 @@
     [self.navigationController pushViewController:image animated:YES];
 }
 
-//- (void)showVideoMessage:(TUIVideoMessageCell *)cell
-//{
-//    TUIVideoViewController *video = [[TUIVideoViewController alloc] init];
-//    video.data = [cell videoData];
-//    [self.navigationController pushViewController:video animated:YES];
-//}
-//
+- (void)showVideoMessage:(DUIVideoMessageCell *)cell
+{
+    DUIVideoController *video = [[DUIVideoController alloc] init];
+    video.data = [cell videoData];
+    [self.navigationController pushViewController:video animated:YES];
+}
+
 - (void)showFileMessage:(DUIFileMessageCell *)cell
 {
     DUIFileViewController *file = [[DUIFileViewController alloc] init];

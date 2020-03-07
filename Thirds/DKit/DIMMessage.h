@@ -265,6 +265,152 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
+/**
+ *  截图消息 Elem
+ */
+@interface DIMSnapshot : NSObject
+/**
+ *  图片 ID，不用设置
+ */
+@property(nonatomic,strong) NSString * uuid;
+/**
+ *  截图文件类型，发送消息时设置
+ */
+@property(nonatomic,strong) NSString * type;
+/**
+ *  图片大小，不用设置
+ */
+@property(nonatomic,assign) int size;
+/**
+ *  图片宽度，发送消息时设置
+ */
+@property(nonatomic,assign) int width;
+/**
+ *  图片高度，发送消息时设置
+ */
+@property(nonatomic,assign) int height;
+
+/**
+ *  获取截图的 URL 下载地址
+ *
+ *  @param urlCallBack 获取 URL 地址回调
+ */
+-(void)getUrl:(void (^)(NSString * url))urlCallBack;
+
+/**
+ *  获取图片
+ *
+ *  getImage 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 图片保存路径
+ *  @param succ 成功回调，返回图片数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getImage:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+/**
+ *  获取图片（有进度回调）
+ *
+ *  getImage 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 图片保存路径
+ *  @param progress 图片下载进度
+ *  @param succ 成功回调，返回图片数据
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getImage:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+@end
+
+
+/**
+ *  视频
+ */
+@interface DIMVideo : NSObject
+/**
+ *  视频消息内部 ID，不用设置
+ */
+@property(nonatomic,strong) NSString * uuid;
+/**
+ *  视频文件类型，发送消息时设置
+ */
+@property(nonatomic,strong) NSString * type;
+/**
+ *  视频大小，不用设置
+ */
+@property(nonatomic,assign) int size;
+/**
+ *  视频时长，发送消息时设置
+ */
+@property(nonatomic,assign) int duration;
+
+/**
+ *  获取视频的 URL 下载地址
+ *
+ *  @param urlCallBack 获取 URL 地址回调
+ */
+-(void)getUrl:(void (^)(NSString * url))urlCallBack;
+
+/**
+ *  获取视频
+ *
+ *  getVideo 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 视频保存路径
+ *  @param succ 成功回调
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getVideo:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail;
+
+/**
+ *  获取视频（有进度回调）
+ *
+ *  getVideo 接口每次都会从服务端下载，如需缓存或者存储，开发者可根据 uuid 作为 key 进行外部存储，ImSDK 并不会存储资源文件。
+ *
+ *  @param path 视频保存路径
+ *  @param progress 视频下载进度
+ *  @param succ 成功回调
+ *  @param fail 失败回调，返回错误码和错误描述
+ */
+- (void)getVideo:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail;
+@end
+
+/**
+ *  视频消息 Elem
+ */
+@interface DIMVideoElem : DIMElem
+
+/**
+ *  上传时任务 ID，可用来查询上传进度（已废弃，请在 TIMUploadProgressListener 监听上传进度）
+ */
+@property(nonatomic,assign) uint32_t taskId DEPRECATED_ATTRIBUTE;
+
+/**
+ *  视频文件路径，发送消息时设置
+ */
+@property(nonatomic,strong) NSString * videoPath;
+
+/**
+ *  视频信息，发送消息时设置
+ */
+@property(nonatomic,strong) DIMVideo * video;
+
+/**
+ *  截图文件路径，发送消息时设置
+ */
+@property(nonatomic,strong) NSString * snapshotPath;
+
+/**
+ *  视频截图，发送消息时设置
+ */
+@property(nonatomic,strong) DIMSnapshot * snapshot;
+
+@end
+
+
+
+
+
 @interface DIMMessage : NSObject
 
 /**

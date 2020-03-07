@@ -279,6 +279,21 @@
 
 - (void)takePictureForSend
 {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"[%s:%d][error:not available]", __func__, __LINE__);
+        if (true) {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"无法访问相机" message:@"模拟器无法使用相机功能" preferredStyle:UIAlertControllerStyleAlert];
+            [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+            [self.navigationController presentViewController:ac animated:YES completion:nil];
+        }
+        if (false) {
+            //note: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert.
+            UIAlertView* alert = [[UIAlertView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+            alert.backgroundColor = [UIColor redColor];
+        }
+        return;
+    }
+    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.cameraCaptureMode =UIImagePickerControllerCameraCaptureModePhoto;
@@ -289,6 +304,21 @@
 
 - (void)takeVideoForSend
 {
+    if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"[%s:%d][error:not available]", __func__, __LINE__);
+        if (true) {
+            UIAlertController *ac = [UIAlertController alertControllerWithTitle:@"无法访问相机" message:@"模拟器无法使用相机功能" preferredStyle:UIAlertControllerStyleAlert];
+            [ac addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+            [self.navigationController presentViewController:ac animated:YES completion:nil];
+        }
+        if (false) {
+            //note: UIAlertView is deprecated in iOS 8. (Note that UIAlertViewDelegate is also deprecated.) To create and manage alerts in iOS 8 and later, instead use UIAlertController with a preferredStyle of UIAlertControllerStyleAlert.
+            UIAlertView* alert = [[UIAlertView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+            alert.backgroundColor = [UIColor redColor];
+        }
+        return;
+    }
+    
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.sourceType = UIImagePickerControllerSourceTypeCamera;
     picker.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];

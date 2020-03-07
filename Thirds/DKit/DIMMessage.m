@@ -91,6 +91,53 @@
 @end
 
 
+@implementation DIMSnapshot
+
+-(void)getUrl:(void (^)(NSString * url))urlCallBack
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getImage:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getImage:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+ //TODO:DAISHIXIAN
+}
+
+@end
+
+
+@implementation DIMVideoElem
+
+
+
+@end
+
+
+@implementation DIMVideo
+
+-(void)getUrl:(void (^)(NSString * url))urlCallBack
+{
+ //TODO:DAISHIXIAN
+}
+
+- (void)getVideo:(NSString*)path succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+- (void)getVideo:(NSString*)path progress:(DIMProgress)progress succ:(DIMSucc)succ fail:(DIMFail)fail
+{
+    //TODO:DAISHIXIAN
+}
+
+@end
+
+
 @interface DIMMessage ()
 
 @property (nonatomic, strong) NSMutableArray* elems;

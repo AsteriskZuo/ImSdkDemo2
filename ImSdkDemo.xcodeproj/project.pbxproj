@@ -30,6 +30,9 @@
 		7A0DFBA623F683A50055A5A9 /* DUIImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */; };
 		7A0DFBA923F685430055A5A9 /* DHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBA823F685430055A5A9 /* DHelper.m */; };
 		7A0DFBAC23F7AD090055A5A9 /* DUITextMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0DFBAB23F7AD090055A5A9 /* DUITextMessageCell.m */; };
+		7A202A112412246B0032242C /* DUIVideoMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A202A102412246B0032242C /* DUIVideoMessageCell.m */; };
+		7A202A1424132A920032242C /* DUIVideoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A202A1324132A920032242C /* DUIVideoController.m */; };
+		7A202A17241342630032242C /* DUISystemMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A202A16241342630032242C /* DUISystemMessageCell.m */; };
 		7A443CD223E05A5E00C4D740 /* DUINavigationIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */; };
 		7A443CD523E074B400C4D740 /* TNaviBarIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD423E074B300C4D740 /* TNaviBarIndicatorView.m */; };
 		7A443CD823E29D7C00C4D740 /* DUIPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A443CD723E29D7C00C4D740 /* DUIPopView.m */; };
@@ -304,6 +307,12 @@
 		7A0DFBA823F685430055A5A9 /* DHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DHelper.m; sourceTree = "<group>"; };
 		7A0DFBAA23F7AD090055A5A9 /* DUITextMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUITextMessageCell.h; sourceTree = "<group>"; };
 		7A0DFBAB23F7AD090055A5A9 /* DUITextMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUITextMessageCell.m; sourceTree = "<group>"; };
+		7A202A0F2412246B0032242C /* DUIVideoMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIVideoMessageCell.h; sourceTree = "<group>"; };
+		7A202A102412246B0032242C /* DUIVideoMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIVideoMessageCell.m; sourceTree = "<group>"; };
+		7A202A1224132A920032242C /* DUIVideoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIVideoController.h; sourceTree = "<group>"; };
+		7A202A1324132A920032242C /* DUIVideoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIVideoController.m; sourceTree = "<group>"; };
+		7A202A15241342630032242C /* DUISystemMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUISystemMessageCell.h; sourceTree = "<group>"; };
+		7A202A16241342630032242C /* DUISystemMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUISystemMessageCell.m; sourceTree = "<group>"; };
 		7A443CD023E05A5E00C4D740 /* DUINavigationIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUINavigationIndicatorView.h; sourceTree = "<group>"; };
 		7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUINavigationIndicatorView.m; sourceTree = "<group>"; };
 		7A443CD323E074B300C4D740 /* TNaviBarIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TNaviBarIndicatorView.h; sourceTree = "<group>"; };
@@ -1509,6 +1518,12 @@
 				EE51DDA9240FA494000032BE /* DUIFileViewController.m */,
 				EE51DDAB240FA979000032BE /* DUIFaceMessageCell.h */,
 				EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */,
+				7A202A0F2412246B0032242C /* DUIVideoMessageCell.h */,
+				7A202A102412246B0032242C /* DUIVideoMessageCell.m */,
+				7A202A1224132A920032242C /* DUIVideoController.h */,
+				7A202A1324132A920032242C /* DUIVideoController.m */,
+				7A202A15241342630032242C /* DUISystemMessageCell.h */,
+				7A202A16241342630032242C /* DUISystemMessageCell.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1681,6 +1696,7 @@
 				7A699D05240B4E4600A54E0C /* SDImageLoader.m in Sources */,
 				7ABCEF5A23FD4092007AFD87 /* RACCompoundDisposable.m in Sources */,
 				7ABCEF4023FD4092007AFD87 /* NSDictionary+RACSequenceAdditions.m in Sources */,
+				7A202A112412246B0032242C /* DUIVideoMessageCell.m in Sources */,
 				7ABCEF0823FD4092007AFD87 /* UIStepper+RACSignalSupport.m in Sources */,
 				EE51DD77240D0F9D000032BE /* DUIImagePreviewController.m in Sources */,
 				7A699D09240B4E4600A54E0C /* SDImageCodersManager.m in Sources */,
@@ -1835,6 +1851,7 @@
 				37C814D723CBFD19009564AA /* DUITestTextCell.m in Sources */,
 				EE51DD7A240DEC89000032BE /* DUIVoiceMessageCell.m in Sources */,
 				7ABCEF0D23FD4092007AFD87 /* UITableViewHeaderFooterView+RACSignalSupport.m in Sources */,
+				7A202A17241342630032242C /* DUISystemMessageCell.m in Sources */,
 				7ABCEF1523FD4092007AFD87 /* UITextView+RACSignalSupport.m in Sources */,
 				7A699D69240B4EC600A54E0C /* AFAutoPurgingImageCache.m in Sources */,
 				3728CEAD23C320F800737362 /* Common.m in Sources */,
@@ -1845,6 +1862,7 @@
 				7ABCEF3E23FD4092007AFD87 /* RACKVOProxy.m in Sources */,
 				7ABCEF4D23FD4092007AFD87 /* NSString+RACKeyPathUtilities.m in Sources */,
 				7ABCEF5523FD4092007AFD87 /* NSObject+RACSelectorSignal.m in Sources */,
+				7A202A1424132A920032242C /* DUIVideoController.m in Sources */,
 				7A699D66240B4EC600A54E0C /* UIButton+AFNetworking.m in Sources */,
 				7ABCEF3123FD4092007AFD87 /* RACBehaviorSubject.m in Sources */,
 				7A0DFB9D23F011300055A5A9 /* NSDate+TUIKIT.m in Sources */,

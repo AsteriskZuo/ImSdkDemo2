@@ -42,16 +42,6 @@ typedef NS_ENUM(NSUInteger, InputStatus) {
     [self setupViews];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 - (void)setupViews
 {
     self.view.backgroundColor = TInputView_Background_Color;
