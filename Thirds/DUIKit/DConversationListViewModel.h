@@ -16,7 +16,7 @@ typedef BOOL(^ConversationListFilterBlock)(DUIConversationCellData *data);
 
 @interface DConversationListViewModel : NSObject
 
-@property (nonatomic, strong) NSArray<DUIConversationCellData* >* conversationList;
+@property (nonatomic, strong) NSMutableArray<DUIConversationCellData* >* conversationList;
 
 @property (nonatomic, strong) ConversationListFilterBlock listFilter;
 

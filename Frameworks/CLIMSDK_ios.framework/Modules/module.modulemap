@@ -1,0 +1,6 @@
+framework module CLIMSDK_ios {
+  umbrella header "CLIMSDK_ios.h"
+
+  export *
+  module * { export * }
+}

@@ -12,8 +12,6 @@
 #import "DHeader.h"
 #import "DCommon.h"
 #import "DHelper.h"
-#import "DIMConversation.h"
-#import "DIMMessage.h"
 #import "DUIMessageCell.h"
 #import "DUIImageMessageCell.h"
 #import "DUIFileMessageCell.h"
@@ -28,11 +26,12 @@
 
 #import <MobileCoreServices/MobileCoreServices.h>
 #import <AVFoundation/AVFoundation.h>
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 
 @interface DUIChatController () <UINavigationControllerDelegate, DUIInputControllerDelegate, DUIMessageControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIDocumentPickerDelegate>
 
-@property (nonatomic, strong) DIMConversation *conversation;
+@property (nonatomic, strong) CLIMConversation *conversation;
 
 @property (nonatomic, strong) UIView *tipsView;
 @property (nonatomic, strong) UILabel *pendencyLabel;
@@ -174,7 +173,7 @@
     [self.view setNeedsLayout];
 }
 
-- (instancetype)initWithConversation:(DIMConversation *)conversation
+- (instancetype)initWithConversation:(CLIMConversation *)conversation
 {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
@@ -375,7 +374,7 @@
     return NO;
 }
 
-- (DUIMessageCellData *)messageController:(DUIMessageController *)controller onNewMessage:(DIMMessage *)data
+- (DUIMessageCellData *)messageController:(DUIMessageController *)controller onNewMessage:(CLIMMessage *)data
 {
     if ([self.delegate respondsToSelector:@selector(chatController:onNewMessage:)]) {
         return [self.delegate chatController:self onNewMessage:data];

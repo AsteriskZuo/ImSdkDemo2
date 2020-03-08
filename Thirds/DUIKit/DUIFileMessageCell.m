@@ -11,9 +11,8 @@
 #import "DCommon.h"
 #import "DUIImageCache.h"
 
-#import "DIMMessage.h"
-
 #import "ReactiveObjC.h"
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 @interface DUIFileMessageCellData ()
 @property (nonatomic, strong) NSMutableArray *progressBlocks;
@@ -46,22 +45,9 @@
     self.isDownloading = YES;
 
     //网络下载
-    @weakify(self)
-    DIMFileElem *imFile = [self getIMFileElem];
-    [imFile getFile:path progress:^(NSInteger curSize, NSInteger totalSize) {
-        @strongify(self)
-        [self updateDownalodProgress:curSize * 100 / totalSize];
-    } succ:^{
-        @strongify(self)
-        self.isDownloading = NO;
-        [self updateDownalodProgress:100];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.path = path;
-        });
-    } fail:^(int code, NSString *msg) {
-        @strongify(self)
-        self.isDownloading = NO;
-    }];
+    if ([self.innerMessage isKindOfClass:[CLIMFileMessage class]]) {
+        CLIMFileMessage* msg = (CLIMFileMessage*)self.innerMessage;
+    }
 }
 
 - (BOOL)isLocalExist
@@ -102,19 +88,6 @@
     // TODO: uuid
 
     return path;
-}
-
-- (DIMFileElem *)getIMFileElem
-{
-    DIMMessage *imMsg = self.innerMessage;
-    for (int i = 0; i < imMsg.elemCount; ++i) {
-        DIMElem *imElem = [imMsg getElem:i];
-        if([imElem isKindOfClass:[DIMFileElem class]]){
-            DIMFileElem *imFileElem = (DIMFileElem *)imElem;
-            return imFileElem;
-        }
-    }
-    return nil;
 }
 
 - (void)updateDownalodProgress:(NSUInteger)progress

@@ -11,6 +11,8 @@
 #import "DUIConversationCell.h"
 #import "DHeader.h"
 
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
+
 static NSString *s_DUIConversationCell_ReuseId = @"DUIConversationCell_ReuseId";
 
 @interface DUIConversationListController () <UITableViewDataSource, UITableViewDelegate>
@@ -81,6 +83,20 @@ static NSString *s_DUIConversationCell_ReuseId = @"DUIConversationCell_ReuseId";
         _viewModel = [[DConversationListViewModel alloc] init];
     }
     return _viewModel;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+}
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[CLIMManager sharedInstance] AppReady];
+}
+- (void)viewDidDisappear:(BOOL)animated
+{
+}
+- (void)viewWillDisappear:(BOOL)animated
+{
 }
 
 #pragma mark - table view data source

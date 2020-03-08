@@ -12,10 +12,10 @@
 #import "DHelper.h"
 #import "DUIImageCache.h"
 
-#import "DIMMessage.h"
-
 #import "UIView+MMLayout.h"
 #import "ReactiveObjC.h"
+
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 @implementation DUIVideoItem
 
@@ -71,19 +71,19 @@
 
 
     //网络下载
-    @weakify(self)
-    DIMSnapshot *imSnapshot = [self getIMSnapshot];
-    [imSnapshot getImage:path progress:^(NSInteger curSize, NSInteger totalSize) {
-        [self updateThumbProgress:curSize * 100 / totalSize];
-    } succ:^{
-        @strongify(self)
-        self.isDownloadingSnapshot = NO;
-        [self updateThumbProgress:100];
-        [self decodeThumb];
-    } fail:^(int code, NSString *msg) {
-        @strongify(self)
-        self.isDownloadingSnapshot = NO;
-    }];
+//    @weakify(self)
+//    DIMSnapshot *imSnapshot = [self getIMSnapshot];
+//    [imSnapshot getImage:path progress:^(NSInteger curSize, NSInteger totalSize) {
+//        [self updateThumbProgress:curSize * 100 / totalSize];
+//    } succ:^{
+//        @strongify(self)
+//        self.isDownloadingSnapshot = NO;
+//        [self updateThumbProgress:100];
+//        [self decodeThumb];
+//    } fail:^(int code, NSString *msg) {
+//        @strongify(self)
+//        self.isDownloadingSnapshot = NO;
+//    }];
 }
 
 - (void)downloadVideo
@@ -100,22 +100,22 @@
     self.isDownloadingVideo = YES;
 
     //网络下载
-    @weakify(self)
-    DIMVideo *imVideo = [self getIMVideo];
-    [imVideo getVideo:path progress:^(NSInteger curSize, NSInteger totalSize) {
-        @strongify(self)
-        [self updateVideoProgress:curSize * 100 / totalSize];
-    } succ:^{
-        @strongify(self)
-        self.isDownloadingVideo = NO;
-        [self updateThumbProgress:100];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.videoPath = path;
-        });
-    } fail:^(int code, NSString *msg) {
-        @strongify(self)
-        self.isDownloadingVideo = NO;
-    }];
+//    @weakify(self)
+//    DIMVideo *imVideo = [self getIMVideo];
+//    [imVideo getVideo:path progress:^(NSInteger curSize, NSInteger totalSize) {
+//        @strongify(self)
+//        [self updateVideoProgress:curSize * 100 / totalSize];
+//    } succ:^{
+//        @strongify(self)
+//        self.isDownloadingVideo = NO;
+//        [self updateThumbProgress:100];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.videoPath = path;
+//        });
+//    } fail:^(int code, NSString *msg) {
+//        @strongify(self)
+//        self.isDownloadingVideo = NO;
+//    }];
 }
 
 - (BOOL)isVideoExist
@@ -173,18 +173,18 @@
     }];
 }
 
-- (DIMSnapshot *)getIMSnapshot
-{
-    DIMMessage *imMsg = self.innerMessage;
-    for (int i = 0; i < imMsg.elemCount; ++i) {
-        DIMElem *imElem = [imMsg getElem:i];
-        if([imElem isKindOfClass:[DIMVideoElem class]]){
-            DIMVideoElem *imVideoElem = (DIMVideoElem *)imElem;
-            return imVideoElem.snapshot;
-        }
-    }
-    return nil;
-}
+//- (DIMSnapshot *)getIMSnapshot
+//{
+//    DIMMessage *imMsg = self.innerMessage;
+//    for (int i = 0; i < imMsg.elemCount; ++i) {
+//        DIMElem *imElem = [imMsg getElem:i];
+//        if([imElem isKindOfClass:[DIMVideoElem class]]){
+//            DIMVideoElem *imVideoElem = (DIMVideoElem *)imElem;
+//            return imVideoElem.snapshot;
+//        }
+//    }
+//    return nil;
+//}
 
 - (void)updateVideoProgress:(NSUInteger)progress
 {
@@ -193,18 +193,18 @@
     });
 }
 
-- (DIMVideo *)getIMVideo
-{
-    DIMMessage *imMsg = self.innerMessage;
-    for (int i = 0; i < imMsg.elemCount; ++i) {
-        DIMElem *imElem = [imMsg getElem:i];
-        if([imElem isKindOfClass:[DIMVideoElem class]]){
-            DIMVideoElem *imVideoElem = (DIMVideoElem *)imElem;
-            return imVideoElem.video;
-        }
-    }
-    return nil;
-}
+//- (DIMVideo *)getIMVideo
+//{
+//    DIMMessage *imMsg = self.innerMessage;
+//    for (int i = 0; i < imMsg.elemCount; ++i) {
+//        DIMElem *imElem = [imMsg getElem:i];
+//        if([imElem isKindOfClass:[DIMVideoElem class]]){
+//            DIMVideoElem *imVideoElem = (DIMVideoElem *)imElem;
+//            return imVideoElem.video;
+//        }
+//    }
+//    return nil;
+//}
 
 - (NSString *)getVideoPath:(BOOL *)isExist
 {

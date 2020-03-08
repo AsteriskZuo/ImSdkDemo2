@@ -33,8 +33,7 @@
 #import "MMLayout/UIView+MMLayout.h"
 //#import "TIMMessage+DataProvider.h"
 //#import "TUIUserProfileControllerServiceProtocol.h"
-//#import <ImSDK/ImSDK.h>
-#import "DIMMessage.h"
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 
 #define MAX_MESSAGE_SEP_DLAY (5 * 60)
@@ -169,11 +168,11 @@
 @end
 
 @interface DUIMessageController () <DUIMessageCellDelegate, UIScrollViewDelegate>
-@property (nonatomic, strong) DIMConversation *conv;
+@property (nonatomic, strong) CLIMConversation *conv;
 @property (nonatomic, strong) NSMutableArray *uiMsgs;
 @property (nonatomic, strong) NSMutableArray *heightCache;
-@property (nonatomic, strong) DIMMessage *msgForDate;
-@property (nonatomic, strong) DIMMessage *msgForGet;
+@property (nonatomic, strong) CLIMMessage *msgForDate;
+@property (nonatomic, strong) CLIMMessage *msgForGet;
 @property (nonatomic, strong) DUIMessageCellData *menuUIMsg;
 @property (nonatomic, strong) DUIMessageCellData *reSendUIMsg;
 @property (nonatomic, strong) UIActivityIndicatorView *indicatorView;
@@ -335,7 +334,7 @@
 - (void)sendMessage:(DUIMessageCellData *)msg
 {
     [self.tableView beginUpdates];
-    DIMMessage *imMsg = msg.innerMessage;
+    CLIMMessage *imMsg = msg.innerMessage;
     DUIMessageCellData *dateMsg = nil;
     if (msg.status == Msg_Status_Init)
     {
@@ -343,7 +342,7 @@
         if (!imMsg) {
             imMsg = [self transIMMsgFromUIMsg:msg];
         }
-        dateMsg = [self transSystemMsgFromDate:imMsg.timestamp];
+        dateMsg = [self transSystemMsgFromTimestamp:imMsg.timestamp];
 
     } else if (imMsg) {
         //重发
@@ -401,73 +400,41 @@
 //    });
 }
 
-- (DIMMessage *)transIMMsgFromUIMsg:(DUIMessageCellData *)data
+- (CLIMMessage *)transIMMsgFromUIMsg:(DUIMessageCellData *)data
 {
-    static int count = 0;
-    DIMMessage* msg = [[DIMMessage alloc] init];
-    msg.timestamp = [NSDate date];
-    msg.conversation = _conv;
-    msg.sender = @"self";
-    msg.isPeerReaded = false;
-    msg.isReaded = true;
-    msg.isSelf = true;
-    msg.msgId = [[NSUUID UUID] UUIDString];
-    msg.status = TIM_MSG_STATUS_SEND_SUCC;
-    msg.uniqueId = ++count;
-
+    CLIMMessage* msg = nil;
+//    msg.timestamp = [NSDate date].timeIntervalSince1970 * 1000;
     if ([data isKindOfClass:[DUITextMessageCellData class]]) {
-        TIMTextElem* elem = [[TIMTextElem alloc] init];
-        elem.text = ((DUITextMessageCellData*)data).content;
-        [msg addElem:elem];
+        CLIMTextMessage* msg = [[CLIMTextMessage alloc] initWithConversation:_conv];
+        msg.content = ((DUITextMessageCellData*)data).content;
         return msg;
     } else if ([data isKindOfClass:[DUIImageMessageCellData class]]) {
-        DIMImageElem *imImage = [[DIMImageElem alloc] init];
-        DUIImageMessageCellData *uiImage = (DUIImageMessageCellData *)data;
-        imImage.path = uiImage.path;
-        [msg addElem:imImage];
+        CLIMImageMessage* msg = [[CLIMImageMessage alloc] initWithConversation:_conv];
+        msg.localPath = ((DUIImageMessageCellData* )data).path;
         return msg;
     } else if ([data isKindOfClass:[DUIVoiceMessageCellData class]]) {
-        DIMSoundElem *imImage = [[DIMSoundElem alloc] init];
-        DUIVoiceMessageCellData *uiImage = (DUIVoiceMessageCellData *)data;
-        imImage.path = uiImage.path;
-        imImage.second = uiImage.duration;
-        imImage.dataSize = uiImage.length;
-        [msg addElem:imImage];
+        CLIMVoiceMessage* msg = [[CLIMVoiceMessage alloc] initWithConversation:_conv];
+        msg.localPath = ((DUIVoiceMessageCellData*)data).path;
+        msg.voiceLength = ((DUIVoiceMessageCellData*)data).duration;
         return msg;
     } else if ([data isKindOfClass:[DUIFileMessageCellData class]]) {
-        DIMFileElem *imImage = [[DIMFileElem alloc] init];
-        DUIFileMessageCellData *uiImage = (DUIFileMessageCellData *)data;
-        imImage.path = uiImage.path;
-        imImage.filename = uiImage.fileName;
-        imImage.fileSize = uiImage.length;
-        [msg addElem:imImage];
         return msg;
     } else if ([data isKindOfClass:[DUIFaceMessageCellData class]]) {
-        DIMFaceElem *imImage = [[DIMFaceElem alloc] init];
-        DUIFaceMessageCellData *uiImage = (DUIFaceMessageCellData *)data;
-        imImage.index = (int)uiImage.groupIndex;
-        imImage.data = [uiImage.faceName dataUsingEncoding:NSUTF8StringEncoding];
-        [msg addElem:imImage];
         return msg;
     } else if ([data isKindOfClass:[DUIVideoMessageCellData class]]) {
-        DIMVideoElem *imVideo = [[DIMVideoElem alloc] init];
-        DUIVideoMessageCellData *uiVideo = (DUIVideoMessageCellData *)data;
-        imVideo.videoPath = uiVideo.videoPath;
-        imVideo.snapshotPath = uiVideo.snapshotPath;
-        imVideo.snapshot = [[DIMSnapshot alloc] init];
-        imVideo.snapshot.width = uiVideo.snapshotItem.size.width;
-        imVideo.snapshot.height = uiVideo.snapshotItem.size.height;
-        imVideo.video = [[DIMVideo alloc] init];
-        imVideo.video.duration = (int)uiVideo.videoItem.duration;
-        imVideo.video.type = uiVideo.videoItem.type;
-        [msg addElem:imVideo];
+        return msg;
     }
     return nil;
 }
 
+- (DUISystemMessageCellData *)transSystemMsgFromTimestamp:(long long)timestamp
+{
+    return [self transSystemMsgFromDate:[NSDate dateWithTimeIntervalSince1970:timestamp]];
+}
+
 - (DUISystemMessageCellData *)transSystemMsgFromDate:(NSDate *)date
 {
-    if(_msgForDate == nil || fabs([date timeIntervalSinceDate:_msgForDate.timestamp]) > MAX_MESSAGE_SEP_DLAY){
+    if(_msgForDate == nil || fabs([date timeIntervalSinceDate:[NSDate dateWithTimeIntervalSince1970:_msgForDate.timestamp]]) > MAX_MESSAGE_SEP_DLAY){
         DUISystemMessageCellData *system = [[DUISystemMessageCellData alloc] initWithDirection:MsgDirectionOutgoing];
         system.content = [date tk_messageString];
         system.reuseId = TSystemMessageCell_ReuseId;
@@ -617,7 +584,7 @@
     }
 }
 
-- (void)setConversation:(DIMConversation *)conversation
+- (void)setConversation:(CLIMConversation *)conversation
 {
     _conv = conversation;
 }
@@ -715,7 +682,7 @@
 
 - (void)onDelete:(id)sender
 {
-    DIMMessage *imMsg = _menuUIMsg.innerMessage;
+    CLIMMessage *imMsg = _menuUIMsg.innerMessage;
     if(imMsg == nil){
         return;
     }

@@ -14,8 +14,6 @@
 #import "DHelper.h"
 #import "DUIMessageCell.h"
 
-#import "DIMMessage.h"
-
 #import <AVFoundation/AVFoundation.h>
 
 #import "ReactiveObjC.h"
@@ -85,18 +83,18 @@
             return;
         }
         //网络下载
-        DIMSoundElem *imSound = [self getIMSoundElem];
-        self.isDownloading = YES;
-        @weakify(self)
-        [imSound getSound:path succ:^{
-            @strongify(self)
-            self.isDownloading = NO;
-            [self playInternal:path];;
-        } fail:^(int code, NSString *msg) {
-            @strongify(self)
-            self.isDownloading= NO;
-            [self stopVoiceMessage];
-        }];
+//        DIMSoundElem *imSound = [self getIMSoundElem];
+//        self.isDownloading = YES;
+//        @weakify(self)
+//        [imSound getSound:path succ:^{
+//            @strongify(self)
+//            self.isDownloading = NO;
+//            [self playInternal:path];;
+//        } fail:^(int code, NSString *msg) {
+//            @strongify(self)
+//            self.isDownloading= NO;
+//            [self stopVoiceMessage];
+//        }];
     }
 }
 
@@ -148,18 +146,18 @@
     }
 }
 
-- (DIMSoundElem *)getIMSoundElem
-{
-    DIMMessage *imMsg = self.innerMessage;
-    for (int i = 0; i < imMsg.elemCount; ++i) {
-        DIMElem *imElem = [imMsg getElem:i];
-        if([imElem isKindOfClass:[DIMSoundElem class]]){
-            DIMSoundElem *imSoundElem = (DIMSoundElem *)imElem;
-            return imSoundElem;
-        }
-    }
-    return nil;
-}
+//- (DIMSoundElem *)getIMSoundElem
+//{
+//    DIMMessage *imMsg = self.innerMessage;
+//    for (int i = 0; i < imMsg.elemCount; ++i) {
+//        DIMElem *imElem = [imMsg getElem:i];
+//        if([imElem isKindOfClass:[DIMSoundElem class]]){
+//            DIMSoundElem *imSoundElem = (DIMSoundElem *)imElem;
+//            return imSoundElem;
+//        }
+//    }
+//    return nil;
+//}
 
 static CGFloat s_incommingVoiceTop = 12;
 

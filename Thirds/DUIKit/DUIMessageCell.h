@@ -11,7 +11,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class DIMMessage;
+@class CLIMMessage;
 @class DUIMessageCellLayout;
 
 typedef void (^DDownloadProgress)(NSInteger curSize, NSInteger totalSize);
@@ -98,7 +98,7 @@ typedef NS_ENUM(NSUInteger, DMsgDirection) {
  *  IM SDK 提供的消息对象。内含各种获取消息信息的成员函数，包括获取优先级、获取元素索引、获取离线消息配置信息等。
  *  详细信息请参考 TXIMSDK_iOS\Frameworks\ImSDK.framework\Headers\TIMMessage.h
  */
-@property (nonatomic, strong) DIMMessage *innerMessage;
+@property (nonatomic, strong) CLIMMessage *innerMessage;
 
 /**
  *  昵称字体

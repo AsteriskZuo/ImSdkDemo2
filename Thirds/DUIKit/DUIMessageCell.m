@@ -8,7 +8,6 @@
 
 #import "DUIMessageCell.h"
 #import "DUIMessageCellLayout.h"
-#import "DIMMessage.h"
 #import "DHeader.h"
 #import "MMLayout/UIView+MMLayout.h"
 

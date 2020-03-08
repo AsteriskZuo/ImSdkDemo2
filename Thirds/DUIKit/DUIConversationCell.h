@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  *TIM_GROUP 群聊 类型
  *TIM_SYSTEM 系统消息
  */
-@property (nonatomic, assign) DIMConversationType convType;
+@property (nonatomic, assign) CLIMConversationType convType;
 
 /**
  *  头像 URL

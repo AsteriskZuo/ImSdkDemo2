@@ -126,6 +126,11 @@
 		7AA427CF24016981000D0C52 /* DUIFaceMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427CE24016981000D0C52 /* DUIFaceMenuView.m */; };
 		7AA427D224016A4C000D0C52 /* DUIFaceMenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */; };
 		7AA427D524020AEA000D0C52 /* DUIInputBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AA427D424020AEA000D0C52 /* DUIInputBarView.m */; };
+		7AAA4F032414B53400A7421D /* CLIMSDK_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAA4F022414B53400A7421D /* CLIMSDK_ios.framework */; };
+		7AAA4F072414C9E600A7421D /* CLIMNotificationDispatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AAA4F062414C9E600A7421D /* CLIMNotificationDispatch.m */; };
+		7AAA4F092414E84700A7421D /* CLIMSDK_ios.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAA4F022414B53400A7421D /* CLIMSDK_ios.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7AAA4F0B2414E90400A7421D /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAA4F0A2414E90300A7421D /* CocoaLumberjack.framework */; };
+		7AAA4F0C2414E90A00A7421D /* CocoaLumberjack.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 7AAA4F0A2414E90300A7421D /* CocoaLumberjack.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7AB4DA4C23E577F70087E1E6 /* DUIContactListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */; };
 		7AB4DA4F23E5786C0087E1E6 /* DContactListViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA4E23E5786C0087E1E6 /* DContactListViewModel.m */; };
 		7AB4DA5223E578E90087E1E6 /* DUIContactCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB4DA5123E578E90087E1E6 /* DUIContactCell.m */; };
@@ -261,6 +266,21 @@
 		EE51DDAA240FA494000032BE /* DUIFileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDA9240FA494000032BE /* DUIFileViewController.m */; };
 		EE51DDAD240FA979000032BE /* DUIFaceMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		7AAA4F082414E83C00A7421D /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7AAA4F0C2414E90A00A7421D /* CocoaLumberjack.framework in Copy Frameworks */,
+				7AAA4F092414E84700A7421D /* CLIMSDK_ios.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3728CE7123C3159600737362 /* ImSdkDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImSdkDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -512,6 +532,10 @@
 		7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIFaceMenuCell.m; sourceTree = "<group>"; };
 		7AA427D324020AEA000D0C52 /* DUIInputBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIInputBarView.h; sourceTree = "<group>"; };
 		7AA427D424020AEA000D0C52 /* DUIInputBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIInputBarView.m; sourceTree = "<group>"; };
+		7AAA4F022414B53400A7421D /* CLIMSDK_ios.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CLIMSDK_ios.framework; sourceTree = "<group>"; };
+		7AAA4F052414C9E600A7421D /* CLIMNotificationDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLIMNotificationDispatch.h; sourceTree = "<group>"; };
+		7AAA4F062414C9E600A7421D /* CLIMNotificationDispatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLIMNotificationDispatch.m; sourceTree = "<group>"; };
+		7AAA4F0A2414E90300A7421D /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
 		7AB4DA4A23E577F70087E1E6 /* DUIContactListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DUIContactListController.h; sourceTree = "<group>"; };
 		7AB4DA4B23E577F70087E1E6 /* DUIContactListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DUIContactListController.m; sourceTree = "<group>"; };
 		7AB4DA4D23E5786C0087E1E6 /* DContactListViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DContactListViewModel.h; sourceTree = "<group>"; };
@@ -803,7 +827,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAA4F032414B53400A7421D /* CLIMSDK_ios.framework in Frameworks */,
 				EE51DD9C240E3429000032BE /* libopencore-amrwb.a in Frameworks */,
+				7AAA4F0B2414E90400A7421D /* CocoaLumberjack.framework in Frameworks */,
 				EE51DD9D240E3429000032BE /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -814,6 +840,7 @@
 		3728CE6823C3159500737362 = {
 			isa = PBXGroup;
 			children = (
+				7AAA4F012414B4F400A7421D /* Frameworks */,
 				3728CE8F23C317CE00737362 /* Thirds */,
 				3728CE8A23C317CA00737362 /* Resources */,
 				3728CE7323C3159600737362 /* ImSdkDemo */,
@@ -864,14 +891,15 @@
 		3728CE8F23C317CE00737362 /* Thirds */ = {
 			isa = PBXGroup;
 			children = (
-				EE51DD8C240E3429000032BE /* VoiceConvert */,
 				7A699D39240B4EC600A54E0C /* AFNetworking */,
+				7AAA4F042414C96600A7421D /* bridge */,
 				EE51DD7B240E0B83000032BE /* DKit */,
 				7AF9B54723CB54F900EDB8F2 /* DUIKit */,
 				3728CE9023C317E700737362 /* MMLayout */,
 				7ABCEE4323FD4092007AFD87 /* ReactiveObjC */,
 				7A699C65240B4E4600A54E0C /* SDWebImage */,
 				7AF9B54623CB4C4300EDB8F2 /* TUIKit */,
+				EE51DD8C240E3429000032BE /* VoiceConvert */,
 			);
 			path = Thirds;
 			sourceTree = "<group>";
@@ -1158,6 +1186,24 @@
 				7A699D5F240B4EC600A54E0C /* AFHTTPSessionManager.h */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		7AAA4F012414B4F400A7421D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7AAA4F0A2414E90300A7421D /* CocoaLumberjack.framework */,
+				7AAA4F022414B53400A7421D /* CLIMSDK_ios.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		7AAA4F042414C96600A7421D /* bridge */ = {
+			isa = PBXGroup;
+			children = (
+				7AAA4F052414C9E600A7421D /* CLIMNotificationDispatch.h */,
+				7AAA4F062414C9E600A7421D /* CLIMNotificationDispatch.m */,
+			);
+			path = bridge;
 			sourceTree = "<group>";
 		};
 		7ABCEE4323FD4092007AFD87 /* ReactiveObjC */ = {
@@ -1448,8 +1494,14 @@
 				7AA427D124016A4C000D0C52 /* DUIFaceMenuCell.m */,
 				7AA427CD24016981000D0C52 /* DUIFaceMenuView.h */,
 				7AA427CE24016981000D0C52 /* DUIFaceMenuView.m */,
+				EE51DDAB240FA979000032BE /* DUIFaceMessageCell.h */,
+				EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */,
 				7ABCECF223F8BB3C007AFD87 /* DUIFaceView.h */,
 				7ABCECF323F8BB3C007AFD87 /* DUIFaceView.m */,
+				EE51DDA5240F9E16000032BE /* DUIFileMessageCell.h */,
+				EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */,
+				EE51DDA8240FA494000032BE /* DUIFileViewController.h */,
+				EE51DDA9240FA494000032BE /* DUIFileViewController.m */,
 				7AD283CA23EADA2200893CC9 /* DUIGroupListController.h */,
 				7AD283CB23EADA2300893CC9 /* DUIGroupListController.m */,
 				7A0DFB9223EE670B0055A5A9 /* DUIGroupMemberCell.h */,
@@ -1462,6 +1514,10 @@
 				7AEFBC592407D6FB006FFBDB /* DUIGroupPendencyViewModel.m */,
 				7A0DFBA423F683A50055A5A9 /* DUIImageCache.h */,
 				7A0DFBA523F683A50055A5A9 /* DUIImageCache.m */,
+				7A699D71240BA50900A54E0C /* DUIImageMessageCell.h */,
+				7A699D72240BA50900A54E0C /* DUIImageMessageCell.m */,
+				EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */,
+				EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */,
 				7AA427D324020AEA000D0C52 /* DUIInputBarView.h */,
 				7AA427D424020AEA000D0C52 /* DUIInputBarView.m */,
 				7A0DFB9823EFB5AB0055A5A9 /* DUIInputController.h */,
@@ -1482,12 +1538,22 @@
 				7A0DFB9623EFB58A0055A5A9 /* DUIMessageController.m */,
 				7A443CD023E05A5E00C4D740 /* DUINavigationIndicatorView.h */,
 				7A443CD123E05A5E00C4D740 /* DUINavigationIndicatorView.m */,
+				7A699C5C240A5DA800A54E0C /* DUINewFriendViewController.h */,
+				7A699C5D240A5DA800A54E0C /* DUINewFriendViewController.m */,
+				7A699C5F240A5DDF00A54E0C /* DUINewFriendViewModel.h */,
+				7A699C60240A5DDF00A54E0C /* DUINewFriendViewModel.m */,
+				7A699C62240A5E3600A54E0C /* DUIPendencyCell.h */,
+				7A699C63240A5E3600A54E0C /* DUIPendencyCell.m */,
 				7A443CD623E29D7C00C4D740 /* DUIPopView.h */,
 				7A443CD723E29D7C00C4D740 /* DUIPopView.m */,
 				7AF23D9923DD8FA400C0D8DA /* DUIProfileCardCell.h */,
 				7AF23D9A23DD8FA400C0D8DA /* DUIProfileCardCell.m */,
+				EE51DD7E240E115E000032BE /* DUIRecordPopView.h */,
+				EE51DD7F240E115E000032BE /* DUIRecordPopView.m */,
 				7AD283D623EBAA2200893CC9 /* DUISwitchCell.h */,
 				7AD283D723EBAA2200893CC9 /* DUISwitchCell.m */,
+				7A202A15241342630032242C /* DUISystemMessageCell.h */,
+				7A202A16241342630032242C /* DUISystemMessageCell.m */,
 				37C814D523CBFD19009564AA /* DUITestTextCell.h */,
 				37C814D623CBFD19009564AA /* DUITestTextCell.m */,
 				7AD283D323EBA9D200893CC9 /* DUITextCell.h */,
@@ -1496,34 +1562,14 @@
 				7A0DFBAB23F7AD090055A5A9 /* DUITextMessageCell.m */,
 				7AF23DA823DEFD1D00C0D8DA /* DUIUnreadView.h */,
 				7AF23DA923DEFD1D00C0D8DA /* DUIUnreadView.m */,
-				7ABCECF623FA2E92007AFD87 /* UIView+Toast.h */,
-				7ABCECF523FA2E92007AFD87 /* UIView+Toast.m */,
-				7A699C5C240A5DA800A54E0C /* DUINewFriendViewController.h */,
-				7A699C5D240A5DA800A54E0C /* DUINewFriendViewController.m */,
-				7A699C5F240A5DDF00A54E0C /* DUINewFriendViewModel.h */,
-				7A699C60240A5DDF00A54E0C /* DUINewFriendViewModel.m */,
-				7A699C62240A5E3600A54E0C /* DUIPendencyCell.h */,
-				7A699C63240A5E3600A54E0C /* DUIPendencyCell.m */,
-				7A699D71240BA50900A54E0C /* DUIImageMessageCell.h */,
-				7A699D72240BA50900A54E0C /* DUIImageMessageCell.m */,
-				EE51DD75240D0F9D000032BE /* DUIImagePreviewController.h */,
-				EE51DD76240D0F9D000032BE /* DUIImagePreviewController.m */,
-				EE51DD78240DEC89000032BE /* DUIVoiceMessageCell.h */,
-				EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */,
-				EE51DD7E240E115E000032BE /* DUIRecordPopView.h */,
-				EE51DD7F240E115E000032BE /* DUIRecordPopView.m */,
-				EE51DDA5240F9E16000032BE /* DUIFileMessageCell.h */,
-				EE51DDA6240F9E16000032BE /* DUIFileMessageCell.m */,
-				EE51DDA8240FA494000032BE /* DUIFileViewController.h */,
-				EE51DDA9240FA494000032BE /* DUIFileViewController.m */,
-				EE51DDAB240FA979000032BE /* DUIFaceMessageCell.h */,
-				EE51DDAC240FA979000032BE /* DUIFaceMessageCell.m */,
-				7A202A0F2412246B0032242C /* DUIVideoMessageCell.h */,
-				7A202A102412246B0032242C /* DUIVideoMessageCell.m */,
 				7A202A1224132A920032242C /* DUIVideoController.h */,
 				7A202A1324132A920032242C /* DUIVideoController.m */,
-				7A202A15241342630032242C /* DUISystemMessageCell.h */,
-				7A202A16241342630032242C /* DUISystemMessageCell.m */,
+				7A202A0F2412246B0032242C /* DUIVideoMessageCell.h */,
+				7A202A102412246B0032242C /* DUIVideoMessageCell.m */,
+				EE51DD78240DEC89000032BE /* DUIVoiceMessageCell.h */,
+				EE51DD79240DEC89000032BE /* DUIVoiceMessageCell.m */,
+				7ABCECF623FA2E92007AFD87 /* UIView+Toast.h */,
+				7ABCECF523FA2E92007AFD87 /* UIView+Toast.m */,
 			);
 			path = DUIKit;
 			sourceTree = "<group>";
@@ -1592,6 +1638,7 @@
 				3728CE6D23C3159600737362 /* Sources */,
 				3728CE6E23C3159600737362 /* Frameworks */,
 				3728CE6F23C3159600737362 /* Resources */,
+				7AAA4F082414E83C00A7421D /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1702,6 +1749,7 @@
 				7A699D09240B4E4600A54E0C /* SDImageCodersManager.m in Sources */,
 				7ABCECF723FA2E92007AFD87 /* UIView+Toast.m in Sources */,
 				7ABCEF5823FD4092007AFD87 /* RACEagerSequence.m in Sources */,
+				7AAA4F072414C9E600A7421D /* CLIMNotificationDispatch.m in Sources */,
 				7A699D6D240B4EC600A54E0C /* AFURLSessionManager.m in Sources */,
 				7ABCEF4523FD4092007AFD87 /* UIGestureRecognizer+RACSignalSupport.m in Sources */,
 				7A443CD823E29D7C00C4D740 /* DUIPopView.m in Sources */,
@@ -2043,6 +2091,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2HDFPA9KJF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Thirds\"",
 					"\"$(SRCROOT)/Resources\"",
@@ -2053,6 +2105,7 @@
 					"\"$(SRCROOT)/Thirds/DKit\"",
 					"\"$(SRCROOT)/Thirds/DUIKit\"",
 					"\"$(SRCROOT)/Thirds/Decoder\"",
+					"\"$(SRCROOT)/Thirds/bridge\"",
 				);
 				INFOPLIST_FILE = ImSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2077,6 +2130,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 2HDFPA9KJF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks",
+				);
 				HEADER_SEARCH_PATHS = (
 					"\"$(SRCROOT)/Thirds\"",
 					"\"$(SRCROOT)/Resources\"",
@@ -2087,6 +2144,7 @@
 					"\"$(SRCROOT)/Thirds/DKit\"",
 					"\"$(SRCROOT)/Thirds/DUIKit\"",
 					"\"$(SRCROOT)/Thirds/Decoder\"",
+					"\"$(SRCROOT)/Thirds/bridge\"",
 				);
 				INFOPLIST_FILE = ImSdkDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -13,14 +13,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DIMConversation : NSObject
 
-- (instancetype)initWithConvId:(NSString*)convId convType:(DIMConversationType)convType;
+- (instancetype)initWithConvId:(NSString*)convId convType:(CLIMConversationType)convType;
 
 /**
  *  5.1 获取会话类型
  *
  *  @return 会话类型
  */
-- (DIMConversationType)getType;
+- (CLIMConversationType)getType;
 
 /**
  *  5.2 获取会话 ID

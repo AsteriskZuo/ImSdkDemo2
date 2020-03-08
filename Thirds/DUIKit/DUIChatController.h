@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @class DUIMessageCellData;
 @class DUIMessageCell;
 @class DUIInputMoreCell;
-@class DIMMessage;
-@class DIMConversation;
+@class CLIMMessage;
+@class CLIMConversation;
 
 /**
  *  TUIChatControllerDelegate 协议
@@ -67,7 +67,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param msg 接收到的新消息，在此回调中，特指包含您自定义消息类型的消息元素。
  *  @return 返回一个消息单元数据源，此数据源为您自定义的消息数据源，继承自 TUIMessageCellData。当接收到的消息不是您的自定义消息时，您可以返回 nil。
  */
-- (DUIMessageCellData *)chatController:(DUIChatController *)controller onNewMessage:(DIMMessage *)msg;
+- (DUIMessageCellData *)chatController:(DUIChatController *)controller onNewMessage:(CLIMMessage *)msg;
 
 /**
  * 展示自定义个性化消息
@@ -189,7 +189,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param conversation 会话，提供初始化所需的会话信息
  */
-- (instancetype)initWithConversation:(DIMConversation *)conversation;
+- (instancetype)initWithConversation:(CLIMConversation *)conversation;
 
 /**
  *  发送自定义的个性化消息

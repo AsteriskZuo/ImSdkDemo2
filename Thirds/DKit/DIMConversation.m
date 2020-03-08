@@ -11,13 +11,13 @@
 @interface DIMConversation ()
 
 @property (nonatomic, strong, readwrite) NSString* convId;
-@property (nonatomic, assign, readwrite) DIMConversationType convType;
+@property (nonatomic, assign, readwrite) CLIMConversationType convType;
 
 @end
 
 @implementation DIMConversation
 
-- (instancetype)initWithConvId:(NSString*)convId convType:(DIMConversationType)convType
+- (instancetype)initWithConvId:(NSString*)convId convType:(CLIMConversationType)convType
 {
     if (self = [super init]) {
         _convId = convId;
@@ -26,7 +26,7 @@
     return self;
 }
 
-- (DIMConversationType)getType
+- (CLIMConversationType)getType
 {
     return _convType;
 }

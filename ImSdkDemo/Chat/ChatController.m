@@ -11,11 +11,12 @@
 #import "DUIUnreadView.h"
 #import "DHeader.h"
 #import "DUIProfileCardCell.h"
-#import "DIMConversation.h"
 #import "FriendProfileController.h"
 #import "GroupProfileController.h"
 
 #import "ReactiveObjC/ReactiveObjC.h"
+
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 @interface ChatController ()
 
@@ -35,7 +36,7 @@
 
 - (void)setupViews
 {
-    DIMConversation* conv = [[DIMConversation alloc] initWithConvId:_conversationData.convId convType:_conversationData.convType];
+    CLIMConversation* conv = [[CLIMConversation alloc] initWithId:_conversationData.convId type:_conversationData.convType];
     _chat = [[DUIChatController alloc] initWithConversation:conv];
     [self addChildViewController:_chat];
     [self.view addSubview:_chat.view];
@@ -48,10 +49,10 @@
 
     UIButton *rightButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 30, 30)];
     [rightButton addTarget:self action:@selector(rightBarButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-    if(_conversationData.convType == TIM_C2C){
+    if(_conversationData.convType == CLIMConversationTypePerson){
         [rightButton setImage:[UIImage imageNamed:TUIKitResource(@"person_nav")] forState:UIControlStateNormal];
     }
-    else if(_conversationData.convType == TIM_GROUP){
+    else if(_conversationData.convType == CLIMConversationTypeGroup){
         [rightButton setImage:[UIImage imageNamed:TUIKitResource(@"group_nav")] forState:UIControlStateNormal];
     }
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
@@ -68,13 +69,13 @@
 
 - (void)rightBarButtonClick:(UIButton*)sender
 {
-    if (TIM_C2C == _conversationData.convType) {
+    if (CLIMConversationTypePerson == _conversationData.convType) {
         FriendProfileController* controller = [[FriendProfileController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
-    } else if (TIM_GROUP == _conversationData.convType) {
+    } else if (CLIMConversationTypeGroup == _conversationData.convType) {
         GroupProfileController* controller = [[GroupProfileController alloc] init];
         [self.navigationController pushViewController:controller animated:YES];
-    } else if (TIM_SYSTEM == _conversationData.convType) {
+    } else if (CLIMConversationTypeSystem == _conversationData.convType) {
         
     } else {
         NSLog(@"%s", __func__);

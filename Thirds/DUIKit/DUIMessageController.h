@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class DIMMessage;
+@class CLIMMessage;
 @class DUIMessageController;
 @class DUIMessageCellData;
 @class DUIMessageCell;
-@class DIMConversation;
+@class CLIMConversation;
 
 
 NS_ASSUME_NONNULL_BEGIN
@@ -64,7 +64,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return 返回需要显示的新消息单元。该消息单元的信息与数据，来自于参数中的 data 参数。
  */
-- (DUIMessageCellData *)messageController:(DUIMessageController *)controller onNewMessage:(DIMMessage *)data;
+- (DUIMessageCellData *)messageController:(DUIMessageController *)controller onNewMessage:(CLIMMessage *)data;
 
 /**
  *  显示消息数据委托
@@ -152,7 +152,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @param conversation 需要设置的会话
  */
-- (void)setConversation:(DIMConversation *)conversation;
+- (void)setConversation:(CLIMConversation *)conversation;
 
 @end
 
