@@ -13,6 +13,7 @@
 #import "SDWebImage.h"
 
 #import "EMVoiceConverter.h"
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
 
 typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 
@@ -20,67 +21,57 @@ typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 
 + (NSString *)genImageName:(NSString *)uuid
 {
-//    int sdkAppId = [[TIMManager sharedInstance] getGlobalConfig].sdkAppId;
-//    NSString *identifier = [[TIMManager sharedInstance] getLoginUser];
-    int sdkAppId = 14009000;
-    NSString* identifier = @"123";//TODO:待实现
+    NSString* sdkAppId = [[CLIMManager sharedInstance] getGlobalConfig].appKey;
+    NSString* identifier = [[CLIMManager sharedInstance] getUserId];
     if(uuid == nil){
         uuid = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     }
-    NSString *name = [NSString stringWithFormat:@"%d_%@_image_%@", sdkAppId, identifier, uuid];
+    NSString *name = [NSString stringWithFormat:@"%@_%@_image_%@", sdkAppId, identifier, uuid];
     return name;
 }
 
 + (NSString *)genSnapshotName:(NSString *)uuid
 {
-//    int sdkAppId = [[TIMManager sharedInstance] getGlobalConfig].sdkAppId;
-//    NSString *identifier = [[TIMManager sharedInstance] getLoginUser];
-    int sdkAppId = 14009000;
-    NSString* identifier = @"123";//TODO:待实现
+    NSString* sdkAppId = [[CLIMManager sharedInstance] getGlobalConfig].appKey;
+    NSString* identifier = [[CLIMManager sharedInstance] getUserId];
     if(uuid == nil){
         uuid = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     }
-    NSString *name = [NSString stringWithFormat:@"%d_%@_snapshot_%@", sdkAppId, identifier, uuid];
+    NSString *name = [NSString stringWithFormat:@"%@_%@_snapshot_%@", sdkAppId, identifier, uuid];
     return name;
 }
 
 + (NSString *)genVideoName:(NSString *)uuid
 {
-//    int sdkAppId = [[TIMManager sharedInstance] getGlobalConfig].sdkAppId;
-//    NSString *identifier = [[TIMManager sharedInstance] getLoginUser];
-    int sdkAppId = 14009000;
-    NSString* identifier = @"123";//TODO:待实现
+    NSString* sdkAppId = [[CLIMManager sharedInstance] getGlobalConfig].appKey;
+    NSString* identifier = [[CLIMManager sharedInstance] getUserId];
     if(uuid == nil){
         uuid = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     }
-    NSString *name = [NSString stringWithFormat:@"%d_%@_video_%@", sdkAppId, identifier, uuid];
+    NSString *name = [NSString stringWithFormat:@"%@_%@_video_%@", sdkAppId, identifier, uuid];
     return name;
 }
 
 
 + (NSString *)genVoiceName:(NSString *)uuid withExtension:(NSString *)extent
 {
-//    int sdkAppId = [[TIMManager sharedInstance] getGlobalConfig].sdkAppId;
-//    NSString *identifier = [[TIMManager sharedInstance] getLoginUser];
-    int sdkAppId = 14009000;
-    NSString* identifier = @"123";//TODO:待实现
+    NSString* sdkAppId = [[CLIMManager sharedInstance] getGlobalConfig].appKey;
+    NSString* identifier = [[CLIMManager sharedInstance] getUserId];
     if(uuid == nil){
         uuid = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     }
-    NSString *name = [NSString stringWithFormat:@"%d_%@_voice_%@.%@", sdkAppId, identifier, uuid, extent];
+    NSString *name = [NSString stringWithFormat:@"%@_%@_voice_%@.%@", sdkAppId, identifier, uuid, extent];
     return name;
 }
 
 + (NSString *)genFileName:(NSString *)uuid
 {
-//    int sdkAppId = [[TIMManager sharedInstance] getGlobalConfig].sdkAppId;
-//    NSString *identifier = [[TIMManager sharedInstance] getLoginUser];
-    int sdkAppId = 14009000;
-    NSString* identifier = @"123";//TODO:待实现
+    NSString* sdkAppId = [[CLIMManager sharedInstance] getGlobalConfig].appKey;
+    NSString* identifier = [[CLIMManager sharedInstance] getUserId];
     if(uuid == nil){
         uuid = [NSString stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
     }
-    NSString *name = [NSString stringWithFormat:@"%d_%@_file_%@", sdkAppId, identifier, uuid];
+    NSString *name = [NSString stringWithFormat:@"%@_%@_file_%@", sdkAppId, identifier, uuid];
     return name;
 }
 
@@ -99,6 +90,25 @@ typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
     return [EMVoiceConverter wavToAmr:wavPath amrSavePath:amrPath];
 }
 
++ (BOOL)fileIsExist:(NSString*)filePath
+{
+    BOOL isDir = NO;
+    if([[NSFileManager defaultManager] fileExistsAtPath:filePath isDirectory:&isDir]) {
+        if(!isDir) {
+            return YES;
+        }
+    }
+    return NO;
+}
+
++ (BOOL)dirIsExist:(NSString*)dirPath
+{
+    BOOL isDir = NO;
+    if([[NSFileManager defaultManager] fileExistsAtPath:dirPath isDirectory:&isDir]) {
+        return isDir;
+    }
+    return NO;
+}
 
 + (void)asyncDecodeImage:(NSString *)path complete:(TAsyncImageComplete)complete
 {

@@ -71,58 +71,43 @@
     }
     self.isPlaying = YES;
     
-//    if(self.innerMessage.customInt == 0)
-//        self.innerMessage.customInt = 1;
+    if(self.innerMessage.customInt == 0)
+        self.innerMessage.customInt = 1;
 
-    BOOL isExist = NO;
-    NSString *path = [self getVoicePath:&isExist];
-    if(isExist) {
-        [self playInternal:path];
+    BOOL fileIsExist = NO;
+    NSString *localPath = [self getVoicePath:&fileIsExist];
+    if(fileIsExist) {
+        [self playInternal:localPath];
     } else {
         if(self.isDownloading) {
             return;
         }
-        //网络下载
-//        DIMSoundElem *imSound = [self getIMSoundElem];
-//        self.isDownloading = YES;
-//        @weakify(self)
-//        [imSound getSound:path succ:^{
-//            @strongify(self)
-//            self.isDownloading = NO;
-//            [self playInternal:path];;
-//        } fail:^(int code, NSString *msg) {
-//            @strongify(self)
-//            self.isDownloading= NO;
-//            [self stopVoiceMessage];
-//        }];
+        CLIMVoiceMessage* voiceMessage = (CLIMVoiceMessage* )self.innerMessage;
+        @weakify(self);
+        [voiceMessage getVoice:nil progress:^(NSInteger curSize, NSInteger totalSize) {
+            
+        } succ:^{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self);
+                self.isDownloading = NO;
+                [self playInternal:localPath];
+            });
+        } fail:^(int code, NSString *message) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                @strongify(self);
+                self.isDownloading = NO;
+                [self stopVoiceMessage];
+            });
+        }];
     }
 }
 
 - (NSString *)getVoicePath:(BOOL *)isExist
 {
-    NSString *path = nil;
-    BOOL isDir = false;
-    *isExist = NO;
-    if(self.direction == MsgDirectionOutgoing) {
-        //上传方本地是否有效
-        path = [NSString stringWithFormat:@"%@%@", TUIKit_Voice_Path, _path.lastPathComponent];
-        if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]){
-            if(!isDir){
-                *isExist = YES;
-            }
-        }
-    }
-
-    if(!*isExist) {
-        //查看本地是否存在
-        path = [NSString stringWithFormat:@"%@%@.amr", TUIKit_Voice_Path, _uuid];
-        if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]){
-            if(!isDir){
-                *isExist = YES;
-            }
-        }
-    }
-    return path;
+    CLIMVoiceMessage* voiceMessage = (CLIMVoiceMessage* )self.innerMessage;
+    NSString* localPath = [voiceMessage getLocalPath];
+    *isExist = [DHelper fileIsExist:localPath];
+    return localPath;
 }
 
 - (void)playInternal:(NSString *)path
@@ -145,19 +130,6 @@
         [self.audioPlayer play];
     }
 }
-
-//- (DIMSoundElem *)getIMSoundElem
-//{
-//    DIMMessage *imMsg = self.innerMessage;
-//    for (int i = 0; i < imMsg.elemCount; ++i) {
-//        DIMElem *imElem = [imMsg getElem:i];
-//        if([imElem isKindOfClass:[DIMSoundElem class]]){
-//            DIMSoundElem *imSoundElem = (DIMSoundElem *)imElem;
-//            return imSoundElem;
-//        }
-//    }
-//    return nil;
-//}
 
 static CGFloat s_incommingVoiceTop = 12;
 

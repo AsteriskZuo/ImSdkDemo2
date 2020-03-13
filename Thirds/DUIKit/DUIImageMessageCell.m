@@ -15,6 +15,8 @@
 #import "MMLayout/UIView+MMLayout.h"
 #import "ReactiveObjC.h"
 
+#import <CLIMSDK_ios/CLIMSDK_ios.h>
+
 @implementation DUIImageItem
 
 
@@ -44,48 +46,45 @@
 
 - (void)downloadImage:(DUIImageType)type
 {
-    BOOL isExist = NO;
-    NSString *path = [self getImagePath:type isExist:&isExist];
-    if(isExist)
-    {
+    BOOL fileIsExist = NO;
+    NSString* localPath = [self getImagePath:type isExist:&fileIsExist];
+    if (fileIsExist) {
         [self decodeImage:type];
-        return;
-    }
+    } else {
+        if(self.isDownloading) {
+            return;
+        }
+        self.isDownloading = YES;
 
-    if(self.isDownloading) {
-        return;
+        CLIMImage* imImage = [self getIMImage:type];
+        @weakify(self);
+        [imImage getImage:nil progress:^(NSInteger curSize, NSInteger totalSize) {
+            @strongify(self);
+            [self updateProgress:curSize*100/totalSize withType:type];
+        } succ:^{
+            @strongify(self);
+            self.isDownloading = NO;
+            [self updateProgress:100 withType:type];
+            [self decodeImage:type];
+        } fail:^(int code, NSString *message) {
+            @strongify(self);
+            self.isDownloading = NO;
+        }];
     }
-    self.isDownloading = YES;
-
-    //网络下载
-//    DIMImage *imImage = [self getIMImage:type];
-//
-//    @weakify(self)
-//    [imImage getImage:path progress:^(NSInteger curSize, NSInteger totalSize) {
-//        @strongify(self)
-//        [self updateProgress:curSize * 100 / totalSize withType:type];
-//    } succ:^{
-//        @strongify(self)
-//        self.isDownloading = NO;
-//        [self updateProgress:100 withType:type];
-//        [self decodeImage:type];
-//    } fail:^(int code, NSString *msg) {
-//        @strongify(self)
-//        self.isDownloading = NO;
-//    }];
+    
 }
 
-//- (void)updateProgress:(NSUInteger)progress withType:(TUIImageType)type
-//{
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        if (type == TImage_Type_Thumb)
-//            self.thumbProgress = progress;
-//        if (type == TImage_Type_Large)
-//            self.largeProgress = progress;
-//        if (type == TImage_Type_Origin)
-//            self.originProgress = progress;
-//    });
-//}
+- (void)updateProgress:(NSUInteger)progress withType:(DUIImageType)type
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (type == TImage_Type_Thumb)
+            self.thumbProgress = progress;
+        if (type == TImage_Type_Large)
+            self.largeProgress = progress;
+        if (type == TImage_Type_Origin)
+            self.originProgress = progress;
+    });
+}
 
 - (void)decodeImage:(DUIImageType)type
 {
@@ -132,31 +131,10 @@
 
 - (NSString *)getImagePath:(DUIImageType)type isExist:(BOOL *)isExist
 {
-    NSString *path = nil;
-    BOOL isDir = NO;
-    *isExist = NO;
-    if(self.direction == MsgDirectionOutgoing) {
-        //上传方本地原图是否有效
-        path = [NSString stringWithFormat:@"%@%@", TUIKit_Image_Path, _path.lastPathComponent];
-        if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]){
-            if(!isDir){
-                *isExist = YES;
-            }
-        }
-    }
-
-    if(!*isExist) {
-        //查看本地是否存在
-        DUIImageItem *tImageItem = [self getTImageItem:type];
-        path = [NSString stringWithFormat:@"%@%@", TUIKit_Image_Path, tImageItem.uuid];
-        if([[NSFileManager defaultManager] fileExistsAtPath:path isDirectory:&isDir]){
-            if(!isDir){
-                *isExist = YES;
-            }
-        }
-    }
-
-    return path;
+    CLIMImage* imageItem = [self getIMImage:type];
+    NSString* localPath = [imageItem getLocalPath];
+    *isExist = [DHelper fileIsExist:localPath];
+    return localPath;
 }
 
 - (DUIImageItem *)getTImageItem:(DUIImageType)type
@@ -169,29 +147,25 @@
     return nil;
 }
 
-//- (DIMImage *)getIMImage:(DUIImageType)type
-//{
-//    DIMMessage *imMsg = self.innerMessage;
-//    for (int i = 0; i < imMsg.elemCount; ++i) {
-//        DIMElem *imElem = [imMsg getElem:i];
-//        if([imElem isKindOfClass:[TIMImageElem class]]){
-//            TIMImageElem *imImageElem = (TIMImageElem *)imElem;
-//            for (TIMImage *imImage in imImageElem.imageList) {
-//                if(type == TImage_Type_Thumb && imImage.type == TIM_IMAGE_TYPE_THUMB){
-//                    return imImage;
-//                }
-//                else if(type == TImage_Type_Origin && imImage.type == TIM_IMAGE_TYPE_ORIGIN){
-//                    return imImage;
-//                }
-//                else if(type == TImage_Type_Large && imImage.type == TIM_IMAGE_TYPE_LARGE){
-//                    return imImage;
-//                }
-//            }
-//            break;
-//        }
-//    }
-//    return nil;
-//}
+- (CLIMImage *)getIMImage:(DUIImageType)type
+{
+    if ([self.innerMessage isKindOfClass:[CLIMImageMessage class]]) {
+        CLIMImageMessage* imageMessage = (CLIMImageMessage* )self.innerMessage;
+        for (CLIMImage* imageItem in imageMessage.imageList) {
+            if (CLIM_IMAGE_TYPE_ORIGIN == imageItem.type
+                && TImage_Type_Origin == type) {
+                return imageItem;
+            } else if (CLIM_IMAGE_TYPE_LARGE == imageItem.type
+                && TImage_Type_Large == type) {
+                return imageItem;
+            } else if (CLIM_IMAGE_TYPE_THUMB == imageItem.type
+                && TImage_Type_Thumb == type) {
+                return imageItem;
+            }
+        }
+    }
+    return nil;
+}
 
 - (CGSize)contentSize
 {

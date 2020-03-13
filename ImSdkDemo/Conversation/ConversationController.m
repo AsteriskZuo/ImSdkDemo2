@@ -153,7 +153,7 @@
     if (controller) {
         DUIConversationListController* c = (DUIConversationListController*)controller;
         if ([c respondsToSelector:@selector(test)]) {
-            [c test];
+//            [c test];
         }
     }
     

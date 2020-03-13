@@ -28,6 +28,8 @@ typedef void (^TAsyncImageComplete)(NSString *path, UIImage *image);
 + (void)makeToastError:(NSInteger)error msg:(NSString *)msg;
 + (void)makeToastActivity;
 + (void)hideToastActivity;
++ (BOOL)fileIsExist:(NSString*)filePath;
++ (BOOL)dirIsExist:(NSString*)dirPath;
 + (NSString *)randAvatarUrl;
 
 @end

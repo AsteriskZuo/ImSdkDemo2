@@ -34,6 +34,7 @@
 //#import "TIMMessage+DataProvider.h"
 //#import "TUIUserProfileControllerServiceProtocol.h"
 #import <CLIMSDK_ios/CLIMSDK_ios.h>
+#import "CLIMNotificationDispatch.h"
 
 
 #define MAX_MESSAGE_SEP_DLAY (5 * 60)
@@ -169,7 +170,8 @@
 
 @interface DUIMessageController () <DUIMessageCellDelegate, UIScrollViewDelegate>
 @property (nonatomic, strong) CLIMConversation *conv;
-@property (nonatomic, strong) NSMutableArray *uiMsgs;
+@property (nonatomic, strong) NSString* accountId;
+@property (nonatomic, strong) NSMutableArray<__kindof DUIMessageCellData* > *uiMsgs;
 @property (nonatomic, strong) NSMutableArray *heightCache;
 @property (nonatomic, strong) CLIMMessage *msgForDate;
 @property (nonatomic, strong) CLIMMessage *msgForGet;
@@ -203,6 +205,7 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     [self setupViews];
+    [self initSdk];
     
     self.isActive = YES;
 }
@@ -340,18 +343,18 @@
     {
         //新消息
         if (!imMsg) {
-            imMsg = [self transIMMsgFromUIMsg:msg];
+            imMsg = [self translateFromUIMsgToIMMsg:msg];
         }
         dateMsg = [self transSystemMsgFromTimestamp:imMsg.timestamp];
 
     } else if (imMsg) {
         //重发
         dateMsg = [self transSystemMsgFromDate:[NSDate date]];
-//        NSInteger row = [_uiMsgs indexOfObject:msg];
-//        [_heightCache removeObjectAtIndex:row];
-//        [_uiMsgs removeObjectAtIndex:row];
-//        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
-//                              withRowAnimation:UITableViewRowAnimationFade];
+        NSInteger row = [_uiMsgs indexOfObject:msg];
+        [_heightCache removeObjectAtIndex:row];
+        [_uiMsgs removeObjectAtIndex:row];
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationFade];
     } else {
         [self.tableView endUpdates];
         NSLog(@"Unknown message state");
@@ -376,6 +379,21 @@
                           withRowAnimation:UITableViewRowAnimationFade];
     [self.tableView endUpdates];
     [self scrollToBottom:YES];
+    
+    @weakify(self);
+    [_conv sendMessage:imMsg success:^(CLIMSendMessageResult *message) {
+        NSLog(@"[%s:%d][success][msgId:%@]", __func__, __LINE__, message.msgId);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            [self changeMsg:msg status:Msg_Status_Succ];
+        });
+    } failed:^(int code, NSString *message) {
+        NSLog(@"[%s:%d][fail][error:%d]", __func__, __LINE__, code);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            @strongify(self);
+            [self changeMsg:msg status:Msg_Status_Fail];
+        });
+    }];
 
 //    __weak typeof(self) ws = self;
 //    [self.conv sendMessage:imMsg succ:^{
@@ -400,7 +418,7 @@
 //    });
 }
 
-- (CLIMMessage *)transIMMsgFromUIMsg:(DUIMessageCellData *)data
+- (CLIMMessage *)translateFromUIMsgToIMMsg:(DUIMessageCellData *)data
 {
     CLIMMessage* msg = nil;
 //    msg.timestamp = [NSDate date].timeIntervalSince1970 * 1000;
@@ -486,6 +504,66 @@
     if(scrollView.contentOffset.y <= TMessageController_Header_Height){
         [self loadMessage];
     }
+}
+
+#pragma mark - notification
+
+- (void)initSdk
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveNewMessageList:) name:CLIMReceiverMessageNotification_receiveNewMessageList object:nil];
+}
+
+- (void)receiveNewMessageList:(NSNotification*)notification
+{
+    NSArray<__kindof CLIMMessage* >* messages = notification.object;
+    if (nil == messages) {
+        return;
+    }
+    [self.tableView beginUpdates];
+    for (CLIMMessage* msg in messages) {
+        DUIMessageCellData* uimsg = [self translateFromIMMsgToUIMsg:msg];
+        [_uiMsgs addObject:uimsg];
+        [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:_uiMsgs.count - 1 inSection:0]] withRowAnimation:UITableViewRowAnimationFade];
+    }
+    [self.tableView endUpdates];
+}
+
+- (DUIMessageCellData*)translateFromIMMsgToUIMsg:(CLIMMessage*)IMMsg
+{
+    DMsgDirection direction = (IMMsg.sender == _accountId ? MsgDirectionOutgoing : MsgDirectionIncoming);
+    if ([IMMsg isKindOfClass:[CLIMTextMessage class]]) {
+        CLIMTextMessage* sdkMsg = (CLIMTextMessage*)IMMsg;
+        DUITextMessageCellData* msg = [[DUITextMessageCellData alloc] initWithDirection:direction];
+        msg.content = sdkMsg.content;
+        return msg;
+    } else if ([IMMsg isKindOfClass:[CLIMImageMessage class]]) {
+        CLIMImageMessage* sdkMsg = (CLIMImageMessage* )IMMsg;
+        DUIImageMessageCellData* msg = [[DUIImageMessageCellData alloc] initWithDirection:direction];
+        msg.path = sdkMsg.localPath;
+        for (int i = 0; i < sdkMsg.imageList.count; ++i) {
+            CLIMImage* img = sdkMsg.imageList[i];
+            DUIImageItem* item = [[DUIImageItem alloc] init];
+            item.uuid = img.imageId;
+            item.url = img.url;
+            if (CLIM_IMAGE_TYPE_ORIGIN == img.type) {
+                item.type = TImage_Type_Origin;
+            } else if (CLIM_IMAGE_TYPE_LARGE == img.type) {
+                item.type = TImage_Type_Large;
+            } else if (CLIM_IMAGE_TYPE_THUMB == img.type) {
+                item.type = TImage_Type_Thumb;
+            }
+            [msg.items addObject:item];
+        }
+        return msg;
+    } else if ([IMMsg isKindOfClass:[CLIMVoiceMessage class]]) {
+        CLIMVoiceMessage* voice = (CLIMVoiceMessage*)IMMsg;
+        DUIVoiceMessageCellData* msg = [[DUIVoiceMessageCellData alloc] initWithDirection:direction];
+        msg.path = voice.localPath;
+        msg.duration = voice.voiceLength;
+        msg.uuid = voice.voiceId;
+        return msg;
+    }
+    return nil;
 }
 
 #pragma mark - Table view data source
@@ -587,6 +665,12 @@
 - (void)setConversation:(CLIMConversation *)conversation
 {
     _conv = conversation;
+    _accountId = [[CLIMManager sharedInstance] getUserId];
+    @weakify(self);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        @strongify(self);
+        [self loadMessage];
+    });
 }
 
 
